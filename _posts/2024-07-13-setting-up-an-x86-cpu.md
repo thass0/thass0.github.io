@@ -467,8 +467,10 @@ print_string32_return:
     ret
 ```
 
-Best print something so that we know the switch worked. Note the message in
-the top left corner of the screenshot.
+Best print something so that we know the switch worked. To do that, add a
+string with the message and a call to `print_string32` to the code.
+The `print_string32` function is super basic, so the message always shows
+up in the top left corner of the display.
 
 <img src="{{ '/public/figures/qemu-prot-mode-screenshot.png' | absolute_path }}" alt="QEMU screenshot of the protected mode message" class="screenshot" />
 
