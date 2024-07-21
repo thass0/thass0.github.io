@@ -78,7 +78,7 @@ end:
     hlt
     jmp end
 
-;; Uses the BIOS to print a null-termianted string. The address of the
+;; Uses the BIOS to print a null-terminated string. The address of the
 ;; string is found in the bx register.
 print_string:
     pusha
