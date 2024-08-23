@@ -368,7 +368,7 @@ gdt32_data_segment:
     ;; 0-3: segment type that specifies a read/write data segment
     db 10010010b
     db 11001111b
-    dw 0x00
+    db 0x00
 
 gdt32_end:
 
@@ -579,7 +579,7 @@ gdt64_data_segment:
     ;; 0-3: segment type that specifies a read/write data segment
     db 10010010b
     db 10101111b
-    dw 0x00
+    db 0x00
 
 gdt64_end:
 
@@ -639,7 +639,7 @@ start_prot_mode:
     [bits 64]
 
 start_long_mode:
-    htl
+    hlt
     jmp start_long_mode
 
     ;; ...
