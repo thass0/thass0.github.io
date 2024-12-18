@@ -182,7 +182,7 @@ you use a lot of inlined functions.
 
 So you're mostly paying for this up front with compile time and with larger code size.
 `struct str` takes up more space than using null-terminated strings, but it's common to use
-a length variable along with a null-termianted string so it might not make a big difference.
+a length variable along with a null-terminated string so it might not make a big difference.
 I didn't take any measurements, but for code that's not performance-critical, the overhead is
 clearly not too bad. I's a tradeoff worth making for the ease of use and correctness benefits
 that these types bring.
