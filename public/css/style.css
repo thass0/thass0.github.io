@@ -1,0 +1,255 @@
+@charset "UTF-8";
+
+/**************/
+/* Base style */
+/**************/
+
+html {
+    --glow-color: rgba(255, 239, 0, 0.8);
+    --text-color: #111;
+    --small-color: #5a5a5a;
+    --note-color: #048c00;
+    --background-color: #ffffff;
+    --link-color: #0000f0;
+    --link-interact-color: #000080;
+    --table-border-color: #e5e5e5;
+    --table-background-color: #f9f9f9;
+    --code-background-color: #f3f3f3;
+    --code-border-color: #606060;
+
+    font-size: 21px;
+    font-family: serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+a:link,
+a:visited {
+    color: var(--link-color);
+    text-decoration: underline;
+}
+
+a:hover,
+a:active {
+    color: var(--link-interact-color);
+}
+
+a:hover {
+    text-decoration: underline solid;
+}
+
+body {
+    /* Center primary content */
+    width: 87.5%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1024px;
+    text-align: justify;
+}
+
+.post-title {
+    margin-bottom: 0em;
+    font-size: 2em;
+    border-bottom: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-align: left;
+    text-rendering: optimizeLegibility;
+    font-weight: normal;
+}
+
+article h1 {
+    border-bottom: 1px solid;
+}
+
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: currentcolor;
+    text-decoration-thickness: 1px;
+}
+
+hr {
+    height: 1px;
+    border: 0px;
+    border-top: 1px solid var(--text-color);
+    margin: 1em 0;
+    padding: 0;
+}
+
+img {
+    max-width: 400px;
+    margin: auto;
+    display: block;
+}
+
+.screenshot {
+    max-width: 100%;
+    width: 70%;
+}
+
+small {
+    color: var(--small-color);
+}
+
+/* Footer stuff */
+
+footer {
+    --1: 1px;
+    --2: 1.3px;
+    --3: 1.8px;
+    --4: 2.5px;
+    --5: 3.3px;
+    --6: 4.5px;
+    --7: 6px;
+    --8: 8.2px;
+    --9: 11px;
+    --10: 14.9px;
+    --11: 20.1px;
+    --12: 27px;
+    --13: 40.4px;
+    --14: 54.6px;
+    --15: 150px;
+}
+
+.black-box {
+    width: 100%;
+    background-color: var(--text-color);
+}
+
+.white-box {
+    width: 100%;
+    background-color: var(--background-color);
+}
+
+/* Notes to reader */
+.note-to-reader {
+    padding-left: 0.6em;
+    border-left: 3px solid var(--note-color);
+}
+
+.note-to-reader::before {
+    color: var(--note-color);
+    content: "NOTE. ";
+}
+
+@media (max-width: 400px) {
+    img {
+        max-width: 100%;
+    }
+
+    body {
+        text-align: left;
+    }
+}
+
+/* Tables from Poole */
+.pretty-table {
+    margin-bottom: 1rem;
+    width: 100%;
+    border: 1px solid var(--table-border-color);
+    border-collapse: collapse;
+}
+.pretty-table td,
+.pretty-table th {
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--table-border-color);
+}
+.pretty-table tbody tr:nth-child(odd) td,
+.pretty-table tbody tr:nth-child(odd) th {
+    background-color: var(--table-background-color);
+}
+
+/************/
+/* Masthead */
+/************/
+
+.masthead {
+    margin-top: 30px;
+    max-width: 240px;
+}
+
+/******************/
+/* Links switches */
+/******************/
+
+.desktop-links {
+    display: normal;
+}
+
+.mobile-links {
+    display: none;
+}
+
+/**************/
+/* Post index */
+/**************/
+
+.posts {
+    text-align: left;
+}
+
+@media (max-width: 50em) {
+    .desktop-links {
+        display: none;
+    }
+
+    .mobile-links {
+        display: initial;
+    }
+
+    .posts {
+        border-collapse: collapse;
+        width: 100%;
+        border-style: solid;
+        border-width: 1px 0;
+        border-color: var(--text-color);
+    }
+
+    .posts tr {
+        border-bottom: 1px solid var(--text-color);
+    }
+
+    .posts td,
+    .posts th {
+        padding-top: 0.3em;
+        padding-bottom: 0.3em;
+    }
+}
+
+/********/
+/* Code */
+/********/
+
+/* Code blocks. */
+pre {
+    background-color: var(--code-background-color);
+    border-color: var(--code-border-color);
+    overflow: scroll;
+    padding: 0.5em;
+    border-style: solid;
+    border-width: 0.12em 0em;
+    line-height: 0.85em;
+}
+
+code {
+    font-size: 15px;
+}
+
+/* Inline code. */
+code:not(pre code) {
+    background-color: var(--code-background-color);
+    border-radius: 3px;
+    text-decoration: none;
+    padding: 0.5px 3px;
+}
