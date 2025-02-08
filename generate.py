@@ -2,6 +2,8 @@ from pathlib import Path
 from typing import Dict, Tuple, List
 import sys
 import re
+import subprocess
+import time
 
 def die(msg: str):
     print("Error:", msg, file=sys.stderr)
@@ -69,10 +71,51 @@ def preload_layouts(layouts_dir: Path) -> Dict[str, Tuple[str, str]]:
 
     return layouts
 
+def md_to_html(md: str) -> str:
+    start_time = time.perf_counter()
+    proc = subprocess.run(
+        ["pandoc", "--from", "commonmark", "--to", "html"],
+        input=md,
+        text=True,
+        capture_output=True,
+        check=True
+    )
+    end_time = time.perf_counter()
+    elapsed = end_time - start_time
+    print(f"Pandoc processed {len(md)} byte(s) in {elapsed:.4f} seconds")
+    return proc.stdout
+
+def load_src(src_dir: Path) -> Dict[str, Tuple[str, str, Dict[str, str]]]:
+    src = {}
+    for ent in src_dir.iterdir():
+        if not ent.is_file():
+            for name, (cont, suffix, front_matter) in load_src(ent).items():
+                src[ent.stem + "/" + name] = (cont, suffix, front_matter)
+        else:
+            cont = ent.read_text(encoding="utf-8")
+            cont, front_matter = extract_frontmatter(cont)
+            src[ent.stem] = (cont, ent.suffix, front_matter)
+    return src
+
 if __name__ == "__main__":
+    start_time = time.perf_counter()
     layouts = preload_layouts(Path("layouts/"))
-    for name, (before, after) in layouts.items():
-        print("Name:", name)
-        print("Before:\n", before)
-        print("After:\n", after)
-        print()
+    src = load_src(Path("site/"))
+    out_dir = Path("build/")
+    subprocess.run(["rm", "-rf", str(out_dir)], check=True)
+    for name, (cont, suffix, front_matter) in src.items():
+        if suffix == ".md":
+            cont = md_to_html(cont)
+        if front_matter.get("layout") in layouts:
+            layout = layouts[front_matter["layout"]]
+            cont = layout[0] + cont + layout[1]
+        output_path = (out_dir / name).with_suffix(".html")
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(cont, encoding="utf-8")
+        print("Wrote:", output_path)
+
+    subprocess.run(["cp", "-r", "public/", "build/"], check=True)
+
+    end_time = time.perf_counter()
+    elapsed = end_time - start_time
+    print(f"Done generating after {elapsed:.4f} seconds")
