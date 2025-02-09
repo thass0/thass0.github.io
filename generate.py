@@ -89,7 +89,7 @@ def preload_layouts(layouts_dir: Path) -> Dict[str, Tuple[str, str]]:
 
 def md_to_html(name: str, md: str) -> str:
     start_time = perf_counter()
-    html = to_html(md)
+    html = to_html(md, safe=False)
     end_time = perf_counter()
     elapsed = end_time - start_time
     print(f"Converted {name}.md to HTML in {elapsed:.4f} second(s)")
