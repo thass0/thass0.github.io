@@ -1,3 +1,10 @@
+# This generator uses the CommonMark C reference implementation
+# to convert Markdown into HTML. The CommonMark Python bindings
+# need to be installed in order to use this generator:
+#
+# pip install paka.cmark
+#
+
 from pathlib import Path
 from typing import Dict, Tuple, List
 from subprocess import run
