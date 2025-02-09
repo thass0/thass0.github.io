@@ -199,57 +199,57 @@ clearly not too bad. I's a tradeoff worth making for the ease of use and correct
 that these types bring.
 
 [^1]: It would be quite embarrassing were there a bug here ...
+
 [^2]: See for yourself. This is the updated code (no change except for removing `struct str`):
+```c
+struct result com_write(u16 port, char *dat, sz len)
+{
+    if (!dat || len <= 0)
+        return result_error(EINVAL);
 
-    ```c
-    struct result com_write(u16 port, char *dat, sz len)
-    {
-        if (!dat || len <= 0)
-            return result_error(EINVAL);
-
-        while (len--) {
-            while (!(inb(port + OFFSET_LINE_STATUS) & LINE_STATUS_TX_READY))
-                ;
-            outb(port, *dat++);
-        }
-
-        return result_ok();
+    while (len--) {
+        while (!(inb(port + OFFSET_LINE_STATUS) & LINE_STATUS_TX_READY))
+            ;
+        outb(port, *dat++);
     }
-    ```
 
-    And the disassembly (same settings as before):
+    return result_ok();
+}
+```
 
-    ```asm
-    0000000000000090 <com_write>:
-      90:   mov    %edi,%r8d
-      93:   test   %rsi,%rsi
-      96:   je     d5 <com_write+0x45>
-      98:   test   %rdx,%rdx
-      9b:   jle    d5 <com_write+0x45>
-      9d:   lea    0x5(%rdi),%ecx
-      a0:   lea    (%rsi,%rdx,1),%rdi
-      a4:   data16 cs nopw 0x0(%rax,%rax,1)
-      af:   nop
-      b0:   mov    %ecx,%edx
-      b2:   in     (%dx),%al
-      b3:   test   $0x20,%al
-      b5:   je     b0 <com_write+0x20>
-      b7:   add    $0x1,%rsi
-      bb:   mov    %r8d,%edx
-      be:   movzbl -0x1(%rsi),%eax
-      c2:   out    %al,(%dx)
-      c3:   cmp    %rdi,%rsi
-      c6:   jne    b0 <com_write+0x20>
-      c8:   xor    %eax,%eax
-      ca:   xor    %edx,%edx
-      cc:   shl    $0x10,%edx
-      cf:   and    $0x1,%eax
-      d2:   or     %edx,%eax
-      d4:   ret
-      d5:   mov    $0x1,%eax
-      da:   mov    $0x16,%edx
-      df:   shl    $0x10,%edx
-      e2:   and    $0x1,%eax
-      e5:   or     %edx,%eax
-      e7:   ret
-    ```
+And the disassembly (same settings as before):
+
+```asm
+0000000000000090 <com_write>:
+90:   mov    %edi,%r8d
+93:   test   %rsi,%rsi
+96:   je     d5 <com_write+0x45>
+98:   test   %rdx,%rdx
+9b:   jle    d5 <com_write+0x45>
+9d:   lea    0x5(%rdi),%ecx
+a0:   lea    (%rsi,%rdx,1),%rdi
+a4:   data16 cs nopw 0x0(%rax,%rax,1)
+af:   nop
+b0:   mov    %ecx,%edx
+b2:   in     (%dx),%al
+b3:   test   $0x20,%al
+b5:   je     b0 <com_write+0x20>
+b7:   add    $0x1,%rsi
+bb:   mov    %r8d,%edx
+be:   movzbl -0x1(%rsi),%eax
+c2:   out    %al,(%dx)
+c3:   cmp    %rdi,%rsi
+c6:   jne    b0 <com_write+0x20>
+c8:   xor    %eax,%eax
+ca:   xor    %edx,%edx
+cc:   shl    $0x10,%edx
+cf:   and    $0x1,%eax
+d2:   or     %edx,%eax
+d4:   ret
+d5:   mov    $0x1,%eax
+da:   mov    $0x16,%edx
+df:   shl    $0x10,%edx
+e2:   and    $0x1,%eax
+e5:   or     %edx,%eax
+e7:   ret
+```
