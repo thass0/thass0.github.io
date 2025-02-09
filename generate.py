@@ -10,6 +10,7 @@ from typing import Dict, Tuple, List
 from subprocess import run
 from time import perf_counter
 from paka.cmark import to_html
+import re
 
 def die(msg: str):
     import sys
@@ -54,7 +55,6 @@ def topo_sort(deps: Dict[str, str]) -> List[str]:
     return sorted
 
 def preload_layouts(layouts_dir: Path) -> Dict[str, Tuple[str, str]]:
-    import re
     pattern = re.compile(r"\{\{\s*content\s*\}\}")
     layouts = {}
     deps = {}
@@ -87,8 +87,14 @@ def preload_layouts(layouts_dir: Path) -> Dict[str, Tuple[str, str]]:
 # Site #
 ########
 
+def link_footnotes(md: str) -> str:
+    md = re.sub(r"\[\^([^\]]+)\]:\s?", lambda m: f"<sup id=\"footnote-{m.group(1)}\"><a href=\"#footnode-back-{m.group(1)}\">{m.group(1)}</a></sup>: ", md)
+    md = re.sub(r"\[\^([^\]]+)\]", lambda m: f"<sup id=\"footnode-back-{m.group(1)}\"><a href=\"#footnote-{m.group(1)}\">{m.group(1)}</a></sup>", md)
+    return md
+
 def md_to_html(name: str, md: str) -> str:
     start_time = perf_counter()
+    md = link_footnotes(md)
     html = to_html(md, safe=False)
     end_time = perf_counter()
     elapsed = end_time - start_time
