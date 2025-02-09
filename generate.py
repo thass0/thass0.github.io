@@ -1,11 +1,11 @@
 from pathlib import Path
 from typing import Dict, Tuple, List
-import sys
-import re
-import subprocess
-import time
+from subprocess import run
+from time import perf_counter
+from paka.cmark import to_html
 
 def die(msg: str):
+    import sys
     print("Error:", msg, file=sys.stderr)
     sys.exit(1)
 
@@ -15,6 +15,10 @@ def extract_frontmatter(cont: str) -> Tuple[str, Dict[str, str]]:
     end_idx = cont.find("\n---", 4) # End of the front matter
     front_matter = { k: v for k, v in (map(str.strip, line.split(": ", maxsplit=1)) for line in cont[4:end_idx].splitlines()) }
     return (cont[end_idx + 4:], front_matter)
+
+###########
+# Layouts #
+###########
 
 def topo_sort(deps: Dict[str, str]) -> List[str]:
     dep_graph = {} # Map of nodes (the parent) to a set of nodes that depend on them (the children)
@@ -43,6 +47,7 @@ def topo_sort(deps: Dict[str, str]) -> List[str]:
     return sorted
 
 def preload_layouts(layouts_dir: Path) -> Dict[str, Tuple[str, str]]:
+    import re
     pattern = re.compile(r"\{\{\s*content\s*\}\}")
     layouts = {}
     deps = {}
@@ -71,19 +76,17 @@ def preload_layouts(layouts_dir: Path) -> Dict[str, Tuple[str, str]]:
 
     return layouts
 
-def md_to_html(md: str) -> str:
-    start_time = time.perf_counter()
-    proc = subprocess.run(
-        ["pandoc", "--from", "commonmark", "--to", "html"],
-        input=md,
-        text=True,
-        capture_output=True,
-        check=True
-    )
-    end_time = time.perf_counter()
+########
+# Site #
+########
+
+def md_to_html(name: str, md: str) -> str:
+    start_time = perf_counter()
+    html = to_html(md)
+    end_time = perf_counter()
     elapsed = end_time - start_time
-    print(f"Pandoc processed {len(md)} byte(s) in {elapsed:.4f} seconds")
-    return proc.stdout
+    print(f"Converted {name}.md to HTML in {elapsed:.4f} second(s)")
+    return html
 
 def load_src(src_dir: Path) -> Dict[str, Tuple[str, str, Dict[str, str]]]:
     src = {}
@@ -98,24 +101,25 @@ def load_src(src_dir: Path) -> Dict[str, Tuple[str, str, Dict[str, str]]]:
     return src
 
 if __name__ == "__main__":
-    start_time = time.perf_counter()
+    start_time = perf_counter()
     layouts = preload_layouts(Path("layouts/"))
     src = load_src(Path("site/"))
     out_dir = Path("build/")
-    subprocess.run(["rm", "-rf", str(out_dir)], check=True)
+
+    run(["rm", "-rf", str(out_dir)], check=True)
+
     for name, (cont, suffix, front_matter) in src.items():
         if suffix == ".md":
-            cont = md_to_html(cont)
+            cont = md_to_html(name, cont)
         if front_matter.get("layout") in layouts:
             layout = layouts[front_matter["layout"]]
             cont = layout[0] + cont + layout[1]
         output_path = (out_dir / name).with_suffix(".html")
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(cont, encoding="utf-8")
-        print("Wrote:", output_path)
 
-    subprocess.run(["cp", "-r", "public/", "build/"], check=True)
+    run(["cp", "-r", "public/", "build/"], check=True)
 
-    end_time = time.perf_counter()
+    end_time = perf_counter()
     elapsed = end_time - start_time
-    print(f"Done generating after {elapsed:.4f} seconds")
+    print(f"Done generating after {elapsed:.4f} second(s)")
