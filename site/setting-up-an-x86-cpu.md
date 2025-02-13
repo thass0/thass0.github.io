@@ -35,7 +35,7 @@ volume 3: System Programming Guide is most relevant to this discussion. There
 is an overview of all the operating modes in volume 3, section 2.2 Modes
 of Operation. The path we're taking is highlighted in red.
 
-<img src="/public/figures/x86-mode-transitions.png" alt="Overview of x86 mode transitions" class="screenshot">
+![Overview of x86 mode transitions](/public/figures/x86-mode-transitions.png)
 
 
 For everything up to 32-bit mode, take a look at
@@ -175,7 +175,7 @@ SECTIONS
 Running `make boot` should result in a QEMU window and
 the "Hello, World!" message should be displayed.
 
-<img src="/public/figures/qemu-hello-world-screenshot.png" alt="QEMU screenshot of the hello world message" class="screenshot" />
+![QEMU screenshot of the hello world message](/public/figures/qemu-hello-world-screenshot.png)
 
 # Stage 1 -- Loading Stage 2 From Disk
 
@@ -299,7 +299,7 @@ SECTIONS
 }
 ```
 
-<img src="/public/figures/qemu-hello-stage2-screenshot.png" alt="QEMU screenshot of the stage 2 message" class="screenshot" />
+![QEMU screenshot of the stage 2 message](/public/figures/qemu-hello-stage2-screenshot.png)
 
 # 32-bit Protected Mode
 
@@ -325,7 +325,7 @@ Intel manual.
 
 From section "3.4.5 Segment Descriptors":
 
-<img src="/public/figures/segment-descriptor-layout.png" alt="Screenshot of segment descriptor layout" class="screenshot" />
+![Screenshot of segment descriptor layout](/public/figures/segment-descriptor-layout.png)
 
 The GDT is just an array of segment descriptors with a "null descriptor"
 at the start that's used to catch invalid translations. The fields in the
@@ -479,7 +479,7 @@ string with the message and a call to `print_string32` to the code.
 The `print_string32` function is super basic, so the message always shows
 up in the top left corner of the display.
 
-<img src="/public/figures/qemu-prot-mode-screenshot.png" alt="QEMU screenshot of the protected mode message" class="screenshot" />
+![QEMU screenshot of the protected mode message](/public/figures/qemu-prot-mode-screenshot.png)
 
 # 64-bit Long Mode
 
@@ -661,7 +661,7 @@ comp_mode_msg: db "Entered 64-bit compatibility mode", 0
 Again, the "success message" should show up in the top left corner.
 Write a small VGA driver if this annoys you.
 
-<img src="/public/figures/qemu-comp-mode-screenshot.png" alt="QEMU screenshot of the success message" class="screenshot">
+![QEMU screenshot of the success message](/public/figures/qemu-comp-mode-screenshot.png)
 
 # Using C
 
@@ -776,7 +776,7 @@ $(BUILD_DIR)/%.c.o: $(SRC_DIR)/%.c
 # ...
 ```
 
-<img src="/public/figures/qemu-c-screenshot.png" alt="QEMU screenshot of the message printed by C code" class="screenshot">
+![QEMU screenshot of the message printed by C code](/public/figures/qemu-c-screenshot.png)
 
 Cool if you actually came along this far. The
 [code is on GitHub](https://github.com/thass0/blog-code/tree/main/2024-07-13-setting-up-an-x86-cpu).

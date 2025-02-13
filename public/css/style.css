@@ -77,14 +77,14 @@ hr {
 }
 
 img {
-    max-width: 400px;
+    max-width: 100%;
+    width: 70%;
     margin: auto;
     display: block;
 }
 
-.screenshot {
-    max-width: 100%;
-    width: 70%;
+.small-figure {
+    max-width: 400px;
 }
 
 small {

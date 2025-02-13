@@ -18,19 +18,19 @@ This means that we want to turn the above expressions into the following ASTs.[^
 
 `7 + 42 * 9` ⇒ `7 + (42 * 9)`. `*` has higher precedence than `+`, so although they both associate to the left, `*` binds tighter than `+`.
 
-![Figure 1: AST of 7 + 42 * 9](/public/figures/ast-1.png)
+<img src="/public/figures/ast-1.png" alt="AST of 7 + 42 * 9" class="small-figure"/>
 
 `2 * 3 / 4 * 5` ⇒ `((2 * 3) / 4) * 5`. `*` and `/` have the same precedence and associate to the left.
 
-![Figure 2: AST of 2 * 3 / 4 * 5](/public/figures/ast-2.png)
+<img src="/public/figures/ast-2.png" alt="AST of 2 * 3 / 4 * 5" class="small-figure"/>
 
 `8 * (10 - 6)`. Parentheses have the highest precedence.
 
-![Figure 3: AST of 8 * (10 - 6)](/public/figures/ast-3.png)
+<img src="/public/figures/ast-3.png" alt="AST of 8 * (10 - 6)" class="small-figure"/>
 
 The following grammar encodes the precedence and associativity constraints above. It is also not left-recursive, and can be used in a recursive descent parser.[^2]
 
-![Figure 4: A grammar for parsing expressions](/public/figures/grammar.png)
+<img src="/public/figures/grammar.png" alt="A grammar for parsing expressions" class="small-figure"/>
 
 Instead of using algorithms like Shunting Yard or precedence climbing, the precedence of the operators is encoded directly in the various production rules. This is the simplest approach to take, but it works well in the implementation. Nora Sandler presents this method, and explains how to get there [here on her blog](https://norasandler.com/2017/12/15/Write-a-Compiler-3.html). I recommend reading [this article](https://www.engr.mun.ca/~theo/Misc/exp_parsing.htm) by Theodore Norvell if you want to learn more about paring expressions. It explains both the Shunting Yard algorithms and precedence climbing.
 
