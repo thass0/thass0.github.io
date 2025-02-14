@@ -3,7 +3,7 @@ layout: post
 ---
 
 <h1 class="post-title">
-    <a href="/setting-up-an-x86-cpu.html">Setting up an x86 CPU in 64-bit mode</a>
+    <a href="/setting-up-an-x86-cpu.html">Setting Up an x86 CPU in 64-Bit Mode</a>
 </h1>
 
 <small>

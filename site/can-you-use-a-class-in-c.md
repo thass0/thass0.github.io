@@ -3,7 +3,7 @@ layout: post
 ---
 
 <h1 class="post-title">
-    <a href="/can-you-use-a-class-in-c.html">Can you use a class in C?</a>
+    <a href="/can-you-use-a-class-in-c.html">Can You Use a Class in C?</a>
 </h1>
 
 <small>

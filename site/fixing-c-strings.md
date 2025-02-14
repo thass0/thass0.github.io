@@ -3,7 +3,7 @@ layout: post
 ---
 
 <h1 class="post-title">
-    <a href="/fixing-c-strings.html">Fixing C strings</a>
+    <a href="/fixing-c-strings.html">Fixing C Strings</a>
 </h1>
 
 <small>
