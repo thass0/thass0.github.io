@@ -63,7 +63,7 @@ the public, it better be free. Or rather, appear to be free. Software
 is not free, of course! People just don't mind giving away their
 attention and data for free.
 
-They should care about this exchange, because it goes beyond mere privacy.
+They should mind though. Protecting your data goes beyond mere privacy.
 Looking forward, there is a subtle thread to free speech here. While we can
 speak freely today, the massive collection of personal data creates the
 infrastructure for future manipulation and control. Every piece of data
@@ -71,6 +71,9 @@ collected builds a more detailed system for potential exploitation. The
 real danger isn't just today's targeted ads and manipulated content --
 it's how this accumulated surveillance power could be used to restrict and
 shape public discourse in the future.
+
+I also think the attenting thing is a big deal and tons of people are
+being manipulated into being willing, brain-off consumers.
 
 Ads seem to be on the rise beyond free-to-download software.
 [Even iOS comes with ads now](https://support.apple.com/guide/iphone/control-how-apple-delivers-advertising-to-you-iphf60a6a256/ios),
