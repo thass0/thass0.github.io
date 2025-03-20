@@ -10,6 +10,10 @@ layout: post
     <time datetime="2023-08-11">11 Aug 2023</time>
 </small>
 
+Discussion: [Hacker News](https://news.ycombinator.com/item?id=37097775) \| [Lobsters](https://lobste.rs/s/tjkdv7/can_you_use_c_class_c)
+
+---
+
 Recently, I've been [working on a C debugger](https://github.com/thass0/spray). This requires reading and processing the DWARF debugging information that's part of the binary. Since this is a rather complex task, I figured I  might use a library that exports a nice interface to the debugging information.
 
 One such library that I found early on was [libelfin](https://github.com/aclements/libelfin). It wasn't perfect from that start because it is a bit dated now, only supporting DWARF 4 and missing features from the newer DWARF 5 standard, but I thought that I could work around this. The bigger problem was that libelfin is written in C++ while most the debugger is written in C.

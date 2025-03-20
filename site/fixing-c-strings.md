@@ -10,7 +10,7 @@ layout: post
     <time datetime="2024-12-16">16 Dec 2024</time>
 </small>
 
-Disussion: [Lobsters](https://lobste.rs/s/ek1fzc/fixing_c_strings) \| [r/programming](https://www.reddit.com/r/programming/comments/1hhyngu/fixing_c_strings/) \| [Hacker News](https://news.ycombinator.com/item?id=42444535) \| [Hackaday](https://hackaday.com/2024/12/19/better-c-strings-simply/)
+Disussion: [Hacker News](https://news.ycombinator.com/item?id=42444535) \| [r/programming](https://www.reddit.com/r/programming/comments/1hhyngu/fixing_c_strings/) \| [Lobsters](https://lobste.rs/s/ek1fzc/fixing_c_strings) \| [Hackaday](https://hackaday.com/2024/12/19/better-c-strings-simply/)
 
 ---
 

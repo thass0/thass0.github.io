@@ -10,6 +10,10 @@ layout: post
     <time datetime="2024-07-13">13 Jul 2024</time>
 </small>
 
+Discussion: [Hacker News](https://news.ycombinator.com/item?id=40959742) \| [r/programming](https://www.reddit.com/r/programming/comments/1ews2rz/setting_up_an_x86_cpu_in_64bit_mode/) \| [Lobsters](https://lobste.rs/s/etf2ct/setting_up_x86_cpu_64_bit_mode) \| [Hackaday](https://hackaday.com/2024/07/14/a-64-bit-x86-bootloader-from-scratch/)
+
+---
+
 People say there are things that are complex and there are things that are
 just complicated. Complexity is considered interesting, complicatedness is
 considered harmful. The process of setting up an x86_64 CPU is mostly
