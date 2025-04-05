@@ -122,12 +122,14 @@ if __name__ == "__main__":
     run(["rm", "-rf", str(out_dir)], check=True)
 
     for name, (cont, suffix, front_matter) in src.items():
+        output_path = (out_dir / name).with_suffix(suffix)
         if suffix == ".md":
             cont = md_to_html(name, cont)
+            # Replace default suffix (.md) with .html.
+            output_path = (out_dir / name).with_suffix(".html")
         if front_matter.get("layout") in layouts:
             layout = layouts[front_matter["layout"]]
             cont = layout[0] + cont + layout[1]
-        output_path = (out_dir / name).with_suffix(".html")
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(cont, encoding="utf-8")
 
