@@ -168,16 +168,23 @@ footer {
     max-width: 240px;
 }
 
-/******************/
-/* Links switches */
-/******************/
+/*****************/
+/* About section */
+/*****************/
 
-.desktop-links {
-    display: normal;
+.index-about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: left;
 }
 
-.mobile-links {
-    display: none;
+.index-about-text {
+    flex: 2 1 450px;
+}
+
+.index-about-links {
+    flex: 1 1 200px;
 }
 
 /**************/
@@ -189,14 +196,6 @@ footer {
 }
 
 @media (max-width: 50em) {
-    .desktop-links {
-        display: none;
-    }
-
-    .mobile-links {
-        display: initial;
-    }
-
     .posts {
         border-collapse: collapse;
         width: 100%;
@@ -242,3 +241,4 @@ code:not(pre code) {
     text-decoration: none;
     padding: 0.5px 3px;
 }
+
