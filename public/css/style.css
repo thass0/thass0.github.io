@@ -121,17 +121,6 @@ footer {
     background-color: var(--background-color);
 }
 
-/* Notes to reader */
-.note-to-reader {
-    padding-left: 0.6em;
-    border-left: 3px solid var(--note-color);
-}
-
-.note-to-reader::before {
-    color: var(--note-color);
-    content: "NOTE. ";
-}
-
 @media (max-width: 400px) {
     img {
         max-width: 100%;
@@ -140,23 +129,6 @@ footer {
     body {
         text-align: left;
     }
-}
-
-/* Tables from Poole */
-.pretty-table {
-    margin-bottom: 1rem;
-    width: 100%;
-    border: 1px solid var(--table-border-color);
-    border-collapse: collapse;
-}
-.pretty-table td,
-.pretty-table th {
-    padding: 0.25rem 0.5rem;
-    border: 1px solid var(--table-border-color);
-}
-.pretty-table tbody tr:nth-child(odd) td,
-.pretty-table tbody tr:nth-child(odd) th {
-    background-color: var(--table-background-color);
 }
 
 /************/
