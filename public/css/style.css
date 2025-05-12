@@ -100,7 +100,7 @@ small {
 }
 
 .archive-link::after {
-    content: "🖫";
+    content: "💾";
     font-size: 0.9em;
 }
 
