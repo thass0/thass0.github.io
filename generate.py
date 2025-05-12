@@ -122,7 +122,7 @@ if __name__ == "__main__":
     run(["rm", "-rf", str(out_dir)], check=True)
 
     for name, (cont, suffix, front_matter) in src.items():
-        output_path = (out_dir / name).with_suffix(suffix)
+        output_path = Path(str(out_dir / name) + suffix)
         if suffix == ".md":
             cont = md_to_html(name, cont)
             # Replace default suffix (.md) with .html.
