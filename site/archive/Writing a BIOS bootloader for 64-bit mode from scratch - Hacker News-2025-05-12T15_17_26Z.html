@@ -1,0 +1,852 @@
+<!-- Saved from https://news.ycombinator.com/item?id=40959742 at 2025-05-12T15:17:26Z using monolith v2.10.1 -->
+<html lang="en" op="item"><head><meta http-equiv="Content-Security-Policy" content="script-src 'none';"></meta><meta name="referrer" content="origin"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" type="text/css" href="data:text/css;base64,Ym9keSAgeyBmb250LWZhbWlseTpWZXJkYW5hLCBHZW5ldmEsIHNhbnMtc2VyaWY7IGZvbnQtc2l6ZToxMHB0OyBjb2xvcjojODI4MjgyOyB9CnRkICAgIHsgZm9udC1mYW1pbHk6VmVyZGFuYSwgR2VuZXZhLCBzYW5zLXNlcmlmOyBmb250LXNpemU6MTBwdDsgY29sb3I6IzgyODI4MjsgfQoKLmFkbWluIHRkICAgeyBmb250LWZhbWlseTpWZXJkYW5hLCBHZW5ldmEsIHNhbnMtc2VyaWY7IGZvbnQtc2l6ZTo4LjVwdDsgY29sb3I6IzAwMDAwMDsgfQouc3VidGV4dCB0ZCB7IGZvbnQtZmFtaWx5OlZlcmRhbmEsIEdlbmV2YSwgc2Fucy1zZXJpZjsgZm9udC1zaXplOiAgN3B0OyBjb2xvcjojODI4MjgyOyB9CgppbnB1dCAgICB7IGZvbnQtZmFtaWx5Om1vbm9zcGFjZTsgZm9udC1zaXplOjEwcHQ7IH0KaW5wdXRbdHlwZT0ic3VibWl0Il0geyBmb250LWZhbWlseTpWZXJkYW5hLCBHZW5ldmEsIHNhbnMtc2VyaWY7IH0KdGV4dGFyZWEgeyBmb250LWZhbWlseTptb25vc3BhY2U7IGZvbnQtc2l6ZToxMHB0OyByZXNpemU6Ym90aDsgfQoKYTpsaW5rICAgIHsgY29sb3I6IzAwMDAwMDsgdGV4dC1kZWNvcmF0aW9uOm5vbmU7IH0KYTp2aXNpdGVkIHsgY29sb3I6IzgyODI4MjsgdGV4dC1kZWNvcmF0aW9uOm5vbmU7IH0KCi5kZWZhdWx0IHsgZm9udC1mYW1pbHk6VmVyZGFuYSwgR2VuZXZhLCBzYW5zLXNlcmlmOyBmb250LXNpemU6IDEwcHQ7IGNvbG9yOiM4MjgyODI7IH0KLmFkbWluICAgeyBmb250LWZhbWlseTpWZXJkYW5hLCBHZW5ldmEsIHNhbnMtc2VyaWY7IGZvbnQtc2l6ZTo4LjVwdDsgY29sb3I6IzAwMDAwMDsgfQoudGl0bGUgICB7IGZvbnQtZmFtaWx5OlZlcmRhbmEsIEdlbmV2YSwgc2Fucy1zZXJpZjsgZm9udC1zaXplOiAxMHB0OyBjb2xvcjojODI4MjgyOyBvdmVyZmxvdzpoaWRkZW47IH0KLnN1YnRleHQgeyBmb250LWZhbWlseTpWZXJkYW5hLCBHZW5ldmEsIHNhbnMtc2VyaWY7IGZvbnQtc2l6ZTogIDdwdDsgY29sb3I6IzgyODI4MjsgfQoueWNsaW5rcyB7IGZvbnQtZmFtaWx5OlZlcmRhbmEsIEdlbmV2YSwgc2Fucy1zZXJpZjsgZm9udC1zaXplOiAgOHB0OyBjb2xvcjojODI4MjgyOyB9Ci5wYWdldG9wIHsgZm9udC1mYW1pbHk6VmVyZGFuYSwgR2VuZXZhLCBzYW5zLXNlcmlmOyBmb250LXNpemU6IDEwcHQ7IGNvbG9yOiMyMjIyMjI7IGxpbmUtaGVpZ2h0OjEycHg7IH0KLmNvbWhlYWQgeyBmb250LWZhbWlseTpWZXJkYW5hLCBHZW5ldmEsIHNhbnMtc2VyaWY7IGZvbnQtc2l6ZTogIDhwdDsgY29sb3I6IzgyODI4MjsgfQouY29tbWVudCB7IGZvbnQtZmFtaWx5OlZlcmRhbmEsIEdlbmV2YSwgc2Fucy1zZXJpZjsgZm9udC1zaXplOiAgOXB0OyB9Ci5obm5hbWUgIHsgbWFyZ2luLWxlZnQ6MXB4OyBtYXJnaW4tcmlnaHQ6IDVweDsgfQoKI2hubWFpbiB7IG1pbi13aWR0aDogNzk2cHg7IH0KCi50aXRsZSBhIHsgd29yZC1icmVhazogYnJlYWstd29yZDsgfQoKLmNvbW1lbnQgYTpsaW5rLCAuY29tbWVudCBhOnZpc2l0ZWQgeyB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTsgfQoubm9zaG93IHsgZGlzcGxheTogbm9uZTsgfQoubm9zZWUgeyB2aXNpYmlsaXR5OiBoaWRkZW47IHBvaW50ZXItZXZlbnRzOiBub25lOyBjdXJzb3I6IGRlZmF1bHQgfQoKLmMwMCwgLmMwMCBhOmxpbmsgeyBjb2xvcjojMDAwMDAwOyB9Ci5jNWEsIC5jNWEgYTpsaW5rLCAuYzVhIGE6dmlzaXRlZCB7IGNvbG9yOiM1YTVhNWE7IH0KLmM3MywgLmM3MyBhOmxpbmssIC5jNzMgYTp2aXNpdGVkIHsgY29sb3I6IzczNzM3MzsgfQouYzgyLCAuYzgyIGE6bGluaywgLmM4MiBhOnZpc2l0ZWQgeyBjb2xvcjojODI4MjgyOyB9Ci5jODgsIC5jODggYTpsaW5rLCAuYzg4IGE6dmlzaXRlZCB7IGNvbG9yOiM4ODg4ODg7IH0KLmM5YywgLmM5YyBhOmxpbmssIC5jOWMgYTp2aXNpdGVkIHsgY29sb3I6IzljOWM5YzsgfQouY2FlLCAuY2FlIGE6bGluaywgLmNhZSBhOnZpc2l0ZWQgeyBjb2xvcjojYWVhZWFlOyB9Ci5jYmUsIC5jYmUgYTpsaW5rLCAuY2JlIGE6dmlzaXRlZCB7IGNvbG9yOiNiZWJlYmU7IH0KLmNjZSwgLmNjZSBhOmxpbmssIC5jY2UgYTp2aXNpdGVkIHsgY29sb3I6I2NlY2VjZTsgfQouY2RkLCAuY2RkIGE6bGluaywgLmNkZCBhOnZpc2l0ZWQgeyBjb2xvcjojZGRkZGRkOyB9Ci5jYTIgeyBjb2xvcjojYTMwMDAwOyB9CgoucGFnZXRvcCBhOnZpc2l0ZWQgeyBjb2xvcjojMDAwMDAwO30KLnRvcHNlbCBhOmxpbmssIC50b3BzZWwgYTp2aXNpdGVkIHsgY29sb3I6I2ZmZmZmZjsgfQoKLnN1YnRleHQgYTpsaW5rLCAuc3VidGV4dCBhOnZpc2l0ZWQgeyBjb2xvcjojODI4MjgyOyB9Ci5zdWJ0ZXh0IGE6aG92ZXIgeyB0ZXh0LWRlY29yYXRpb246dW5kZXJsaW5lOyB9CgouY29taGVhZCBhOmxpbmssIC5zdWJ0ZXh0IGE6dmlzaXRlZCB7IGNvbG9yOiM4MjgyODI7IH0KLmNvbWhlYWQgYTpob3ZlciB7IHRleHQtZGVjb3JhdGlvbjp1bmRlcmxpbmU7IH0KCi5obm1vcmUgYTpsaW5rLCBhOnZpc2l0ZWQgeyBjb2xvcjojODI4MjgyOyB9Ci5obm1vcmUgeyB0ZXh0LWRlY29yYXRpb246dW5kZXJsaW5lOyB9CgouZGVmYXVsdCBwIHsgbWFyZ2luLXRvcDogOHB4OyBtYXJnaW4tYm90dG9tOiAwcHg7IH0KCi5wYWdlYnJlYWsge3BhZ2UtYnJlYWstYmVmb3JlOmFsd2F5c30KCnByZSB7IG92ZXJmbG93OiBhdXRvOyBwYWRkaW5nOiAycHg7IHdoaXRlLXNwYWNlOiBwcmUtd3JhcDsgb3ZlcmZsb3ctd3JhcDphbnl3aGVyZTsgfQpwcmU6aG92ZXIgeyBvdmVyZmxvdzphdXRvIH0KCi52b3RlYXJyb3cgewogIHdpZHRoOiAgICAgIDEwcHg7CiAgaGVpZ2h0OiAgICAgMTBweDsKICBib3JkZXI6ICAgICAwcHg7CiAgbWFyZ2luOiAgICAgM3B4IDJweCA2cHg7CiAgYmFja2dyb3VuZDogdXJsKCJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUJvWldsbmFIUTlJak15SWlCMmFXVjNRbTk0UFNJd0lEQWdNeklnTVRZaUlIZHBaSFJvUFNJek1pSWdlRzFzYm5NOUltaDBkSEE2THk5M2QzY3Vkek11YjNKbkx6SXdNREF2YzNabklqNDhjR0YwYUNCa1BTSnRNaUF5TnlBeE5DMHlPU0F4TkNBeU9Yb2lJR1pwYkd3OUlpTTVPVGtpTHo0OEwzTjJaejQ9IiksIGxpbmVhci1ncmFkaWVudCh0cmFuc3BhcmVudCwgdHJhbnNwYXJlbnQpIG5vLXJlcGVhdDsKICBiYWNrZ3JvdW5kLXNpemU6IDEwcHg7Cn0KCi52b3RlbGlua3Mubm9zZWUgZGl2LnZvdGVhcnJvdy5yb3RhdGUxODAgewogIGRpc3BsYXk6IG5vbmU7Cn0KCnRhYmxlLnBhZHRhYiB0ZCB7IHBhZGRpbmc6MHB4IDEwcHggfQoKQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAoLXdlYmtpdC1taW4tZGV2aWNlLXBpeGVsLXJhdGlvOiAyKSwgb25seSBzY3JlZW4gYW5kIChtaW4tZGV2aWNlLXBpeGVsLXJhdGlvOiAyKSB7CiAgLnZvdGVhcnJvdyB7CiAgICBiYWNrZ3JvdW5kLXNpemU6IDEwcHg7CiAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5Qm9aV2xuYUhROUlqTXlJaUIyYVdWM1FtOTRQU0l3SURBZ016SWdNVFlpSUhkcFpIUm9QU0l6TWlJZ2VHMXNibk05SW1oMGRIQTZMeTkzZDNjdWR6TXViM0puTHpJd01EQXZjM1puSWo0OGNHRjBhQ0JrUFNKdE1pQXlOeUF4TkMweU9TQXhOQ0F5T1hvaUlHWnBiR3c5SWlNNU9Ua2lMejQ4TDNOMlp6ND0iKSwgbGluZWFyLWdyYWRpZW50KHRyYW5zcGFyZW50LCB0cmFuc3BhcmVudCk7CiAgfQp9Cgoucm90YXRlMTgwIHsKICAtd2Via2l0LXRyYW5zZm9ybTogcm90YXRlKDE4MGRlZyk7ICAvKiBDaHJvbWUgYW5kIG90aGVyIHdlYmtpdCBicm93c2VycyAqLwogIC1tb3otdHJhbnNmb3JtOiAgICByb3RhdGUoMTgwZGVnKTsgIC8qIEZGICovCiAgLW8tdHJhbnNmb3JtOiAgICAgIHJvdGF0ZSgxODBkZWcpOyAgLyogT3BlcmEgKi8KICAtbXMtdHJhbnNmb3JtOiAgICAgcm90YXRlKDE4MGRlZyk7ICAvKiBJRTkgKi8KICB0cmFuc2Zvcm06ICAgICAgICAgcm90YXRlKDE4MGRlZyk7ICAvKiBXM0MgY29tcGxhaW50IGJyb3dzZXJzICovCgogIC8qIElFOCBhbmQgYmVsb3cgKi8KICAtbXMtZmlsdGVyOiAicHJvZ2lkOkRYSW1hZ2VUcmFuc2Zvcm0uTWljcm9zb2Z0Lk1hdHJpeChNMTE9LTEsIE0xMj0wLCBNMjE9MCwgTTIyPS0xLCBEWD0wLCBEWT0wLCBTaXppbmdNZXRob2Q9J2F1dG8gZXhwYW5kJykiOwp9CgovKiBtb2JpbGUgZGV2aWNlICovCkBtZWRpYSBvbmx5IHNjcmVlbgphbmQgKG1pbi13aWR0aCA6IDMwMHB4KQphbmQgKG1heC13aWR0aCA6IDc1MHB4KSB7CiAgI2hubWFpbiB7IHdpZHRoOiAxMDAlOyBtaW4td2lkdGg6IDA7IH0KICBib2R5IHsgcGFkZGluZzogMDsgbWFyZ2luOiAwOyB3aWR0aDogMTAwJTsgfQogIHRkIHsgaGVpZ2h0OiBpbmhlcml0ICFpbXBvcnRhbnQ7IH0KICAudGl0bGUsIC5jb21tZW50IHsgZm9udC1zaXplOiBpbmhlcml0OyAgfQogIHNwYW4ucGFnZXRvcCB7IGRpc3BsYXk6IGJsb2NrOyBtYXJnaW46IDNweCA1cHg7IGZvbnQtc2l6ZTogMTJweDsgbGluZS1oZWlnaHQ6IG5vcm1hbCB9CiAgc3Bhbi5wYWdldG9wIGIgeyBkaXNwbGF5OiBibG9jazsgZm9udC1zaXplOiAxNXB4OyB9CiAgdGFibGUuY29tbWVudC10cmVlIC5jb21tZW50IGEgeyBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7IG1heC13aWR0aDogMjAwcHg7IG92ZXJmbG93OiBoaWRkZW47IHdoaXRlLXNwYWNlOiBub3dyYXA7CiAgICB0ZXh0LW92ZXJmbG93OiBlbGxpcHNpczsgdmVydGljYWwtYWxpZ246dG9wOyB9CiAgaW1nW3NyYz0icy5naWYiXVt3aWR0aD0iNDAiXSB7IHdpZHRoOiAxMnB4OyB9CiAgaW1nW3NyYz0icy5naWYiXVt3aWR0aD0iODAiXSB7IHdpZHRoOiAyNHB4OyB9CiAgaW1nW3NyYz0icy5naWYiXVt3aWR0aD0iMTIwIl0geyB3aWR0aDogMzZweDsgfQogIGltZ1tzcmM9InMuZ2lmIl1bd2lkdGg9IjE2MCJdIHsgd2lkdGg6IDQ4cHg7IH0KICBpbWdbc3JjPSJzLmdpZiJdW3dpZHRoPSIyMDAiXSB7IHdpZHRoOiA2MHB4OyB9CiAgaW1nW3NyYz0icy5naWYiXVt3aWR0aD0iMjQwIl0geyB3aWR0aDogNzJweDsgfQogIGltZ1tzcmM9InMuZ2lmIl1bd2lkdGg9IjI4MCJdIHsgd2lkdGg6IDg0cHg7IH0KICBpbWdbc3JjPSJzLmdpZiJdW3dpZHRoPSIzMjAiXSB7IHdpZHRoOiA5NnB4OyB9CiAgaW1nW3NyYz0icy5naWYiXVt3aWR0aD0iMzYwIl0geyB3aWR0aDogMTA4cHg7IH0KICBpbWdbc3JjPSJzLmdpZiJdW3dpZHRoPSI0MDAiXSB7IHdpZHRoOiAxMjBweDsgfQogIGltZ1tzcmM9InMuZ2lmIl1bd2lkdGg9IjQ0MCJdIHsgd2lkdGg6IDEzMnB4OyB9CiAgaW1nW3NyYz0icy5naWYiXVt3aWR0aD0iNDgwIl0geyB3aWR0aDogMTQ0cHg7IH0KICBpbWdbc3JjPSJzLmdpZiJdW3dpZHRoPSI1MjAiXSB7IHdpZHRoOiAxNTZweDsgfQogIGltZ1tzcmM9InMuZ2lmIl1bd2lkdGg9IjU2MCJdIHsgd2lkdGg6IDE2OHB4OyB9CiAgaW1nW3NyYz0icy5naWYiXVt3aWR0aD0iNjAwIl0geyB3aWR0aDogMTgwcHg7IH0KICBpbWdbc3JjPSJzLmdpZiJdW3dpZHRoPSI2NDAiXSB7IHdpZHRoOiAxOTJweDsgfQogIGltZ1tzcmM9InMuZ2lmIl1bd2lkdGg9IjY4MCJdIHsgd2lkdGg6IDIwNHB4OyB9CiAgaW1nW3NyYz0icy5naWYiXVt3aWR0aD0iNzIwIl0geyB3aWR0aDogMjE2cHg7IH0KICBpbWdbc3JjPSJzLmdpZiJdW3dpZHRoPSI3NjAiXSB7IHdpZHRoOiAyMjhweDsgfQogIGltZ1tzcmM9InMuZ2lmIl1bd2lkdGg9IjgwMCJdIHsgd2lkdGg6IDI0MHB4OyB9CiAgaW1nW3NyYz0icy5naWYiXVt3aWR0aD0iODQwIl0geyB3aWR0aDogMjUycHg7IH0KICAudGl0bGUgeyBmb250LXNpemU6IDExcHQ7IGxpbmUtaGVpZ2h0OiAxNHB0OyAgfQogIC5zdWJ0ZXh0IHsgZm9udC1zaXplOiA5cHQ7IH0KICAudm90ZWFycm93IHsgdHJhbnNmb3JtOiBzY2FsZSgxLjMsMS4zKTsgbWFyZ2luLXJpZ2h0OiA2cHg7IH0KICAudm90ZWFycm93LnJvdGF0ZTE4MCB7CiAgICAtd2Via2l0LXRyYW5zZm9ybTogcm90YXRlKDE4MGRlZykgc2NhbGUoMS4zLDEuMyk7ICAvKiBDaHJvbWUgYW5kIG90aGVyIHdlYmtpdCBicm93c2VycyAqLwogICAgLW1vei10cmFuc2Zvcm06ICAgIHJvdGF0ZSgxODBkZWcpIHNjYWxlKDEuMywxLjMpOyAgLyogRkYgKi8KICAgIC1vLXRyYW5zZm9ybTogICAgICByb3RhdGUoMTgwZGVnKSBzY2FsZSgxLjMsMS4zKTsgIC8qIE9wZXJhICovCiAgICAtbXMtdHJhbnNmb3JtOiAgICAgcm90YXRlKDE4MGRlZykgc2NhbGUoMS4zLDEuMyk7ICAvKiBJRTkgKi8KICAgIHRyYW5zZm9ybTogICAgICAgICByb3RhdGUoMTgwZGVnKSBzY2FsZSgxLjMsMS4zKTsgIC8qIFczQyBjb21wbGFpbnQgYnJvd3NlcnMgKi8KICB9CiAgLnZvdGVsaW5rcyB7IG1pbi13aWR0aDogMThweDsgfQogIC52b3RlbGlua3MgYSB7IGRpc3BsYXk6IGJsb2NrOyBtYXJnaW4tYm90dG9tOiA5cHg7IH0KICBpbnB1dFt0eXBlPSJ0ZXh0Il0sIGlucHV0W3R5cGU9Im51bWJlciJdLCB0ZXh0YXJlYSB7IGZvbnQtc2l6ZTogMTZweDsgd2lkdGg6IDkwJTsgfQp9CgouY29tbWVudCB7IG1heC13aWR0aDogMTIxNXB4OyBvdmVyZmxvdy13cmFwOmFueXdoZXJlOyB9CgoKCkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1pbi13aWR0aCA6IDMwMHB4KSBhbmQgKG1heC13aWR0aCA6IDM4OXB4KSB7CiAgLmNvbW1lbnQgeyBtYXgtd2lkdGg6IDI3MHB4OyBvdmVyZmxvdzogaGlkZGVuIH0KfQpAbWVkaWEgb25seSBzY3JlZW4gYW5kIChtaW4td2lkdGggOiAzOTBweCkgYW5kIChtYXgtd2lkdGggOiA1MDlweCkgewogIC5jb21tZW50IHsgbWF4LXdpZHRoOiAzNTBweDsgb3ZlcmZsb3c6IGhpZGRlbiB9Cn0KQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoIDogNTEwcHgpIGFuZCAobWF4LXdpZHRoIDogNTk5cHgpIHsKICAuY29tbWVudCB7IG1heC13aWR0aDogNDYwcHg7IG92ZXJmbG93OiBoaWRkZW4gfQp9CkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1pbi13aWR0aCA6IDYwMHB4KSBhbmQgKG1heC13aWR0aCA6IDY4OXB4KSB7CiAgLmNvbW1lbnQgeyBtYXgtd2lkdGg6IDU0MHB4OyBvdmVyZmxvdzogaGlkZGVuIH0KfQpAbWVkaWEgb25seSBzY3JlZW4gYW5kIChtaW4td2lkdGggOiA2OTBweCkgYW5kIChtYXgtd2lkdGggOiA4MDlweCkgewogIC5jb21tZW50IHsgbWF4LXdpZHRoOiA2MjBweDsgb3ZlcmZsb3c6IGhpZGRlbiB9Cn0KQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoIDogODEwcHgpIGFuZCAobWF4LXdpZHRoIDogODk5cHgpIHsKICAuY29tbWVudCB7IG1heC13aWR0aDogNzMwcHg7IG92ZXJmbG93OiBoaWRkZW4gfQp9CkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1pbi13aWR0aCA6IDkwMHB4KSBhbmQgKG1heC13aWR0aCA6IDEwNzlweCkgewogIC5jb21tZW50IHsgbWF4LXdpZHRoOiA4MTBweDsgb3ZlcmZsb3c6IGhpZGRlbiB9Cn0KQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoIDogMTA4MHB4KSBhbmQgKG1heC13aWR0aCA6IDExNjlweCkgewogIC5jb21tZW50IHsgbWF4LXdpZHRoOiA5NzBweDsgb3ZlcmZsb3c6IGhpZGRlbiB9Cn0KQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWluLXdpZHRoIDogMTE3MHB4KSBhbmQgKG1heC13aWR0aCA6IDEyNTlweCkgewogIC5jb21tZW50IHsgbWF4LXdpZHRoOiAxMDUwcHg7IG92ZXJmbG93OiBoaWRkZW4gfQp9CkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1pbi13aWR0aCA6IDEyNjBweCkgYW5kIChtYXgtd2lkdGggOiAxMzQ5cHgpIHsKICAuY29tbWVudCB7IG1heC13aWR0aDogMTEzMHB4OyBvdmVyZmxvdzogaGlkZGVuIH0KfQo=">
+        <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE4IiB2aWV3Qm94PSI0IDQgMTg4IDE4OCIgd2lkdGg9IjE4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im00IDRoMTg4djE4OGgtMTg4eiIgZmlsbD0iI2Y2MCIvPjxwYXRoIGQ9Im03My4yNTIxNzU2IDQ1LjAxIDIyLjc0NzgyNDQgNDcuMzkxMzAwODMgMjIuNzQ3ODI0NC00Ny4zOTEzMDA4M2gxOS41NjU2OTYzMWwtMzQuMzIzNTIwNzEgNjQuNDg2NjE0Njh2NDEuNDkzMzg1MzJoLTE1Ljk4di00MS40OTMzODUzMmwtMzQuMzIzNTIwNzEtNjQuNDg2NjE0Njh6IiBmaWxsPSIjZmZmIi8+PC9zdmc+">
+    <link rel="canonical" href="https://news.ycombinator.com/item?id=40959742">            <title>Writing a BIOS bootloader for 64-bit mode from scratch | Hacker News</title><meta name="robots" content="none"></meta></head><body><center><table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+        <tbody><tr><td bgcolor="#ff6600"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px"><tbody><tr><td style="width:18px;padding-right:4px"><a href="https://news.ycombinator.com"><img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE4IiB2aWV3Qm94PSI0IDQgMTg4IDE4OCIgd2lkdGg9IjE4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im00IDRoMTg4djE4OGgtMTg4eiIgZmlsbD0iI2Y2MCIvPjxwYXRoIGQ9Im03My4yNTIxNzU2IDQ1LjAxIDIyLjc0NzgyNDQgNDcuMzkxMzAwODMgMjIuNzQ3ODI0NC00Ny4zOTEzMDA4M2gxOS41NjU2OTYzMWwtMzQuMzIzNTIwNzEgNjQuNDg2NjE0Njh2NDEuNDkzMzg1MzJoLTE1Ljk4di00MS40OTMzODUzMmwtMzQuMzIzNTIwNzEtNjQuNDg2NjE0Njh6IiBmaWxsPSIjZmZmIi8+PC9zdmc+" width="18" height="18" style="border:1px white solid; display:block"></a></td>
+                  <td style="line-height:12pt; height:10px;"><span class="pagetop"><b class="hnname"><a href="https://news.ycombinator.com/news">Hacker News</a></b>
+                            <a href="https://news.ycombinator.com/newest">new</a> | <a href="https://news.ycombinator.com/front">past</a> | <a href="https://news.ycombinator.com/newcomments">comments</a> | <a href="https://news.ycombinator.com/ask">ask</a> | <a href="https://news.ycombinator.com/show">show</a> | <a href="https://news.ycombinator.com/jobs">jobs</a> | <a href="https://news.ycombinator.com/submit" rel="nofollow">submit</a>            </span></td><td style="text-align:right;padding-right:4px;"><span class="pagetop">
+                              <a href="https://news.ycombinator.com/login?goto=item%3Fid%3D40959742">login</a>
+                          </span></td>
+              </tr></tbody></table></td></tr>
+<tr id="pagespace" title="Writing a BIOS bootloader for 64-bit mode from scratch" style="height:10px"></tr><tr><td><table class="fatitem" border="0">
+        <tbody><tr class="athing submission" id="40959742">
+      <td align="right" valign="top" class="title"><span class="rank"></span></td>      <td valign="top" class="votelinks"><center><a id="up_40959742" href="https://news.ycombinator.com/vote?id=40959742&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center></td><td class="title"><span class="titleline"><a href="https://thasso.xyz/2024/07/13/setting-up-an-x86-cpu.html">Writing a BIOS bootloader for 64-bit mode from scratch</a><span class="sitebit comhead"> (<a href="https://news.ycombinator.com/from?site=thasso.xyz"><span class="sitestr">thasso.xyz</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+          <span class="score" id="score_40959742">260 points</span> by <a href="https://news.ycombinator.com/user?id=D4ckard" class="hnuser">D4ckard</a> <span class="age" title="2024-07-14T08:46:40 1720946800"><a href="https://news.ycombinator.com/item?id=40959742">10 months ago</a></span> <span id="unv_40959742"></span> | <a href="https://news.ycombinator.com/hide?id=40959742&amp;goto=item%3Fid%3D40959742">hide</a> | <a href="https://hn.algolia.com/?query=Writing%20a%20BIOS%20bootloader%20for%2064-bit%20mode%20from%20scratch&amp;type=story&amp;dateRange=all&amp;sort=byDate&amp;storyText=false&amp;prefix&amp;page=0" class="hnpast">past</a> | <a href="https://news.ycombinator.com/fave?id=40959742&amp;auth=26cae54c635e72ad5648d042dc006fc0230b0b27">favorite</a> | <a href="https://news.ycombinator.com/item?id=40959742">80&nbsp;comments</a>        </span>
+              </td></tr>
+        </tbody></table><br><br><table border="0" class="comment-tree">
+            <tbody><tr class="athing comtr" id="40960107"><td><table border="0">  <tbody><tr>    <td class="ind" indent="0"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="0"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960107" href="https://news.ycombinator.com/vote?id=40960107&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=5-" class="hnuser">5-</a> <span class="age" title="2024-07-14T10:40:15 1720953615"><a href="https://news.ycombinator.com/item?id=40960107">10 months ago</a></span> <span id="unv_40960107"></span>          <span class="navs">
+             | <a href="#40960683" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960107" n="16" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">note that you can switch to long mode directly, without going into protected mode first, with way less code:<p><a href="https://wiki.osdev.org/Entering_Long_Mode_Directly" rel="nofollow">https://wiki.osdev.org/Entering_Long_Mode_Directly</a></p><p>i've had a bootloader for a small 64-bit kernel based on this that fit comfortably into the bootsector, including loading the kernel from disk and setting up vesa modes, no stage2 required.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40960294"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960294" href="https://news.ycombinator.com/vote?id=40960294&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=dataflow" class="hnuser">dataflow</a> <span class="age" title="2024-07-14T11:30:42 1720956642"><a href="https://news.ycombinator.com/item?id=40960294">10 months ago</a></span> <span id="unv_40960294"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">parent</a> | <a href="#40965285" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960294" n="7" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">&gt; i've had a bootloader for a small 64-bit kernel based on this that fit comfortably into the bootsector, including loading the kernel from disk and setting up vesa modes, no stage2 required.<p>How in the world do you fit all that in 512 bytes? I'm guessing you don't have a real-world filesystem (that allows the kernel to be anywhere on the disk just as a normal file)? Because just dealing with file fragmentation should bump you way over 512 bytes I would imagine.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40964337"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40964337" href="https://news.ycombinator.com/vote?id=40964337&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=skissane" class="hnuser">skissane</a> <span class="age" title="2024-07-15T00:28:14 1721003294"><a href="https://news.ycombinator.com/item?id=40964337">10 months ago</a></span> <span id="unv_40964337"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">root</a> | <a href="#40960294" class="clicky" aria-hidden="true">parent</a> | <a href="#40961722" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40964337" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">&gt; Because just dealing with file fragmentation should bump you way over 512 bytes I would imagine.<p>Historically, many filesystems have had a special file type or attribute for contiguous files - a file guaranteed to not be fragmented on disk. Most commonly used for boot loaders, OS kernels, or other essential system files - although historically some people used them for database files for a performance boost (which is likely rather marginal with contemporary systems, but decades ago could be much more significant).</p><p>Some systems required certain system files to be contiguous without having any special file metadata to mark them as such - for example, MS-DOS required IO.SYS and MSDOS.SYS to be contiguous on disk, but didn’t have any file attribute to mark them as contiguous. Unlike an operating system with proper support for contiguous files, DOS won’t do anything to stop you fragmenting IO.SYS or MSDOS.SYS, it is just the system will fail to start if you do. (Some might interpret the System attribute as implying Contiguous, but officially speaking it doesn’t.)</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class="athing comtr" id="40961722"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40961722" href="https://news.ycombinator.com/vote?id=40961722&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=rep_lodsb" class="hnuser">rep_lodsb</a> <span class="age" title="2024-07-14T16:11:52 1720973512"><a href="https://news.ycombinator.com/item?id=40961722">10 months ago</a></span> <span id="unv_40961722"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">root</a> | <a href="#40960294" class="clicky" aria-hidden="true">parent</a> | <a href="#40964337" class="clicky" aria-hidden="true">prev</a> | <a href="#40960397" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40961722" n="3" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">I've been thinking about how to structure a filesystem such that code complexity - in the boot loader and elsewhere - can be minimized. You'd want something similar to NTFS, except that it should be possible to refer to a file (MFT entry) directly by starting sector number. So they would either need to always remain at a fixed position, or have a link pointing back to any reference so it can be updated.<p>Somewhere in the first sector (aligned to a 64 bit boundary), there would be a small structure that just contains a unique signature (not ASCII but some random value; 64 bits seems like more than enough as opposed to a GUID), and a pointer to the "FS info block". Leaving all remaining space in the sector available for boot code or possibly another "overlayed" filesystem.</p><p>That info block in turn would point to the MFT entry for the stage 2 boot code. An MFT entry would contain at a minimum an easy to locate list of (start sector,count) extents. Maybe there could be a flag that tells the OS that a certain file should never be fragmented?</p><p>File names would be entirely optional and for human consumption; for direct links within a filesystem, sector numbers would be used, and some kind of unique numeric identifier for anything "higher-level".</p><p>I'm genuinely wondering if some expert here sees any problem with this scheme, other than it not conforming to how mainstream OSes do things?</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40962577"><td><table border="0">  <tbody><tr>    <td class="ind" indent="3"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="120"></td><td valign="top" class="votelinks">
+      <center><a id="up_40962577" href="https://news.ycombinator.com/vote?id=40962577&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=RiverCrochet" class="hnuser">RiverCrochet</a> <span class="age" title="2024-07-14T18:52:11 1720983131"><a href="https://news.ycombinator.com/item?id=40962577">10 months ago</a></span> <span id="unv_40962577"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">root</a> | <a href="#40961722" class="clicky" aria-hidden="true">parent</a> | <a href="#40966825" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40962577" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">&gt; File names would be entirely optional and for human consumption; for direct links within a filesystem, sector numbers would be used, and some kind of unique numeric identifier for anything "higher-level".<p>Each file has index number ("Inode"?) in the MFT.  The first 24 (0-23) are reserved, and 11 of them contain metadata about the volume .  <a href="https://flatcap.github.io/linux-ntfs/ntfs/files/" rel="nofollow">https://flatcap.github.io/linux-ntfs/ntfs/files/</a> - somewhere in the Windows API is something that allows opening a file by "Inode" number.  This link and info may be really old so it could be more of the reserved inodes are used now.</p><p>So, if 23 isn't being used yet, you could use that to put your 2BL - create a file there and name it $2BL or something.  Would be funny to see what future Windows update that does use it does to it, if that ever happens (and of course maybe it is used).</p><p>&gt; Maybe there could be a flag that tells the OS that a certain file should never be fragmented?</p><p>Haven't looked but I recall from an old book I read that small files are stored right in the MFT and I think existing data + the cluster size is the limit there.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class="athing comtr" id="40966825"><td><table border="0">  <tbody><tr>    <td class="ind" indent="3"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="120"></td><td valign="top" class="votelinks">
+      <center><a id="up_40966825" href="https://news.ycombinator.com/vote?id=40966825&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=sim7c00" class="hnuser">sim7c00</a> <span class="age" title="2024-07-15T11:21:04 1721042464"><a href="https://news.ycombinator.com/item?id=40966825">10 months ago</a></span> <span id="unv_40966825"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">root</a> | <a href="#40961722" class="clicky" aria-hidden="true">parent</a> | <a href="#40962577" class="clicky" aria-hidden="true">prev</a> | <a href="#40960397" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40966825" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">the first somewhere in the first sector - this makes me think of the superblock concept. u scan the start of the disk for it (ext2 or 4? or both?). Not the first sector because that's for MBR purposes, but after that...<p>not fragmenting files.... well. U don't fragment files until you do.. u know. If u write an FS it will only fragment what u tell it to. So if u want all contigious files then u can simply do it that way. store them as (file_id,sector_count,start). or even more simple (fname_len,fname,sector_count,start_sector) so u dont need to keep nameblock around for filenames (fat?)</p><p>If u look at Ext2/4, FAT16/32 and others u will see that it all started quite basically, keepin a list of files and offsets. But due to things like disk reliability, user errors, system stability issues etc., you need a lot of extra stuff.</p><p>Also, questions like : how long is a maximum for a filename length? This kind of stuff can really impact what kind of features u need to implement.</p><p>How long is a file allowed to be? 
+How many files are maximum for the FS?</p><p>This might sound silly, but there's already datacenters out there (a lot actually) who cannot use most filesystems because either files are too huge, partitions are too huge, too many files are present for index structures etc.</p><p>If you want dead simple for a starting OS:
+(sector_count,start_sector,fname_len,fname,0)</p><p>If you want more, try looking at ext2 or FAT32 or if your system specifications require it, look even beyond. (ext4, ZFS, NTFS, etc.) - A lot of these are subtely different, trying to solve different problems, or similar problems in different ways.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class="athing comtr" id="40960397"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960397" href="https://news.ycombinator.com/vote?id=40960397&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=5-" class="hnuser">5-</a> <span class="age" title="2024-07-14T11:59:50 1720958390"><a href="https://news.ycombinator.com/item?id=40960397">10 months ago</a></span> <span id="unv_40960397"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">root</a> | <a href="#40960294" class="clicky" aria-hidden="true">parent</a> | <a href="#40961722" class="clicky" aria-hidden="true">prev</a> | <a href="#40966764" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960397" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">yes, the kernel was in a known location on disk (directly after the bootsector).<p>the whole boot disk image was generated during build, which is common for small systems.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class="athing comtr" id="40966764"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40966764" href="https://news.ycombinator.com/vote?id=40966764&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=sim7c00" class="hnuser">sim7c00</a> <span class="age" title="2024-07-15T11:04:15 1721041455"><a href="https://news.ycombinator.com/item?id=40966764">10 months ago</a></span> <span id="unv_40966764"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">root</a> | <a href="#40960294" class="clicky" aria-hidden="true">parent</a> | <a href="#40960397" class="clicky" aria-hidden="true">prev</a> | <a href="#40965285" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40966764" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">you can just stick the kernel at sector 2 and read it from there using extended bios disk read. specify your DAP to read the kernels amount of sectors starting from sector 2, load it to something like 0x7e00 or some reachable place. It will have still limits on how much it can read, per read and in total.<p>If you do this all within 1 sector, equally you do not do any error checking. just ram stuff into memory and yolojump into it.</p><p>the basic would be:
+load kernel from disk using bios interrupt
+get memory map using bios interrupt
+parse kernel ELF header / program headers and relocate it
+ - elf header to find ph_off and ph_num and entry_point
+ - program headers to find all pt_load and rep movb them into tgt phys addr.</p><p>Also with 510 bytes generally u will not make nice 'page tables' though this is actually possible with only few bytes. - i did not manage it yet in 510 :D but i am sure there's someone who can do it... it can be done really efficiently.</p><p>the disk would be formed by assemblding the mbr. then doing something like</p><p>cat mbr.bin kernel.bin &gt; disk.bin
+(maybe here use truncate to padd the disk.bin to a certain size like 10+MB or so - helps some controllers recognize it better)</p><p>all that said it's not useful to do this. you will find it an interesting excersize at best. like trying to make 'tiny ELF' file or so. fun to learn, useless in practice.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class="athing comtr" id="40965285"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40965285" href="https://news.ycombinator.com/vote?id=40965285&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=ChickeNES" class="hnuser">ChickeNES</a> <span class="age" title="2024-07-15T04:31:07 1721017867"><a href="https://news.ycombinator.com/item?id=40965285">10 months ago</a></span> <span id="unv_40965285"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">parent</a> | <a href="#40960294" class="clicky" aria-hidden="true">prev</a> | <a href="#40966244" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40965285" n="2" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Or just use <a href="https://limine-bootloader.org/" rel="nofollow">https://limine-bootloader.org/</a>, which greatly simplifies everything. No messing around in real mode (even when doing SMP), automatically loads your kernel using a higher-half mapping, and also works on aarch64 and riscv64.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40965639"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40965639" href="https://news.ycombinator.com/vote?id=40965639&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=bigstrat2003" class="hnuser">bigstrat2003</a> <span class="age" title="2024-07-15T06:12:33 1721023953"><a href="https://news.ycombinator.com/item?id=40965639">10 months ago</a></span> <span id="unv_40965639"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">root</a> | <a href="#40965285" class="clicky" aria-hidden="true">parent</a> | <a href="#40966244" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40965639" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">To be fair, writing a bootloader is an interesting and educational project in its own right. But yes, for most people interested in osdev they should just use an existing bootloader. It gets you to the part that interests most people (writing the kernel) faster, and without having to worry if you are going to run into gnarly bugs because the bootloader is buggy and you never realized.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class="athing comtr" id="40966244"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40966244" href="https://news.ycombinator.com/vote?id=40966244&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=sim7c00" class="hnuser">sim7c00</a> <span class="age" title="2024-07-15T08:54:39 1721033679"><a href="https://news.ycombinator.com/item?id=40966244">10 months ago</a></span> <span id="unv_40966244"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">parent</a> | <a href="#40965285" class="clicky" aria-hidden="true">prev</a> | <a href="#40965654" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40966244" n="3" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">you are right. Though with the partition table in there so u can support a 'modern' AHCI controller and SATA it will shrink your bootloader further and require some optimizations.... - you don't have 510 bytes for the loader in this case but a bunch less. if you want to populate the table with valid entries then it becomes even more tricky (can't use any bytes inside of the table...)<p>If you want to use an actual modern harddisk, you might want to look at GPT rather than MBR, as it won't overflow partition table stuff and allow for very large disks (2TB+?) (uefi gets rid of all of that and allows u to use a proper disk layout without any additional difficulty!)</p><p>there is no need for protected mode if you want to launch into 64-bit mode. I would say though, DO NOT USE BIOS. It's a piece of rubbish which will just make things more tedious.</p><p>Using UEFI via EDK2 or GnuEFI is the way to go, and both methods are really easy and a blessin to implement. It's a bit hard to get around the initial idea of UEFI, but if you view some other people's example projects on github you can find easily how it works. EDK is a bit shitty with .dec and .inf files etc, and GnuEFI is just reading headerfiles to discover what is there, but it's inifnitely better than the unspecified bios interface.  You can litterally not even assume the int 0x10, int 0x15 etc. are there properly if you start running on real hardware. On UEFI systems, you can assume a stable minimal basis, and easily enumerate other things (hardware/platform capabilities etc.) in a sane way.</p><p>Also UEFI sets up the platform a long way already, so you don't need to do any initialization for your os-loader component (stage2 or 3). You can simply start loading your os right away. or drivers or whatever kind of design your kernel is. get memory map, get some access to efi file system, start pulling in and loading stuff.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40968754"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40968754" href="https://news.ycombinator.com/vote?id=40968754&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=pitust2" class="hnuser">pitust2</a> <span class="age" title="2024-07-15T15:31:43 1721057503"><a href="https://news.ycombinator.com/item?id=40968754">10 months ago</a></span> <span id="unv_40968754"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">root</a> | <a href="#40966244" class="clicky" aria-hidden="true">parent</a> | <a href="#40965654" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40968754" n="2" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">ACHI (which is how SATA is exposed) doesn't change any of this. The only thing that is affected is how the loaded OS has to talk to the disk controller. The real thing that loses space is the BPB (a 60 bytes or so, iirc) because some BIOSes are broken and require it and the MBR (but that's only a couple bytes). At least [bootelf] manages to fit in (without a BPB or an MBR) with 128 bytes to spare, enough for a dummy BPB that makes all BIOSes happy.<p>Additionally, UEFI's reliability is.. sketchy, as far as I know (using the classic logic of "if Windows doesn't use it does it <i>really</i> matter?"). And GNU-EFI suffers from build portability troubles, AFAIK.</p><p>[bootelf]: <a href="https://github.com/n00byEdge/bootelf">https://github.com/n00byEdge/bootelf</a></p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40974846"><td><table border="0">  <tbody><tr>    <td class="ind" indent="3"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="120"></td><td valign="top" class="votelinks">
+      <center><a id="up_40974846" href="https://news.ycombinator.com/vote?id=40974846&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=sim7c00" class="hnuser">sim7c00</a> <span class="age" title="2024-07-16T09:25:01 1721121901"><a href="https://news.ycombinator.com/item?id=40974846">10 months ago</a></span> <span id="unv_40974846"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">root</a> | <a href="#40968754" class="clicky" aria-hidden="true">parent</a> | <a href="#40965654" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40974846" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">If you chose AHCI on QEMU it will require a partition table to be present on the disk, so it recognizes it as a bootable disk. in addition to the magic value. If you do not add the partition table.<p>Thanks for this comment. It makes me realize this is likely not an AHCI thing ,but how the seaBIOS(? qemu's flavor?) handles enumerating disks via AHCI rather than IDE.</p><p>If it uses the IDE controller then it will recognize the boot disk. If i pick AHCI, i need to add the partition table.</p><p>UEFI reliability is sketch, but really BIOS is incredibly crap, so much more than UEFI.</p><p>Windows DOES use EFI/UEFI, how else will it boot on a system that has EFI/UEFI firmware inside of it? It can let you do secureboot, edit efi variables... - where do you get this classic logic from? (maybe i am totally misisng something, but they interface with it, and should thus use the spec? even tho they might not use gnuefi or EDK2 ofc :P (edk2 is still likley...))</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                        <tr class="athing comtr" id="40965654"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40965654" href="https://news.ycombinator.com/vote?id=40965654&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=xelxebar" class="hnuser">xelxebar</a> <span class="age" title="2024-07-15T06:15:49 1721024149"><a href="https://news.ycombinator.com/item?id=40965654">10 months ago</a></span> <span id="unv_40965654"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">parent</a> | <a href="#40966244" class="clicky" aria-hidden="true">prev</a> | <a href="#40960148" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40965654" n="2" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Oh, cool. I never knew that was possible. Showing my ignorance here, but assuming we're just trying to get to long mode, why would we tour through protected mode at all?</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40983759"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40983759" href="https://news.ycombinator.com/vote?id=40983759&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=5-" class="hnuser">5-</a> <span class="age" title="2024-07-17T08:51:46 1721206306"><a href="https://news.ycombinator.com/item?id=40983759">9 months ago</a></span> <span id="unv_40983759"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">root</a> | <a href="#40965654" class="clicky" aria-hidden="true">parent</a> | <a href="#40960148" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40983759" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">i may be misremembering, but it's likely that intel/amd never documented this one-hop procedure, and it was discovered by the community through a combination of rules-lawyering and experimentation.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class="athing comtr" id="40960148"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960148" href="https://news.ycombinator.com/vote?id=40960148&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=D4ckard" class="hnuser">D4ckard</a> <span class="age" title="2024-07-14T10:50:48 1720954248"><a href="https://news.ycombinator.com/item?id=40960148">10 months ago</a></span> <span id="unv_40960148"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">parent</a> | <a href="#40965654" class="clicky" aria-hidden="true">prev</a> | <a href="#40960683" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960148" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Yes, you can do that too</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class="athing comtr" id="40960683"><td><table border="0">  <tbody><tr>    <td class="ind" indent="0"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="0"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960683" href="https://news.ycombinator.com/vote?id=40960683&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=hyperman1" class="hnuser">hyperman1</a> <span class="age" title="2024-07-14T12:55:26 1720961726"><a href="https://news.ycombinator.com/item?id=40960683">10 months ago</a></span> <span id="unv_40960683"></span>          <span class="navs">
+             | <a href="#40960107" class="clicky" aria-hidden="true">prev</a> | <a href="#40961400" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960683" n="5" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">The 80286 has the Machine Status Word (MSW), a 16 bit register.  The 80386 expands this to CR0, a 32 bits register.  Then 64 bit long mode adds the EFER MSR and expands CR0 to 64 bits. But even today  only 11 bits of CR0 are in use and EFER has 8 active bits.   I wonder why intel/AMD did not simply use the free bits of the existing register, and made that decision twice?<p><a href="https://wiki.osdev.org/CPU_Registers_x86-64#CR0" rel="nofollow">https://wiki.osdev.org/CPU_Registers_x86-64#CR0</a>.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40961011"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40961011" href="https://news.ycombinator.com/vote?id=40961011&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=rcxdude" class="hnuser">rcxdude</a> <span class="age" title="2024-07-14T13:57:36 1720965456"><a href="https://news.ycombinator.com/item?id=40961011">10 months ago</a></span> <span id="unv_40961011"></span>          <span class="navs">
+             | <a href="#40960683" class="clicky" aria-hidden="true">parent</a> | <a href="#40965154" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40961011" n="3" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Probably for more robust backwards compatibility with software that might assume a given value for or write to the reserved bits. The assignment of bits to registers like this in the hardware is pretty arbitrary, there's not really any cost to using the higher bits</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40961288"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40961288" href="https://news.ycombinator.com/vote?id=40961288&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=rep_lodsb" class="hnuser">rep_lodsb</a> <span class="age" title="2024-07-14T14:50:44 1720968644"><a href="https://news.ycombinator.com/item?id=40961288">10 months ago</a></span> <span id="unv_40961288"></span>          <span class="navs">
+             | <a href="#40960683" class="clicky" aria-hidden="true">root</a> | <a href="#40961011" class="clicky" aria-hidden="true">parent</a> | <a href="#40961230" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40961288" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">The flag register layout is another case of extreme backwards compatibility - its lower bits have the same definitions they had on the 8-bit 8080, even the same fixed values:<p>Sign : Zero : always '0' : AuxCarry : always '0' : Parity : always '1' : Carry</p><p>(the parity flag came all the way from the 8008 / Datapoint 2200[1], and is the inverted XOR of the result's lower 8 bits; aux carry is the carry out of bit 3, used for BCD arithmetic)</p><p>Flag bit 15 has also stayed reserved, except at one time it was used by the NEC Vxx chips for their 8080 compatibility mode. That feature had to be first unlocked by executing a special instruction, because there is code out there that loads the entire (16 bit) flag register with 0000 or FFFF. With the mode bit unlocked, that would inadvertently switch the CPU to running a completely different set of opcodes!</p><p>[1] <a href="https://www.righto.com/2023/08/datapoint-to-8086.html" rel="nofollow">https://www.righto.com/2023/08/datapoint-to-8086.html</a></p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class="athing comtr" id="40961230"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40961230" href="https://news.ycombinator.com/vote?id=40961230&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=monocasa" class="hnuser">monocasa</a> <span class="age" title="2024-07-14T14:38:58 1720967938"><a href="https://news.ycombinator.com/item?id=40961230">10 months ago</a></span> <span id="unv_40961230"></span>          <span class="navs">
+             | <a href="#40960683" class="clicky" aria-hidden="true">root</a> | <a href="#40961011" class="clicky" aria-hidden="true">parent</a> | <a href="#40961288" class="clicky" aria-hidden="true">prev</a> | <a href="#40965154" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40961230" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Particularly AMD made the 64 bit extension without any real input from Intel and didn't want to use any bits that would later conflict with a bit Intel might use in CR0.  So a brand new register was in order.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class="athing comtr" id="40965154"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40965154" href="https://news.ycombinator.com/vote?id=40965154&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=userbinator" class="hnuser">userbinator</a> <span class="age" title="2024-07-15T03:52:10 1721015530"><a href="https://news.ycombinator.com/item?id=40965154">10 months ago</a></span> <span id="unv_40965154"></span>          <span class="navs">
+             | <a href="#40960683" class="clicky" aria-hidden="true">parent</a> | <a href="#40961011" class="clicky" aria-hidden="true">prev</a> | <a href="#40961400" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40965154" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">The one-word answer is probably "bureaucracy". Large groups of people just don't tend to make particularly good decisions overall, and a lot of nonsensical choices arise from that.<p>Ditto for why CR1 and 5-7 are still "reserved" and CR8 came into existence.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class="athing comtr" id="40961400"><td><table border="0">  <tbody><tr>    <td class="ind" indent="0"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="0"></td><td valign="top" class="votelinks">
+      <center><a id="up_40961400" href="https://news.ycombinator.com/vote?id=40961400&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=rep_lodsb" class="hnuser">rep_lodsb</a> <span class="age" title="2024-07-14T15:09:21 1720969761"><a href="https://news.ycombinator.com/item?id=40961400">10 months ago</a></span> <span id="unv_40961400"></span>          <span class="navs">
+             | <a href="#40960683" class="clicky" aria-hidden="true">prev</a> | <a href="#40976650" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40961400" n="4" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">The most unnecessarily complicated thing in this article to me is the Makefile and linker script. NASM supports generating flat binary output, but apparently using it would be too "hacky"?</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40961430"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40961430" href="https://news.ycombinator.com/vote?id=40961430&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=darby_nine" class="hnuser">darby_nine</a> <span class="age" title="2024-07-14T15:17:20 1720970240"><a href="https://news.ycombinator.com/item?id=40961430">10 months ago</a></span> <span id="unv_40961430"></span>          <span class="navs">
+             | <a href="#40961400" class="clicky" aria-hidden="true">parent</a> | <a href="#40966860" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40961430" n="2" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">I find linker scripts much easier to read and reason about than flat nasm but that's just me. Especially with multiple source files.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40966924"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40966924" href="https://news.ycombinator.com/vote?id=40966924&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=sim7c00" class="hnuser">sim7c00</a> <span class="age" title="2024-07-15T11:38:32 1721043512"><a href="https://news.ycombinator.com/item?id=40966924">10 months ago</a></span> <span id="unv_40966924"></span>          <span class="navs">
+             | <a href="#40961400" class="clicky" aria-hidden="true">root</a> | <a href="#40961430" class="clicky" aria-hidden="true">parent</a> | <a href="#40966860" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40966924" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">From how I view linker scripts:<p>U can use a linker script to create file layout. If you want a flat binary file... u dont want a file layout. So linkerscript is really useless for a flat binary blob. Even if you make it with multiple files. It'd be just the same as saying: cat blob1 blob2 blob2 &gt; finalyblob.</p><p>If you'd say have multiple blobs, and use linker directives to align them, the position dependent code within the assembled files will be wrong, unless you specifically define that using for example ORG directive in NASM. 
+If you use the ORG directive in NASM, u will need to keep that synchronized with the linker script in order for all the labels etc. to keep the right offsets calculated.</p><p>So essentially.. this linker script might even add complexity and issues when working with multiple binary blobs. u can't align them or use nice linker features....</p><p>If you use more structured files, which allow for example for relocation... then ur already using ELF or PE and can simple produce those files. They can be more masterfuly linked with nice features, and linker scripts are then essential.</p><p>You can add your binary blob in the right location in the output file of a linking run, using a linker script.
+This is useful to add data into your files but for an MBR it's not particularly useful. People do it, but it adds no benefit over just sticking it on the front if your disk using 'dd' for example.
+------</p><p>That being my views, I am wondering what you see the benefit here? Are there some linker features i am unaware of that are particularly useful here? (I really know only alignment stuff in there... and include blobs or put stuff into /discard/ and some basic define sections/segments etc.). I am not familiar with perhaps more advanced linking features.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class="athing comtr" id="40966860"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40966860" href="https://news.ycombinator.com/vote?id=40966860&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=sim7c00" class="hnuser">sim7c00</a> <span class="age" title="2024-07-15T11:27:16 1721042836"><a href="https://news.ycombinator.com/item?id=40966860">10 months ago</a></span> <span id="unv_40966860"></span>          <span class="navs">
+             | <a href="#40961400" class="clicky" aria-hidden="true">parent</a> | <a href="#40961430" class="clicky" aria-hidden="true">prev</a> | <a href="#40976650" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40966860" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">you are totally right.<p>Later on, make files and linker scripts are an important headache. but when generating flat binary, just generate flat binary! No need to bloat it.</p><p>My OS used to have a file called make.sh to tease at this :D Now i am using a 'fileformat' and other fancy things and alas -fbin and --oformat=binary are but fleeting memories. I tried a long time to write separate data c files and code c files, dump it out to binary, and then building some monstrosity from there but it gets really difficult to link&amp;load etc. xD --- better to just use the ELFs or PEs! I suppose that is litteraly what they do for u ;P</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class="athing comtr" id="40976650"><td><table border="0">  <tbody><tr>    <td class="ind" indent="0"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="0"></td><td valign="top" class="votelinks">
+      <center><a id="up_40976650" href="https://news.ycombinator.com/vote?id=40976650&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=ForOldHack" class="hnuser">ForOldHack</a> <span class="age" title="2024-07-16T13:55:03 1721138103"><a href="https://news.ycombinator.com/item?id=40976650">10 months ago</a></span> <span id="unv_40976650"></span>          <span class="navs">
+             | <a href="#40961400" class="clicky" aria-hidden="true">prev</a> | <a href="#40960224" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40976650" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">This seems both cool, and a good exercise, but is it useful? Does it have a UX like a fisher/price toy that you can verify/change your settings on the fly?<p>Booting is the process of going from mini-me mode/single user/recovery mode to flying.</p><p>I have been running Unix along side a Microsoft product since Xenix/dos. ( Looks like 40 years...) How much have we advanced?</p><p>I also have been using Linux since the swedish version came out ( first release ) and GNU 0.1.</p><p>My apologies about calling Xenix, Unix, It is a has-been wanna-be me-too square-excrament from shortly after release until it's languishing demise.</p><p>Microsoft does not release products, they empty their cat
+boxes onto customers. ( The most recent example is both co-pilot  And 22H2. )</p><p>If you look at how F1 cars have evolved, and pencils as well as pocket calculators - how close are we to the usable ideal?</p><p>Why isn't the bootloader a static kernel mode? It used to be. Someone recently suggested it should be, and I agreed.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class="athing comtr" id="40960224"><td><table border="0">  <tbody><tr>    <td class="ind" indent="0"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="0"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960224" href="https://news.ycombinator.com/vote?id=40960224&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=blankx32" class="hnuser">blankx32</a> <span class="age" title="2024-07-14T11:12:20 1720955540"><a href="https://news.ycombinator.com/item?id=40960224">10 months ago</a></span> <span id="unv_40960224"></span>          <span class="navs">
+             | <a href="#40976650" class="clicky" aria-hidden="true">prev</a> | <a href="#40960615" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960224" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00"><a href="https://wiki.osdev.org/A20_Line" rel="nofollow">https://wiki.osdev.org/A20_Line</a></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class="athing comtr" id="40960615"><td><table border="0">  <tbody><tr>    <td class="ind" indent="0"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="0"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960615" href="https://news.ycombinator.com/vote?id=40960615&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=ThinkBeat" class="hnuser">ThinkBeat</a> <span class="age" title="2024-07-14T12:40:53 1720960853"><a href="https://news.ycombinator.com/item?id=40960615">10 months ago</a></span> <span id="unv_40960615"></span>          <span class="navs">
+             | <a href="#40960224" class="clicky" aria-hidden="true">prev</a> | <a href="#40961453" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960615" n="21" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">All to me entirely unnecessary steps required to get the CPU into the correct
+mode is astounding.<p>They all seem to be steps needed for backwards compatibility.</p><p>Could Intel just provide a flag, command, to start in the right mode
+from the beginning.</p><p>Or just remove all the backwards compatibility.</p><p>I think I remember doing some research and ARM64 has some of the 
+same issues.</p><p>Are there any CPUs that are designed from scratch as 64 bit 
+it will not have any need for backwards compatibility and 
+would enter the required state by default?</p><p>I guess sthat was the goal / design of  Itanium?</p><p>are made to start in the desired 64 bit state
+from th</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40960665"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960665" href="https://news.ycombinator.com/vote?id=40960665&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=nullindividual" class="hnuser">nullindividual</a> <span class="age" title="2024-07-14T12:50:53 1720961453"><a href="https://news.ycombinator.com/item?id=40960665">10 months ago</a></span> <span id="unv_40960665"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">parent</a> | <a href="#40965162" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960665" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">This is what Intel's proposed X86S [0] is designed for.<p>&gt; X86S is a legacy-reduced-OS ISA that removes outdated execution modes and operating system
+ISA.</p><p>&gt; The presence of the X86S ISA is enumerated by a single, main CPUID feature
+LEGACY_REDUCED_ISA in CPUID 7.1.ECX[2] which implies all the ISA removals described in this document. A new, 64-bit “start-up” interprocessor interrupt (SIPI) has a separate CPUID feature flag.</p><p>[0] <a href="https://cdrdv2.intel.com/v1/dl/getContent/776648" rel="nofollow">https://cdrdv2.intel.com/v1/dl/getContent/776648</a> [pdf warning]</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class="athing comtr" id="40965162"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40965162" href="https://news.ycombinator.com/vote?id=40965162&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=userbinator" class="hnuser">userbinator</a> <span class="age" title="2024-07-15T03:54:43 1721015683"><a href="https://news.ycombinator.com/item?id=40965162">10 months ago</a></span> <span id="unv_40965162"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">parent</a> | <a href="#40960665" class="clicky" aria-hidden="true">prev</a> | <a href="#40960660" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40965162" n="2" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Intel tried that with the 80376 and it did not go well: <a href="https://en.wikipedia.org/wiki/Intel_80376" rel="nofollow">https://en.wikipedia.org/wiki/Intel_80376</a><p>Neither did the Itanium (Itanic).</p><p>Backwards compatibility is the whole reason for choosing x86 over ARM, MIPS, RISC-V, etc. Sadly it seems some people at Intel and AMD don't realise this.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40965648"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40965648" href="https://news.ycombinator.com/vote?id=40965648&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=bigstrat2003" class="hnuser">bigstrat2003</a> <span class="age" title="2024-07-15T06:14:52 1721024092"><a href="https://news.ycombinator.com/item?id=40965648">10 months ago</a></span> <span id="unv_40965648"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40965162" class="clicky" aria-hidden="true">parent</a> | <a href="#40960660" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40965648" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Backwards compatibility is good and necessary. But I don't think backwards compatibility going all the way back to the 8086 is. If someone has software written for the 8086 at this point, they would be far better served by running it in dosbox or something than on bare metal.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class="athing comtr" id="40960660"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960660" href="https://news.ycombinator.com/vote?id=40960660&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=LiamPowell" class="hnuser">LiamPowell</a> <span class="age" title="2024-07-14T12:49:36 1720961376"><a href="https://news.ycombinator.com/item?id=40960660">10 months ago</a></span> <span id="unv_40960660"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">parent</a> | <a href="#40965162" class="clicky" aria-hidden="true">prev</a> | <a href="#40965290" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960660" n="16" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">UEFI exists. You just put a Windows-like binary in a folder on a partition and it runs in a hosted environment in 64-bit mode. And of course there's countless bootloaders that can take care of all this for you too.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40961902"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40961902" href="https://news.ycombinator.com/vote?id=40961902&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=leeter" class="hnuser">leeter</a> <span class="age" title="2024-07-14T16:46:15 1720975575"><a href="https://news.ycombinator.com/item?id=40961902">10 months ago</a></span> <span id="unv_40961902"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40960660" class="clicky" aria-hidden="true">parent</a> | <a href="#40961351" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40961902" n="5" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">This is fine if you're only running on a single core, however if you're a multiprocessor OS you still need to deal with legacy when bringing up the other cores. Intel and AMD should consider a mode that disables that and brings up the other cores using a 64bit SIPI. While I applaud Intel on the X86S idea... I think there is room for bits of that without throwing out all the backwards compat. An X86SC which drops real mode and only supports 16bit 'real mode' in virtualization.<p>Yes, I see the argument that if you go to that point you might as well just use emulation. However running mixed 32bit/16bit code (Windows 98/95) becomes problematic just because of performance reasons. DosBox does well, but good luck supporting games for the Pentium 3 era that still used 16bit libraries because of course they did. (16bit Installshield was so common going into 64bit that MS just has code to replace it so 32bit applications can still be installed despite having a 16bit installer)</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40963553"><td><table border="0">  <tbody><tr>    <td class="ind" indent="3"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="120"></td><td valign="top" class="votelinks">
+      <center><a id="up_40963553" href="https://news.ycombinator.com/vote?id=40963553&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=LiamPowell" class="hnuser">LiamPowell</a> <span class="age" title="2024-07-14T22:07:05 1720994825"><a href="https://news.ycombinator.com/item?id=40963553">10 months ago</a></span> <span id="unv_40963553"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40961902" class="clicky" aria-hidden="true">parent</a> | <a href="#40961351" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40963553" n="4" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">I vaguely recall there being some multicore stuff in UEFI, but it's been years since I looked at it.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40963876"><td><table border="0">  <tbody><tr>    <td class="ind" indent="4"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="160"></td><td valign="top" class="votelinks">
+      <center><a id="up_40963876" href="https://news.ycombinator.com/vote?id=40963876&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=leeter" class="hnuser">leeter</a> <span class="age" title="2024-07-14T23:03:14 1720998194"><a href="https://news.ycombinator.com/item?id=40963876">10 months ago</a></span> <span id="unv_40963876"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40963553" class="clicky" aria-hidden="true">parent</a> | <a href="#40961351" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40963876" n="3" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Intel did a prototype of a multiprocessor UEFI application that would start up cores and UEFI itself does support synchronization on the assumption that applications/bootloaders will start other cores before calling ExitBootServices. However, there are no protocols as of 2.10 (the current spec[1]) that I can find that would bring up another processor. That said searching it can be a bit arcane.<p>[1] <a href="https://uefi.org/specs/UEFI/2.10/index.html" rel="nofollow">https://uefi.org/specs/UEFI/2.10/index.html</a></p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40966392"><td><table border="0">  <tbody><tr>    <td class="ind" indent="5"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="200"></td><td valign="top" class="votelinks">
+      <center><a id="up_40966392" href="https://news.ycombinator.com/vote?id=40966392&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=LiamPowell" class="hnuser">LiamPowell</a> <span class="age" title="2024-07-15T09:32:11 1721035931"><a href="https://news.ycombinator.com/item?id=40966392">10 months ago</a></span> <span id="unv_40966392"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40963876" class="clicky" aria-hidden="true">parent</a> | <a href="#40961351" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40966392" n="2" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">It's part of the PI spec rather than the base spec: <a href="https://uefi.org/specs/PI/1.8A/V2_DXE_Boot_Services_Protocols.html" rel="nofollow">https://uefi.org/specs/PI/1.8A/V2_DXE_Boot_Services_Protocol...</a></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40967707"><td><table border="0">  <tbody><tr>    <td class="ind" indent="6"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="240"></td><td valign="top" class="votelinks">
+      <center><a id="up_40967707" href="https://news.ycombinator.com/vote?id=40967707&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=leeter" class="hnuser">leeter</a> <span class="age" title="2024-07-15T13:26:45 1721050005"><a href="https://news.ycombinator.com/item?id=40967707">10 months ago</a></span> <span id="unv_40967707"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40966392" class="clicky" aria-hidden="true">parent</a> | <a href="#40961351" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40967707" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Interesting, very interesting. Curious that the PI spec doesn't include update dates on the versions. The MP spec was introduced in 1.5 and I have no idea when that was released.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                                    <tr class="athing comtr" id="40961351"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40961351" href="https://news.ycombinator.com/vote?id=40961351&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=rep_lodsb" class="hnuser">rep_lodsb</a> <span class="age" title="2024-07-14T15:01:53 1720969313"><a href="https://news.ycombinator.com/item?id=40961351">10 months ago</a></span> <span id="unv_40961351"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40960660" class="clicky" aria-hidden="true">parent</a> | <a href="#40961902" class="clicky" aria-hidden="true">prev</a> | <a href="#40965290" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40961351" n="10" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">And then you're free from dealing with the somewhat convoluted processor init stuff, but instead depend on the Windows PE format, FAT filesystem, and an overcomplicated API.<p>Seems like a bad tradeoff, and part of a slippery slope towards a completely locked down system, where writing your own code and getting it to run on the 'bare metal' is flat out impossible.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40966559"><td><table border="0">  <tbody><tr>    <td class="ind" indent="3"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="120"></td><td valign="top" class="votelinks">
+      <center><a id="up_40966559" href="https://news.ycombinator.com/vote?id=40966559&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=Joker_vD" class="hnuser">Joker_vD</a> <span class="age" title="2024-07-15T10:15:18 1721038518"><a href="https://news.ycombinator.com/item?id=40966559">10 months ago</a></span> <span id="unv_40966559"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40961351" class="clicky" aria-hidden="true">parent</a> | <a href="#40961398" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40966559" n="4" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">&gt; instead depend on the Windows PE format, FAT filesystem, and an overcomplicated API.<p>Sometimes I wonder: if UEFI instead used ELF format, ext2 filesystem, and somewhat less complicated API (let's be honest: UEFI API is pretty straightforward if tedious), would people still complain about such dependencies? Or would it be deemed to be "fine" since it's not Microsoft technology even though it still would require one to use a multi-megabyte toolchain?</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40967074"><td><table border="0">  <tbody><tr>    <td class="ind" indent="4"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="160"></td><td valign="top" class="votelinks">
+      <center><a id="up_40967074" href="https://news.ycombinator.com/vote?id=40967074&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=p_l" class="hnuser">p_l</a> <span class="age" title="2024-07-15T12:04:42 1721045082"><a href="https://news.ycombinator.com/item?id=40967074">10 months ago</a></span> <span id="unv_40967074"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40966559" class="clicky" aria-hidden="true">parent</a> | <a href="#40967104" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40967074" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Yes, also probably if you used FDT instead of ACPI despite all the problems that are fixed by ACPI but present with FDT, because "ACPI is evil" :V</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class="athing comtr" id="40967104"><td><table border="0">  <tbody><tr>    <td class="ind" indent="4"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="160"></td><td valign="top" class="votelinks">
+      <center><a id="up_40967104" href="https://news.ycombinator.com/vote?id=40967104&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=blueflow" class="hnuser">blueflow</a> <span class="age" title="2024-07-15T12:09:34 1721045374"><a href="https://news.ycombinator.com/item?id=40967104">10 months ago</a></span> <span id="unv_40967104"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40966559" class="clicky" aria-hidden="true">parent</a> | <a href="#40967074" class="clicky" aria-hidden="true">prev</a> | <a href="#40961398" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40967104" n="2" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Its not the fact that its from Microsoft, its the fact that both FAT and PE are full of legacy cruft that is no less painful than going through real mode in the first place.<p>FAT originally only can do 8.3 filenames, but take a look at this to see what they hacked on top: <a href="https://en.wikipedia.org/wiki/Design_of_the_FAT_file_system#VFAT_long_file_names" rel="nofollow">https://en.wikipedia.org/wiki/Design_of_the_FAT_file_system#...</a></p><p>This is all the legacy shit you now have to implement when you want a so-called "legacy-free" boot. Infuriating.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40971891"><td><table border="0">  <tbody><tr>    <td class="ind" indent="5"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="200"></td><td valign="top" class="votelinks">
+      <center><a id="up_40971891" href="https://news.ycombinator.com/vote?id=40971891&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=p_l" class="hnuser">p_l</a> <span class="age" title="2024-07-15T22:11:47 1721081507"><a href="https://news.ycombinator.com/item?id=40971891">10 months ago</a></span> <span id="unv_40971891"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40967104" class="clicky" aria-hidden="true">parent</a> | <a href="#40961398" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40971891" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Meanwhile ext family, even in ext4, requires that you handle optimizations decisions made for Fujitsu Eagle and its contemporaries.<p>I could easily read NTFS with hexeditor, calculator and pen&amp;paper. Trivial even (most annoying part was the run length packing in 4-bit nibbles).</p><p>I gave up trying to read ext's cylinder-oriented mappings.</p><p>And FWIW, everyone has a read/write driver for FAT with LFN (and UEFI generally avoids names outside 8.3 just in case), using a different filesystem would lead to issues with OS support.</p><p>PE itself isn't really that much of legacy cruft, especially as far as it is used in UEFI (sure, you have the "program not for MS-DOS header", but that's useful for the rare case someone tries to open it under FreeDOS).</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                        <tr class="athing comtr" id="40961398"><td><table border="0">  <tbody><tr>    <td class="ind" indent="3"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="120"></td><td valign="top" class="votelinks">
+      <center><a id="up_40961398" href="https://news.ycombinator.com/vote?id=40961398&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=immibis" class="hnuser">immibis</a> <span class="age" title="2024-07-14T15:08:54 1720969734"><a href="https://news.ycombinator.com/item?id=40961398">10 months ago</a></span> <span id="unv_40961398"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40961351" class="clicky" aria-hidden="true">parent</a> | <a href="#40966559" class="clicky" aria-hidden="true">prev</a> | <a href="#40965290" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40961398" n="5" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">What's wrong with depending on the Windows PE format, FAT filesystem and UEFI? You're always going to have <i>some</i> dependencies. FAT32 is better than having the first sector load some magic reserved sectors. Windows PE is better than a fixed memory address.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40961481"><td><table border="0">  <tbody><tr>    <td class="ind" indent="4"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="160"></td><td valign="top" class="votelinks">
+      <center><a id="up_40961481" href="https://news.ycombinator.com/vote?id=40961481&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=rep_lodsb" class="hnuser">rep_lodsb</a> <span class="age" title="2024-07-14T15:27:59 1720970879"><a href="https://news.ycombinator.com/item?id=40961481">10 months ago</a></span> <span id="unv_40961481"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40961398" class="clicky" aria-hidden="true">parent</a> | <a href="#40965290" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40961481" n="4" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">It's adding pointless complexity, and baking assumptions about how an OS should work into the firmware. Loading a sector at a fixed memory address and jumping to it (with some function provided so that your code can go on to load other sectors) is both easier to understand, and doesn't require you to use some multi-megabyte toolchain.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40971908"><td><table border="0">  <tbody><tr>    <td class="ind" indent="5"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="200"></td><td valign="top" class="votelinks">
+      <center><a id="up_40971908" href="https://news.ycombinator.com/vote?id=40971908&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=p_l" class="hnuser">p_l</a> <span class="age" title="2024-07-15T22:13:50 1721081630"><a href="https://news.ycombinator.com/item?id=40971908">10 months ago</a></span> <span id="unv_40971908"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40961481" class="clicky" aria-hidden="true">parent</a> | <a href="#40962347" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40971908" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Unless you need to load anything else other than what's in that sector, because you can't fit enough I/O drivers into one sector to load the rest of the OS.<p>Unless you're targeting S/360, but even there XA and newer made it a bit more complex.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class="athing comtr" id="40962347"><td><table border="0">  <tbody><tr>    <td class="ind" indent="5"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="200"></td><td valign="top" class="votelinks">
+      <center><a id="up_40962347" href="https://news.ycombinator.com/vote?id=40962347&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=immibis" class="hnuser">immibis</a> <span class="age" title="2024-07-14T18:09:23 1720980563"><a href="https://news.ycombinator.com/item?id=40962347">10 months ago</a></span> <span id="unv_40962347"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40961481" class="clicky" aria-hidden="true">parent</a> | <a href="#40971908" class="clicky" aria-hidden="true">prev</a> | <a href="#40965290" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40962347" n="2" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Wouldn't it be better to use a header to specify to load multiple sectors at multiple memory addresses?</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40976863"><td><table border="0">  <tbody><tr>    <td class="ind" indent="6"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="240"></td><td valign="top" class="votelinks">
+      <center><a id="up_40976863" href="https://news.ycombinator.com/vote?id=40976863&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=ForOldHack" class="hnuser">ForOldHack</a> <span class="age" title="2024-07-16T14:17:33 1721139453"><a href="https://news.ycombinator.com/item?id=40976863">10 months ago</a></span> <span id="unv_40976863"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">root</a> | <a href="#40962347" class="clicky" aria-hidden="true">parent</a> | <a href="#40965290" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40976863" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Yes, and considering that your boot sector is actually a boot cluster... You need not use compression. You could even steal the entire first cylinder. (Now that is old school)...</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                                          <tr class="athing comtr" id="40965290"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40965290" href="https://news.ycombinator.com/vote?id=40965290&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=saagarjha" class="hnuser">saagarjha</a> <span class="age" title="2024-07-15T04:31:58 1721017918"><a href="https://news.ycombinator.com/item?id=40965290">10 months ago</a></span> <span id="unv_40965290"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">parent</a> | <a href="#40960660" class="clicky" aria-hidden="true">prev</a> | <a href="#40961453" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40965290" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">What’s wrong with arm64?</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class="athing comtr" id="40961453"><td><table border="0">  <tbody><tr>    <td class="ind" indent="0"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="0"></td><td valign="top" class="votelinks">
+      <center><a id="up_40961453" href="https://news.ycombinator.com/vote?id=40961453&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=cf100clunk" class="hnuser">cf100clunk</a> <span class="age" title="2024-07-14T15:22:13 1720970533"><a href="https://news.ycombinator.com/item?id=40961453">10 months ago</a></span> <span id="unv_40961453"></span>          <span class="navs">
+             | <a href="#40960615" class="clicky" aria-hidden="true">prev</a> | <a href="#40960027" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40961453" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">A laudable project. UEFI proponents here wondering why the person bothered to create a new bootloader approach might be missing the point of why people undertake such tasks as this. As the writer ends:<p>&gt; Cool if you actually came along this far.</p><p>Cool indeed.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class="athing comtr" id="40960027"><td><table border="0">  <tbody><tr>    <td class="ind" indent="0"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="0"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960027" href="https://news.ycombinator.com/vote?id=40960027&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=AstralStorm" class="hnuser">AstralStorm</a> <span class="age" title="2024-07-14T10:22:12 1720952532"><a href="https://news.ycombinator.com/item?id=40960027">10 months ago</a></span> <span id="unv_40960027"></span>          <span class="navs">
+             | <a href="#40961453" class="clicky" aria-hidden="true">prev</a> | <a href="#40960475" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960027" n="20" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">How old is UEFI now? Pity nobody deprecated BIOS alongside long mode.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40960087"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960087" href="https://news.ycombinator.com/vote?id=40960087&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=deaddodo" class="hnuser">deaddodo</a> <span class="age" title="2024-07-14T10:34:36 1720953276"><a href="https://news.ycombinator.com/item?id=40960087">10 months ago</a></span> <span id="unv_40960087"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">parent</a> | <a href="#40960475" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960087" n="19" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">BIOS <i>is</i> deprecated. All of its functionality on new motherboards is basically emulated via the UEFI; and it's certainly not being extended upon.<p>Deprecated doesn't mean deleted, it just means "no longer updated/developed with a <i>goal</i> towards removal".</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40960500"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960500" href="https://news.ycombinator.com/vote?id=40960500&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=livrem" class="hnuser">livrem</a> <span class="age" title="2024-07-14T12:19:19 1720959559"><a href="https://news.ycombinator.com/item?id=40960500">10 months ago</a></span> <span id="unv_40960500"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40960087" class="clicky" aria-hidden="true">parent</a> | <a href="#40960475" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960500" n="18" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">This killed FreeDOS (and presumably all the other *DOS as well) on modern hardware unfortunately. It was fun as long as it lasted. I do not know what the next-best single-user, single-process, non-bloated OS would be to run on modern hardware that still has some reasonably modern software and can be used for distraction-free (hobby) development the way FreeDOS could.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40960934"><td><table border="0">  <tbody><tr>    <td class="ind" indent="3"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="120"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960934" href="https://news.ycombinator.com/vote?id=40960934&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=jasaldivara" class="hnuser">jasaldivara</a> <span class="age" title="2024-07-14T13:43:42 1720964622"><a href="https://news.ycombinator.com/item?id=40960934">10 months ago</a></span> <span id="unv_40960934"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40960500" class="clicky" aria-hidden="true">parent</a> | <a href="#40960952" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960934" n="2" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">&gt; I do not know what the next-best single-user, single-process, non-bloated OS would be to run on modern hardware that still has some reasonably modern software and can be used for distraction-free (hobby) development the way FreeDOS could.<p>Not sure why would you want a single-process OS on modern hardware, but there are some alternatives that run much less things on the background than regular Linux: Haiku, FreeBSD, NetBSD, OpenBSD, or some lightweight non-glibc, non-systemd Linux-based like Adelie or Alpine.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40969240"><td><table border="0">  <tbody><tr>    <td class="ind" indent="4"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="160"></td><td valign="top" class="votelinks">
+      <center><a id="up_40969240" href="https://news.ycombinator.com/vote?id=40969240&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=nineteen999" class="hnuser">nineteen999</a> <span class="age" title="2024-07-15T16:24:37 1721060677"><a href="https://news.ycombinator.com/item?id=40969240">10 months ago</a></span> <span id="unv_40969240"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40960934" class="clicky" aria-hidden="true">parent</a> | <a href="#40960952" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40969240" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Or, you know, just booting the Linux kernel with init=/bin/sh with /bin/sh being a statically linked binary. You're overthinking things.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class="athing comtr" id="40960952"><td><table border="0">  <tbody><tr>    <td class="ind" indent="3"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="120"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960952" href="https://news.ycombinator.com/vote?id=40960952&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=rwmj" class="hnuser">rwmj</a> <span class="age" title="2024-07-14T13:46:15 1720964775"><a href="https://news.ycombinator.com/item?id=40960952">10 months ago</a></span> <span id="unv_40960952"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40960500" class="clicky" aria-hidden="true">parent</a> | <a href="#40960934" class="clicky" aria-hidden="true">prev</a> | <a href="#40973370" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960952" n="5" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">What's the reason why FreeDOS can't use the CSM (the BIOS compatibility mode of UEFI)?</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40960986"><td><table border="0">  <tbody><tr>    <td class="ind" indent="4"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="160"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960986" href="https://news.ycombinator.com/vote?id=40960986&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=EvanAnderson" class="hnuser">EvanAnderson</a> <span class="age" title="2024-07-14T13:51:00 1720965060"><a href="https://news.ycombinator.com/item?id=40960986">10 months ago</a></span> <span id="unv_40960986"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40960952" class="clicky" aria-hidden="true">parent</a> | <a href="#40973370" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960986" n="4" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">AFAIK it can. I believe some UEFI implementations don't have CSM.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40967079"><td><table border="0">  <tbody><tr>    <td class="ind" indent="5"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="200"></td><td valign="top" class="votelinks">
+      <center><a id="up_40967079" href="https://news.ycombinator.com/vote?id=40967079&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=p_l" class="hnuser">p_l</a> <span class="age" title="2024-07-15T12:05:35 1721045135"><a href="https://news.ycombinator.com/item?id=40967079">10 months ago</a></span> <span id="unv_40967079"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40960986" class="clicky" aria-hidden="true">parent</a> | <a href="#40973370" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40967079" n="3" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">a Type 3 UEFI implementation has no CSM, Type 2 has CSM available, Type 1 enforces booting into CSM (what many "BIOS"es actually was in later days)</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40968861"><td><table border="0">  <tbody><tr>    <td class="ind" indent="6"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="240"></td><td valign="top" class="votelinks">
+      <center><a id="up_40968861" href="https://news.ycombinator.com/vote?id=40968861&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=EvanAnderson" class="hnuser">EvanAnderson</a> <span class="age" title="2024-07-15T15:41:01 1721058061"><a href="https://news.ycombinator.com/item?id=40968861">10 months ago</a></span> <span id="unv_40968861"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40967079" class="clicky" aria-hidden="true">parent</a> | <a href="#40968873" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40968861" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Thanks for that. That sent me down an enjoyable rabbit hole. I got started with PCs back in the 80s and became fairly familiar with how boot worked back then. UEFI happened while I was paying attention to other things and I've never become as familiar with it as I should be. This was a good excuse to do some reading.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class="athing comtr" id="40968873"><td><table border="0">  <tbody><tr>    <td class="ind" indent="6"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="240"></td><td valign="top" class="votelinks">
+      <center><a id="up_40968873" href="https://news.ycombinator.com/vote?id=40968873&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=deaddodo" class="hnuser">deaddodo</a> <span class="age" title="2024-07-15T15:42:03 1721058123"><a href="https://news.ycombinator.com/item?id=40968873">10 months ago</a></span> <span id="unv_40968873"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40967079" class="clicky" aria-hidden="true">parent</a> | <a href="#40968861" class="clicky" aria-hidden="true">prev</a> | <a href="#40973370" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40968873" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Just for clarification's sake, the proper terminology is "UEFI class" not "type".<p>Otherwise, this is accurate.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                              <tr class="athing comtr" id="40973370"><td><table border="0">  <tbody><tr>    <td class="ind" indent="3"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="120"></td><td valign="top" class="votelinks">
+      <center><a id="up_40973370" href="https://news.ycombinator.com/vote?id=40973370&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=cl91" class="hnuser">cl91</a> <span class="age" title="2024-07-16T03:04:18 1721099058"><a href="https://news.ycombinator.com/item?id=40973370">10 months ago</a></span> <span id="unv_40973370"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40960500" class="clicky" aria-hidden="true">parent</a> | <a href="#40960952" class="clicky" aria-hidden="true">prev</a> | <a href="#40960523" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40973370" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">&gt; the next-best single-user, single-process, non-bloated OS<p>is UEFI.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class="athing comtr" id="40960523"><td><table border="0">  <tbody><tr>    <td class="ind" indent="3"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="120"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960523" href="https://news.ycombinator.com/vote?id=40960523&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=trueismywork" class="hnuser">trueismywork</a> <span class="age" title="2024-07-14T12:23:03 1720959783"><a href="https://news.ycombinator.com/item?id=40960523">10 months ago</a></span> <span id="unv_40960523"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40960500" class="clicky" aria-hidden="true">parent</a> | <a href="#40973370" class="clicky" aria-hidden="true">prev</a> | <a href="#40960475" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960523" n="9" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Linux in single user mode</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40960667"><td><table border="0">  <tbody><tr>    <td class="ind" indent="4"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="160"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960667" href="https://news.ycombinator.com/vote?id=40960667&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=mschuster91" class="hnuser">mschuster91</a> <span class="age" title="2024-07-14T12:51:19 1720961479"><a href="https://news.ycombinator.com/item?id=40960667">10 months ago</a></span> <span id="unv_40960667"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40960523" class="clicky" aria-hidden="true">parent</a> | <a href="#40960475" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960667" n="8" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">That's still multi-process though, there's an awful lot of background tasks running in pretty much every non-fossil kernel version, not to mention userspace daemons (udev, dbus, dhcp) without which most normal userspace stuff doesn't even work.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40960876"><td><table border="0">  <tbody><tr>    <td class="ind" indent="5"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="200"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960876" href="https://news.ycombinator.com/vote?id=40960876&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=Brian_K_White" class="hnuser">Brian_K_White</a> <span class="age" title="2024-07-14T13:35:41 1720964141"><a href="https://news.ycombinator.com/item?id=40960876">10 months ago</a></span> <span id="unv_40960876"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40960667" class="clicky" aria-hidden="true">parent</a> | <a href="#40960475" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960876" n="7" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">None of that exists in single user. When you say init=/bin/foo,  then that's it, the only process is /bin/foo.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40960927"><td><table border="0">  <tbody><tr>    <td class="ind" indent="6"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="240"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960927" href="https://news.ycombinator.com/vote?id=40960927&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=ryandrake" class="hnuser">ryandrake</a> <span class="age" title="2024-07-14T13:43:00 1720964580"><a href="https://news.ycombinator.com/item?id=40960927">10 months ago</a></span> <span id="unv_40960927"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40960876" class="clicky" aria-hidden="true">parent</a> | <a href="#40960475" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960927" n="6" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">/bin/foo is the initial process. It can fork and/or exec other processes, right?</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40961847"><td><table border="0">  <tbody><tr>    <td class="ind" indent="7"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="280"></td><td valign="top" class="votelinks">
+      <center><a id="up_40961847" href="https://news.ycombinator.com/vote?id=40961847&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=Brian_K_White" class="hnuser">Brian_K_White</a> <span class="age" title="2024-07-14T16:36:14 1720974974"><a href="https://news.ycombinator.com/item?id=40961847">10 months ago</a></span> <span id="unv_40961847"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40960927" class="clicky" aria-hidden="true">parent</a> | <a href="#40967090" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40961847" n="2" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Sure the <i>facility</i> to fork still exists. So what? Observing that the kernel still provides fork() is like observing that the cpu still provides JMP.<p>It won't fork random processes you don't explicitly tell it to. I thought it was obvious that if you don't want unsolicited processes, then don't specify /bin/init as /bin/foo. The practical example is /bin/sh, but it could be any other executable.</p><p>Up to you to specify a binary that does what you want, and doesn't require a bunch of other processes like gdbus to function itself.</p><p>init=/bin/sh is more or less like ms-dos loading command.com</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40962601"><td><table border="0">  <tbody><tr>    <td class="ind" indent="8"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="320"></td><td valign="top" class="votelinks">
+      <center><a id="up_40962601" href="https://news.ycombinator.com/vote?id=40962601&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=gtirloni" class="hnuser">gtirloni</a> <span class="age" title="2024-07-14T18:59:03 1720983543"><a href="https://news.ycombinator.com/item?id=40962601">10 months ago</a></span> <span id="unv_40962601"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40961847" class="clicky" aria-hidden="true">parent</a> | <a href="#40967090" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40962601" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">It's obvious but many people here seem to be confusing the Linux kernel with kernel+systemd and complaining Linux has many processes like it's not customizable.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class="athing comtr" id="40967090"><td><table border="0">  <tbody><tr>    <td class="ind" indent="7"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="280"></td><td valign="top" class="votelinks">
+      <center><a id="up_40967090" href="https://news.ycombinator.com/vote?id=40967090&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=p_l" class="hnuser">p_l</a> <span class="age" title="2024-07-15T12:06:37 1721045197"><a href="https://news.ycombinator.com/item?id=40967090">10 months ago</a></span> <span id="unv_40967090"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40960927" class="clicky" aria-hidden="true">parent</a> | <a href="#40961847" class="clicky" aria-hidden="true">prev</a> | <a href="#40960475" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40967090" n="3" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">As much as DOS allowed multiple processes, even if only one was executed at the time and there was no multitasking outside of ill-fated MS-DOS 4.0 and various Concurrent DOS products.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40977175"><td><table border="0">  <tbody><tr>    <td class="ind" indent="8"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="320"></td><td valign="top" class="votelinks">
+      <center><a id="up_40977175" href="https://news.ycombinator.com/vote?id=40977175&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=ForOldHack" class="hnuser">ForOldHack</a> <span class="age" title="2024-07-16T14:51:55 1721141515"><a href="https://news.ycombinator.com/item?id=40977175">10 months ago</a></span> <span id="unv_40977175"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40967090" class="clicky" aria-hidden="true">parent</a> | <a href="#40960475" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40977175" n="2" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">You were not there. Multitasking? Xenix.
+Multitasking DOS? DOS Merge.
+Pre-emptive multitasking? AmigaOS. 
+DOS 4.0M was task switching.
+OS/2 2.0? I'm being extremely facetious.<p>Give me a date, and I will tell you what existed.</p><p>Nothing mainstream existed until windows 3.1. at least on x86/32</p><p>There also was OLEC on windows 2, that did run in real mode, but the only thing that took advantage of it was the demos, and samples: no commercial product used it.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40979560"><td><table border="0">  <tbody><tr>    <td class="ind" indent="9"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="360"></td><td valign="top" class="votelinks">
+      <center><a id="up_40979560" href="https://news.ycombinator.com/vote?id=40979560&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=p_l" class="hnuser">p_l</a> <span class="age" title="2024-07-16T19:36:25 1721158585"><a href="https://news.ycombinator.com/item?id=40979560">9 months ago</a></span> <span id="unv_40979560"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">root</a> | <a href="#40977175" class="clicky" aria-hidden="true">parent</a> | <a href="#40960475" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40979560" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">DOS still allowed you to run child processes, and TSRs were a thing that sometimes caused funny behaviours.<p>My point was that running your own chosen process as PID1 (or, to be more practical, a minimal init or maybe system v init with single entry for process to run) matches the requirements of running small set of processes just as well as DOS (if you need more, it's IMO more worthwhile to start getting a build of some RTOS for your platform)</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                                                                  <tr class="athing comtr" id="40960475"><td><table border="0">  <tbody><tr>    <td class="ind" indent="0"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="0"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960475" href="https://news.ycombinator.com/vote?id=40960475&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=ruslan" class="hnuser">ruslan</a> <span class="age" title="2024-07-14T12:14:48 1720959288"><a href="https://news.ycombinator.com/item?id=40960475">10 months ago</a></span> <span id="unv_40960475"></span>          <span class="navs">
+             | <a href="#40960027" class="clicky" aria-hidden="true">prev</a> | <a href="#40960514" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960475" n="4" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Does this boot procedure work with EFI/UEFI ? If so, does UEFI supervisor emulate swithing real/protected/long modes or does it go in real hardware ?</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40960567"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960567" href="https://news.ycombinator.com/vote?id=40960567&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=khaledh" class="hnuser">khaledh</a> <span class="age" title="2024-07-14T12:31:12 1720960272"><a href="https://news.ycombinator.com/item?id=40960567">10 months ago</a></span> <span id="unv_40960567"></span>          <span class="navs">
+             | <a href="#40960475" class="clicky" aria-hidden="true">parent</a> | <a href="#40960514" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960567" n="3" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">No. UEFI firmware creates a completely different environment for a UEFI bootloader than the legacy BIOS environment (real-address mode). The UEFI firmware enters 64-bit long mode directly on modern systems, and sets up a flat memory model GDT, as well as identity-mapped paging.<p>I've written about creating a UEFI bootloader (for my hobby OS) here: <a href="https://0xc0ffee.netlify.app/osdev/05-bootloader-p1.html" rel="nofollow">https://0xc0ffee.netlify.app/osdev/05-bootloader-p1.html</a></p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40961010"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40961010" href="https://news.ycombinator.com/vote?id=40961010&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=surajrmal" class="hnuser">surajrmal</a> <span class="age" title="2024-07-14T13:57:19 1720965439"><a href="https://news.ycombinator.com/item?id=40961010">10 months ago</a></span> <span id="unv_40961010"></span>          <span class="navs">
+             | <a href="#40960475" class="clicky" aria-hidden="true">root</a> | <a href="#40960567" class="clicky" aria-hidden="true">parent</a> | <a href="#40960514" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40961010" n="2" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">I thought many UEFI implementations support legacy bios mode as well. Or well they used to.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40961084"><td><table border="0">  <tbody><tr>    <td class="ind" indent="3"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="120"></td><td valign="top" class="votelinks">
+      <center><a id="up_40961084" href="https://news.ycombinator.com/vote?id=40961084&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=the_panopticon" class="hnuser">the_panopticon</a> <span class="age" title="2024-07-14T14:12:23 1720966343"><a href="https://news.ycombinator.com/item?id=40961084">10 months ago</a></span> <span id="unv_40961084"></span>          <span class="navs">
+             | <a href="#40960475" class="clicky" aria-hidden="true">root</a> | <a href="#40961010" class="clicky" aria-hidden="true">parent</a> | <a href="#40960514" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40961084" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">There is still support for CSM in the open source <a href="https://github.com/tianocore/tianocore.github.io/wiki/Compatibility-Support-Module">https://github.com/tianocore/tianocore.github.io/wiki/Compat...</a> and even nice projects like <a href="https://github.com/coreboot/seabiosto">https://github.com/coreboot/seabiosto</a> fabricate the CSM16 binary, but many vendors have stopped validating this path, including production of legacy BIOS option roms for adapters (net, gfx, etc) <a href="https://www.phoronix.com/news/Intel-Legacy-BIOS-EOL-2020" rel="nofollow">https://www.phoronix.com/news/Intel-Legacy-BIOS-EOL-2020</a>. I still believe CSP's maintain some of this support in their hypervisors' guest firmware for legacy OS binaries/ISO boot support? Also since Windows requires UEFI Secure boot enabled by default and CSM has to be disabled for the UEFI secure boot path, this is another reason legacy BIOS boot isn't exercised so much these days. 
+We could have added legacy oroms hashes to UEFI Secure boot implementations <a href="https://patents.google.com/patent/US8694761B2/en" rel="nofollow">https://patents.google.com/patent/US8694761B2/en</a>, too, but again folks pushed back in their zeal to remove legacy BIOS overall.  
+We didn't add the CSM spec <a href="https://www.intel.com/content/dam/www/public/us/en/documents/reference-guides/efi-compatibility-support-module-specification-v098.pdf" rel="nofollow">https://www.intel.com/content/dam/www/public/us/en/documents...</a> to the PI <a href="https://uefi.org/specs/PI/1.8A/" rel="nofollow">https://uefi.org/specs/PI/1.8A/</a> since folks were hoping UEFI would remove the need for CSM. I still remember being challenged in the early 2000's by a long-time BIOS mgr at Intel "Is removing legacy a good idea with EFI?  You know, we're really at legacy."</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                              <tr class="athing comtr" id="40960514"><td><table border="0">  <tbody><tr>    <td class="ind" indent="0"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="0"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960514" href="https://news.ycombinator.com/vote?id=40960514&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=amelius" class="hnuser">amelius</a> <span class="age" title="2024-07-14T12:21:17 1720959677"><a href="https://news.ycombinator.com/item?id=40960514">10 months ago</a></span> <span id="unv_40960514"></span>          <span class="navs">
+             | <a href="#40960475" class="clicky" aria-hidden="true">prev</a> <a class="togg clicky" id="40960514" n="7" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Is this any simpler on ARM?</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40960956"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40960956" href="https://news.ycombinator.com/vote?id=40960956&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=rwmj" class="hnuser">rwmj</a> <span class="age" title="2024-07-14T13:47:15 1720964835"><a href="https://news.ycombinator.com/item?id=40960956">10 months ago</a></span> <span id="unv_40960956"></span>          <span class="navs">
+             | <a href="#40960514" class="clicky" aria-hidden="true">parent</a> | <a href="#40961014" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40960956" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Only in the sense that every board vendor does their own random thing, which makes it simpler for the board vendors and horribly complicated for everyone else.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class="athing comtr" id="40961014"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40961014" href="https://news.ycombinator.com/vote?id=40961014&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=surajrmal" class="hnuser">surajrmal</a> <span class="age" title="2024-07-14T13:58:56 1720965536"><a href="https://news.ycombinator.com/item?id=40961014">10 months ago</a></span> <span id="unv_40961014"></span>          <span class="navs">
+             | <a href="#40960514" class="clicky" aria-hidden="true">parent</a> | <a href="#40960956" class="clicky" aria-hidden="true">prev</a> | <a href="#40962608" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40961014" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Yes. Bootloaders are still complex, but there is less legacy setup that is required. That said, if you're targeting UEFI instead of BIOS, it's a great deal simpler on x86 as well.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class="athing comtr" id="40962608"><td><table border="0">  <tbody><tr>    <td class="ind" indent="1"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="40"></td><td valign="top" class="votelinks">
+      <center><a id="up_40962608" href="https://news.ycombinator.com/vote?id=40962608&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=gtirloni" class="hnuser">gtirloni</a> <span class="age" title="2024-07-14T19:00:02 1720983602"><a href="https://news.ycombinator.com/item?id=40962608">10 months ago</a></span> <span id="unv_40962608"></span>          <span class="navs">
+             | <a href="#40960514" class="clicky" aria-hidden="true">parent</a> | <a href="#40961014" class="clicky" aria-hidden="true">prev</a> <a class="togg clicky" id="40962608" n="4" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Not sure, I wouldn't count on it. Currently deep in RISC-V and it seems there's hope.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40966627"><td><table border="0">  <tbody><tr>    <td class="ind" indent="2"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="80"></td><td valign="top" class="votelinks">
+      <center><a id="up_40966627" href="https://news.ycombinator.com/vote?id=40966627&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=zokier" class="hnuser">zokier</a> <span class="age" title="2024-07-15T10:33:48 1721039628"><a href="https://news.ycombinator.com/item?id=40966627">10 months ago</a></span> <span id="unv_40966627"></span>          <span class="navs">
+             | <a href="#40960514" class="clicky" aria-hidden="true">root</a> | <a href="#40962608" class="clicky" aria-hidden="true">parent</a> <a class="togg clicky" id="40966627" n="3" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">I don't see how riscv can be anything but worse than Arm in this regard. With Arm at least Arm Holdings has some nominal power to steer towards sanity (devicetrees, systemready etc), with riscv it's again full freedom for vendors to make their own bespoke crap.</div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class="athing comtr" id="40967610"><td><table border="0">  <tbody><tr>    <td class="ind" indent="3"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="120"></td><td valign="top" class="votelinks">
+      <center><a id="up_40967610" href="https://news.ycombinator.com/vote?id=40967610&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=gtirloni" class="hnuser">gtirloni</a> <span class="age" title="2024-07-15T13:14:10 1721049250"><a href="https://news.ycombinator.com/item?id=40967610">10 months ago</a></span> <span id="unv_40967610"></span>          <span class="navs">
+             | <a href="#40960514" class="clicky" aria-hidden="true">root</a> | <a href="#40966627" class="clicky" aria-hidden="true">parent</a> | <a href="#40967016" class="clicky" aria-hidden="true">next</a> <a class="togg clicky" id="40967610" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00"><i>&gt; With Arm at least Arm Holdings has some nominal power to steer towards sanity</i><p>How's that working?</p><p>RISC-V at least can have a formal spec that companies can choose to follow. The profile mentioned in another comment is one way. Companies can say they're compliant with this or that profile and software can target it.</p></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class="athing comtr" id="40967016"><td><table border="0">  <tbody><tr>    <td class="ind" indent="3"><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="1" width="120"></td><td valign="top" class="votelinks">
+      <center><a id="up_40967016" href="https://news.ycombinator.com/vote?id=40967016&amp;how=up&amp;goto=item%3Fid%3D40959742"><div class="votearrow" title="upvote"></div></a></center>    </td><td class="default"><div style="margin-top:2px; margin-bottom:-10px;"><span class="comhead">
+          <a href="https://news.ycombinator.com/user?id=rwmj" class="hnuser">rwmj</a> <span class="age" title="2024-07-15T11:55:37 1721044537"><a href="https://news.ycombinator.com/item?id=40967016">10 months ago</a></span> <span id="unv_40967016"></span>          <span class="navs">
+             | <a href="#40960514" class="clicky" aria-hidden="true">root</a> | <a href="#40966627" class="clicky" aria-hidden="true">parent</a> | <a href="#40967610" class="clicky" aria-hidden="true">prev</a> <a class="togg clicky" id="40967016" n="1" href="javascript:;">[–]</a><span class="onstory"></span>          </span>
+                  </span></div><br><div class="comment">
+                  <div class="commtext c00">Unfortunately this is true in general, but for servers there is some hope: <a href="https://github.com/riscv-non-isa/riscv-server-platform">https://github.com/riscv-non-isa/riscv-server-platform</a></div>
+              <div class="reply">        <p><font size="1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                              </tbody></table>
+  <br><br>
+</td></tr>
+<tr><td><img src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" height="10" width="0"><table width="100%" cellspacing="0" cellpadding="1"><tbody><tr><td bgcolor="#ff6600"></td></tr></tbody></table><br>
+<center><a href="https://www.ycombinator.com/apply/">Consider applying for YC's Summer 2025 batch! Applications are open till May 13</a></center><br>
+<center><span class="yclinks"><a href="https://news.ycombinator.com/newsguidelines.html">Guidelines</a> | <a href="https://news.ycombinator.com/newsfaq.html">FAQ</a> | <a href="https://news.ycombinator.com/lists">Lists</a> | <a href="https://github.com/HackerNews/API">API</a> | <a href="https://news.ycombinator.com/security.html">Security</a> | <a href="https://www.ycombinator.com/legal/">Legal</a> | <a href="https://www.ycombinator.com/apply/">Apply to YC</a> | <a href="mailto:hn@ycombinator.com">Contact</a></span><br><br>
+<form method="get" action="https://hn.algolia.com/">Search: <input type="text" name="q" size="17" autocorrect="off" spellcheck="false" autocapitalize="off" autocomplete="off"></form></center></td></tr>      </tbody></table></center>
+      <script type="text/javascript"></script>
+  
+</body></html>

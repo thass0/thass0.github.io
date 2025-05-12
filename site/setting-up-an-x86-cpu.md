@@ -10,7 +10,7 @@ layout: post
     <time datetime="2024-07-13">13 Jul 2024</time>
 </small>
 
-Discussion: [Hacker News](https://news.ycombinator.com/item?id=40959742) \| [r/programming](https://www.reddit.com/r/programming/comments/1ews2rz/setting_up_an_x86_cpu_in_64bit_mode/) \| [Lobsters](https://lobste.rs/s/etf2ct/setting_up_x86_cpu_64_bit_mode) \| [Hackaday](https://hackaday.com/2024/07/14/a-64-bit-x86-bootloader-from-scratch/)
+Discussion: [Hacker News](https://news.ycombinator.com/item?id=40959742)<a class="archive-link" href="/archive/Writing%20a%20BIOS%20bootloader%20for%2064-bit%20mode%20from%20scratch%20-%20Hacker%20News-2025-05-12T15_17_26Z.html"></a> \| [r/programming](https://www.reddit.com/r/programming/comments/1ews2rz/setting_up_an_x86_cpu_in_64bit_mode/)<a class="archive-link" href="/archive/Setting%20up%20an%20x86%20CPU%20in%2064-bit%20mode%20%20-%20%20programming-2025-05-12T15_25_35Z.html"></a> \| [Lobsters](https://lobste.rs/s/etf2ct/setting_up_x86_cpu_64_bit_mode)<a class="archive-link" href="/archive/Setting%20up%20an%20x86%20CPU%20in%2064-bit%20mode%20-%20Lobsters-2025-05-12T15_17_29Z.html"></a> \| [Hackaday](https://hackaday.com/2024/07/14/a-64-bit-x86-bootloader-from-scratch/)<a class="archive-link" href="/archive/A%2064-bit%20X86%20Bootloader%20From%20Scratch%20-%20Hackaday-2025-05-12T15_17_32Z.html"></a>
 
 ---
 
@@ -29,7 +29,7 @@ an assembler (I used [nasm](https://www.nasm.us/)), and
 [QEMU](https://www.qemu.org/). If you don't have an x86_64 CPU, you should
 still be able to run everything I describe by emulating an x86 CPU in QEMU.
 I assume you know x86 assembly and the syntax that nasm uses. I like
-the [nasm tutorial by Ray Toal](https://cs.lmu.edu/~ray/notes/nasmtutorial/)
+the [nasm tutorial by Ray Toal](https://cs.lmu.edu/~ray/notes/nasmtutorial/)<a class="archive-link" href="/archive/nasmtutorial-2025-05-12T15_19_45Z.html"></a>
 for getting started.
 
 I was surprised by how readable some of the Intel manual is. The initial
@@ -43,7 +43,7 @@ of Operation. The path we're taking is highlighted in red.
 
 
 For everything up to 32-bit mode, take a look at
-["Writing a Simple Operating System -- from Scratch"](https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf).
+["Writing a Simple Operating System -- from Scratch"](https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf)<a class="archive-link" href="/public/archive/writing-a-simple-os-from-scratch.pdf"></a>.
 It's unfinished but still very good.
 
 # Starting Point: BIOS
@@ -60,7 +60,7 @@ that "boot sector" to memory at address `0x7c00`.
 
 So the BIOS gives us 512 bytes to work with. We need to use these bytes in
 order to bootstrap the rest of the bootloader. [One can fit a surprising
-amount of stuff in 512 bytes](https://github.com/jart/sectorlisp),
+amount of stuff in 512 bytes](https://github.com/jart/sectorlisp)<a class="archive-link" href="/archive/GitHub%20-%20jart_sectorlisp%20-%20%20Bootstrapping%20LISP%20in%20a%20Boot%20Sector-2025-05-12T15_22_34Z.html"></a>,
 but it's easiest to just load some more data from disk first.
 Fortunately, routines defined by the BIOS remain available to us as
 long as we're in real mode.
@@ -195,7 +195,7 @@ So we'll load a number of sectors from disk into memory and hope for the
 best. Of course, this is an unsafe technique, but it works for now.
 
 This is how one can access the disk using BIOS. There's an
-[osdev.org page](https://wiki.osdev.org/Disk_access_using_the_BIOS_(INT_13h))
+[osdev.org page](https://wiki.osdev.org/Disk_access_using_the_BIOS_(INT_13h))<a class="archive-link" href="/archive/Disk%20access%20using%20the%20BIOS%20%28INT%2013h%29%20-%20OSDev%20Wiki-2025-05-12T15_22_47Z.html"></a>
 on this.
 
 ```nasm
@@ -496,9 +496,9 @@ must be enabled. We have protected mode now, but we are missing paging.
 
 I love paging. It's just very cool. But I'd do a poor job at explaining the
 concept itself. Philipp Oppermann's
-[Introduction to Paging](https://os.phil-opp.com/paging-introduction/) from
+[Introduction to Paging](https://os.phil-opp.com/paging-introduction/)<a class="archive-link" href="/archive/Introduction%20to%20Paging%20-%20Writing%20an%20OS%20in%20Rust-2025-05-12T15_22_49Z.html"></a> from
 the "Writing an OS in Rust" blog was really useful for me personally.
-[OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/) also talks about paging
+[OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)<a class="archive-link" href="/public/archive/vm-paging.pdf"></a> also talks about paging
 starting chapter 18, although it doesn't go into the specifics of paging
 on x86 like Philipp Oppermann's post does.
 

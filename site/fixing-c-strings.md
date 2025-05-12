@@ -10,7 +10,7 @@ layout: post
     <time datetime="2024-12-16">16 Dec 2024</time>
 </small>
 
-Disussion: [Hacker News](https://news.ycombinator.com/item?id=42444535) \| [r/programming](https://www.reddit.com/r/programming/comments/1hhyngu/fixing_c_strings/) \| [Lobsters](https://lobste.rs/s/ek1fzc/fixing_c_strings) \| [Hackaday](https://hackaday.com/2024/12/19/better-c-strings-simply/)
+Disussion: [Hacker News](https://news.ycombinator.com/item?id=42439654)<a class="archive-link" href="/archive/Fixing%20C%20Strings%20-%20Hacker%20News-2025-05-12T15_32_27Z.html"></a> \| [r/programming](https://www.reddit.com/r/programming/comments/1hhyngu/fixing_c_strings/)<a class="archive-link" href="/archive/Fixing%20C%20strings%20%20-%20%20programming-2025-05-12T15_33_02Z.html"></a> \| [Lobsters](https://lobste.rs/s/ek1fzc/fixing_c_strings)<a class="archive-link" href="/archive/Fixing%20C%20strings%20-%20Lobsters-2025-05-12T15_32_32Z.html"></a> \| [Hackaday](https://hackaday.com/2024/12/19/better-c-strings-simply/)<a class="archive-link" href="/archive/Better%20C%20Strings%2C%20Simply%20-%20Hackaday-2025-05-12T15_32_35Z.html"></a>
 
 ---
 
@@ -20,7 +20,7 @@ routines you find in `libc` or similar. In all the code I wrote, there is not at
 have yet to encounter a bug related to bounds checking on strings or buffers. This is a quick rundown of what I'm
 doing and how it holds up.
 
-This is what the string type looks like. I came across this idea in [a post by Chris Wellons](https://nullprogram.com/blog/2023/10/08/#strings).
+This is what the string type looks like. I came across this idea in [a post by Chris Wellons](https://nullprogram.com/blog/2023/10/08/#strings)<a class="archive-link" href="/archive/My%20personal%20C%20coding%20style%20as%20of%20late%202023-2025-05-12T15_32_36Z.html"></a>.
 
 ```c
 struct str {
@@ -79,7 +79,7 @@ I did not encounter a single bounds-checking-related bug since adopting this pat
 This is the main point: using this string type makes my code safer.
 
 I make extensive use of wrapper functions to do simple things such as creating or casting strings.
-Or, for example, to allocate a new string buffer from [an arena](https://www.rfleury.com/p/untangling-lifetimes-the-arena-allocator):
+Or, for example, to allocate a new string buffer from [an arena](https://www.rfleury.com/p/untangling-lifetimes-the-arena-allocator)<a class="archive-link" href="/archive/Untangling%20Lifetimes%20-%20%20The%20Arena%20Allocator%20-%20by%20Ryan%20Fleury-2025-05-12T15_32_40Z.html"></a>:
 
 ```c
 // The buffers I use for formatting are string buffers, hence the name.
