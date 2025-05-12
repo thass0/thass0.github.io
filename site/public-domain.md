@@ -14,3 +14,6 @@ notice as [nullprogram.com](https://nullprogram.com/). The text
 at the top of this page was generated with the awesome
 [Doom text generator](https://c.eev.ee/doom-text-generator/).
 
+All materials in the [archive](/archive.html) are subject to their
+original licenses and terms.
+
