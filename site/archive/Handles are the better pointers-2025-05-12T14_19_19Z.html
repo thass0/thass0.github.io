@@ -1,0 +1,440 @@
+<!-- Saved from https://floooh.github.io/2018/06/17/handles-vs-pointers.html at 2025-05-12T14:19:19Z using monolith v2.10.1 -->
+<!DOCTYPE html><html><head><meta http-equiv="Content-Security-Policy" content="script-src 'none';"></meta>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Handles are the better pointers</title>
+  <meta name="description" content="28-Nov-2018: I’ve added a small update at the end on how to prevent‘handle collisions’ with a per-slot generation counter">
+
+  <link rel="stylesheet" href="data:text/css;charset=utf-8;base64,Ym9keSxoMSxoMixoMyxoNCxoNSxoNixwLGJsb2NrcXVvdGUscHJlLGhyLGRsLGRkLG9sLHVsLGZpZ3VyZXttYXJnaW46MDtwYWRkaW5nOjB9Ym9keXtmb250OjQwMCAxNnB4LzEuNSBWZXJkYW5hLEFyaWFsLHNhbnMtc2VyaWY7Y29sb3I6I2Q4ZGVlNztiYWNrZ3JvdW5kLWNvbG9yOiMyOTJkM2U7LXdlYmtpdC10ZXh0LXNpemUtYWRqdXN0OjEwMCU7LXdlYmtpdC1mb250LWZlYXR1cmUtc2V0dGluZ3M6Imtlcm4iIDE7LW1vei1mb250LWZlYXR1cmUtc2V0dGluZ3M6Imtlcm4iIDE7LW8tZm9udC1mZWF0dXJlLXNldHRpbmdzOiJrZXJuIiAxO2ZvbnQtZmVhdHVyZS1zZXR0aW5nczoia2VybiIgMTtmb250LWtlcm5pbmc6bm9ybWFsfWgxLGgyLGgzLGg0LGg1LGg2LHAsYmxvY2txdW90ZSxwcmUsdWwsb2wsZGwsZmlndXJle21hcmdpbi1ib3R0b206MTVweH1oMSxoMixoMyxoNCxoNSxoNntjb2xvcjojYjZiYWU2fWltZ3ttYXgtd2lkdGg6MTAwJTt2ZXJ0aWNhbC1hbGlnbjptaWRkbGV9ZmlndXJlPmltZ3tkaXNwbGF5OmJsb2NrfWZpZ2NhcHRpb257Zm9udC1zaXplOjE0cHh9dWwsb2x7bWFyZ2luLWxlZnQ6MzBweH1saT51bCxsaT5vbHttYXJnaW4tYm90dG9tOjB9aDEsaDIsaDMsaDQsaDUsaDZ7Zm9udC13ZWlnaHQ6NDAwfWF7Y29sb3I6I2ZmNjE3Yjt0ZXh0LWRlY29yYXRpb246bm9uZX1hOmhvdmVye2NvbG9yOiNmZjk0YTZ9YmxvY2txdW90ZXtjb2xvcjojYjZiYWU2O2JvcmRlci1sZWZ0OjRweCBzb2xpZCAjZGZlMWU5O3BhZGRpbmctbGVmdDoxNXB4O2ZvbnQtc2l6ZToxOS4ycHg7bGV0dGVyLXNwYWNpbmc6LTFweH1ibG9ja3F1b3RlPjpsYXN0LWNoaWxke21hcmdpbi1ib3R0b206MH1wcmUsY29kZXtmb250LXNpemU6MTZweDtjb2xvcjp3aGl0ZX1jb2Rle3BhZGRpbmc6MXB4IDVweH1wcmV7cGFkZGluZzo4cHggMTJweDtvdmVyZmxvdy14OmF1dG99cHJlPmNvZGV7Ym9yZGVyOjA7cGFkZGluZy1yaWdodDowO3BhZGRpbmctbGVmdDowfS53cmFwcGVye21heC13aWR0aDotd2Via2l0LWNhbGMoMTEwMHB4IC0gKDMwcHggKiAyKSk7bWF4LXdpZHRoOmNhbGMoMTEwMHB4IC0gKDMwcHggKiAyKSk7bWFyZ2luLXJpZ2h0OmF1dG87bWFyZ2luLWxlZnQ6YXV0bztwYWRkaW5nLXJpZ2h0OjMwcHg7cGFkZGluZy1sZWZ0OjMwcHh9QG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTEwMHB4KXsud3JhcHBlcnttYXgtd2lkdGg6LXdlYmtpdC1jYWxjKDExMDBweCAtICgzMHB4KSk7bWF4LXdpZHRoOmNhbGMoMTEwMHB4IC0gKDMwcHgpKTtwYWRkaW5nLXJpZ2h0OjE1cHg7cGFkZGluZy1sZWZ0OjE1cHh9fS53cmFwcGVyOmFmdGVyLC5mb290ZXItY29sLXdyYXBwZXI6YWZ0ZXJ7Y29udGVudDoiIjtkaXNwbGF5OnRhYmxlO2NsZWFyOmJvdGh9Lmljb24+c3Zne2Rpc3BsYXk6aW5saW5lLWJsb2NrO3dpZHRoOjE2cHg7aGVpZ2h0OjE2cHg7dmVydGljYWwtYWxpZ246bWlkZGxlfS5pY29uPnN2ZyBwYXRoe2ZpbGw6IzY3NmU5NX0uc2l0ZS1oZWFkZXJ7Ym9yZGVyLXRvcDoxcHggc29saWQgIzY3NmU5NTtib3JkZXItYm90dG9tOjFweCBzb2xpZCAjNjc2ZTk1O21pbi1oZWlnaHQ6NTZweDtwb3NpdGlvbjpyZWxhdGl2ZX0uc2l0ZS10aXRsZXtmb250LXNpemU6MzZweDtmb250LXdlaWdodDozMDA7bGluZS1oZWlnaHQ6NTZweDttYXJnaW4tYm90dG9tOjA7ZmxvYXQ6bGVmdH0uc2l0ZS10aXRsZSwuc2l0ZS10aXRsZTp2aXNpdGVke2NvbG9yOiNmZjYxN2J9LnNpdGUtbmF2e2Zsb2F0OnJpZ2h0O2xpbmUtaGVpZ2h0OjU2cHh9LnNpdGUtbmF2IC5tZW51LWljb257ZGlzcGxheTpub25lfS5zaXRlLW5hdiAucGFnZS1saW5re2NvbG9yOiNkOGRlZTc7bGluZS1oZWlnaHQ6MS41fS5zaXRlLW5hdiAucGFnZS1saW5rOm5vdCg6bGFzdC1jaGlsZCl7bWFyZ2luLXJpZ2h0OjIwcHh9QG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogNjAwcHgpey5zaXRlLW5hdntwb3NpdGlvbjphYnNvbHV0ZTt0b3A6OXB4O3JpZ2h0OjE1cHg7YmFja2dyb3VuZC1jb2xvcjojMjkyZDNlO2JvcmRlcjoxcHggc29saWQgI2RmZTFlOTtib3JkZXItcmFkaXVzOjVweDt0ZXh0LWFsaWduOnJpZ2h0fS5zaXRlLW5hdiAubWVudS1pY29ue2Rpc3BsYXk6YmxvY2s7ZmxvYXQ6cmlnaHQ7d2lkdGg6MzZweDtoZWlnaHQ6MjZweDtsaW5lLWhlaWdodDowO3BhZGRpbmctdG9wOjEwcHg7dGV4dC1hbGlnbjpjZW50ZXJ9LnNpdGUtbmF2IC5tZW51LWljb24+c3Zne3dpZHRoOjE4cHg7aGVpZ2h0OjE1cHh9LnNpdGUtbmF2IC5tZW51LWljb24+c3ZnIHBhdGh7ZmlsbDojNWQ2Mzg2fS5zaXRlLW5hdiAudHJpZ2dlcntjbGVhcjpib3RoO2Rpc3BsYXk6bm9uZX0uc2l0ZS1uYXY6aG92ZXIgLnRyaWdnZXJ7ZGlzcGxheTpibG9jaztwYWRkaW5nLWJvdHRvbTo1cHh9LnNpdGUtbmF2IC5wYWdlLWxpbmt7ZGlzcGxheTpibG9jaztwYWRkaW5nOjVweCAxMHB4O21hcmdpbi1sZWZ0OjIwcHh9LnNpdGUtbmF2IC5wYWdlLWxpbms6bm90KDpsYXN0LWNoaWxkKXttYXJnaW4tcmlnaHQ6MH19LnNpdGUtZm9vdGVye2JvcmRlci10b3A6MXB4IHNvbGlkICM2NzZlOTU7cGFkZGluZzozMHB4IDB9LmZvb3Rlci1oZWFkaW5ne2ZvbnQtc2l6ZToxOHB4O2NvbG9yOiNmZjYxN2I7bWFyZ2luLWJvdHRvbToxNXB4fS5jb250YWN0LWxpc3QsLnNvY2lhbC1tZWRpYS1saXN0e2xpc3Qtc3R5bGU6bm9uZTttYXJnaW4tbGVmdDowfS5mb290ZXItY29sLXdyYXBwZXJ7Zm9udC1zaXplOjE1cHg7Y29sb3I6IzY3NmU5NTttYXJnaW4tbGVmdDotMTVweH0uZm9vdGVyLWNvbHtmbG9hdDpsZWZ0O21hcmdpbi1ib3R0b206MTVweDtwYWRkaW5nLWxlZnQ6MTVweH0uZm9vdGVyLWNvbC0xe3dpZHRoOi13ZWJraXQtY2FsYygzNSUgLSAoMzBweCAvIDIpKTt3aWR0aDpjYWxjKDM1JSAtICgzMHB4IC8gMikpfS5mb290ZXItY29sLTJ7d2lkdGg6LXdlYmtpdC1jYWxjKDIwJSAtICgzMHB4IC8gMikpO3dpZHRoOmNhbGMoMjAlIC0gKDMwcHggLyAyKSl9LmZvb3Rlci1jb2wtM3t3aWR0aDotd2Via2l0LWNhbGMoNDUlIC0gKDMwcHggLyAyKSk7d2lkdGg6Y2FsYyg0NSUgLSAoMzBweCAvIDIpKX1AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAxMTAwcHgpey5mb290ZXItY29sLTEsLmZvb3Rlci1jb2wtMnt3aWR0aDotd2Via2l0LWNhbGMoNTAlIC0gKDMwcHggLyAyKSk7d2lkdGg6Y2FsYyg1MCUgLSAoMzBweCAvIDIpKX0uZm9vdGVyLWNvbC0ze3dpZHRoOi13ZWJraXQtY2FsYygxMDAlIC0gKDMwcHggLyAyKSk7d2lkdGg6Y2FsYygxMDAlIC0gKDMwcHggLyAyKSl9fUBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDYwMHB4KXsuZm9vdGVyLWNvbHtmbG9hdDpub25lO3dpZHRoOi13ZWJraXQtY2FsYygxMDAlIC0gKDMwcHggLyAyKSk7d2lkdGg6Y2FsYygxMDAlIC0gKDMwcHggLyAyKSl9fS5wYWdlLWNvbnRlbnR7cGFkZGluZzozMHB4IDB9LnBhZ2UtaGVhZGluZ3tmb250LXNpemU6MjBweDtjb2xvcjojZmY2MTdifS5wb3N0LWxpc3R7bWFyZ2luLWxlZnQ6MDtsaXN0LXN0eWxlOm5vbmV9LnBvc3QtbGlzdD5saXttYXJnaW4tYm90dG9tOjMwcHh9LnBvc3QtbWV0YXtmb250LXNpemU6MTRweDtjb2xvcjojNjc2ZTk1fS5wb3N0LWxpbmt7ZGlzcGxheTpibG9jaztmb250LXNpemU6MjRweDtjb2xvcjojYjZiYWU2fS5wb3N0LWxpbms6aG92ZXJ7Y29sb3I6I2I2YmFlNjt0ZXh0LWRlY29yYXRpb246dW5kZXJsaW5lfS5wb3N0LWhlYWRlcnttYXJnaW4tYm90dG9tOjMwcHh9LnBvc3QtdGl0bGV7Zm9udC1zaXplOjQycHg7bGV0dGVyLXNwYWNpbmc6LTFweDtsaW5lLWhlaWdodDoxO2NvbG9yOiNiNmJhZTZ9QG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTEwMHB4KXsucG9zdC10aXRsZXtmb250LXNpemU6MzZweH19LnBvc3QtY29udGVudHttYXJnaW4tYm90dG9tOjMwcHh9LnBvc3QtY29udGVudCBoMntmb250LXNpemU6MzJweH1AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAxMTAwcHgpey5wb3N0LWNvbnRlbnQgaDJ7Zm9udC1zaXplOjI4cHh9fS5wb3N0LWNvbnRlbnQgaDN7Zm9udC1zaXplOjI2cHh9QG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogMTEwMHB4KXsucG9zdC1jb250ZW50IGgze2ZvbnQtc2l6ZToyMnB4fX0ucG9zdC1jb250ZW50IGg0e2ZvbnQtc2l6ZToyMHB4fUBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDExMDBweCl7LnBvc3QtY29udGVudCBoNHtmb250LXNpemU6MThweH19LmhpZ2hsaWdodCB0YWJsZSB0ZHtwYWRkaW5nOjVweH0uaGlnaGxpZ2h0IHRhYmxlIHByZXttYXJnaW46MH0uaGlnaGxpZ2h0IC5jLC5oaWdobGlnaHQgLmNke2NvbG9yOiM1ZTVkODM7Zm9udC1zdHlsZTppdGFsaWN9LmhpZ2hsaWdodCAuY217Y29sb3I6IzVlNWQ4Mztmb250LXN0eWxlOml0YWxpY30uaGlnaGxpZ2h0IC5jMXtjb2xvcjojYTZlMjJlO2ZvbnQtc3R5bGU6aXRhbGljfS5oaWdobGlnaHQgLmNwe2NvbG9yOiM4ZGE5YWY7Zm9udC13ZWlnaHQ6Ym9sZH0uaGlnaGxpZ2h0IC5jc3tjb2xvcjojNDY1NDU3O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zdHlsZTppdGFsaWN9LmhpZ2hsaWdodCAuZXJye2NvbG9yOiNmOGY4ZjI7YmFja2dyb3VuZC1jb2xvcjojNDAzZDNkfS5oaWdobGlnaHQgLmdpe2NvbG9yOiNhNmUyMmV9LmhpZ2hsaWdodCAuZ2R7Y29sb3I6I2Y5MjY3Mn0uaGlnaGxpZ2h0IC5nZXtjb2xvcjojMWIxZDFlO2ZvbnQtc3R5bGU6aXRhbGljfS5oaWdobGlnaHQgLmdye2NvbG9yOiNmOTI2NzJ9LmhpZ2hsaWdodCAuZ3R7Y29sb3I6I2Y5MjY3Mn0uaGlnaGxpZ2h0IC5naHtjb2xvcjojNDAzZDNkfS5oaWdobGlnaHQgLmdve2NvbG9yOiM0MDNkM2R9LmhpZ2hsaWdodCAuZ3B7Y29sb3I6IzY2ZDllZn0uaGlnaGxpZ2h0IC5nc3tmb250LXdlaWdodDpib2xkfS5oaWdobGlnaHQgLmd1e2NvbG9yOiM0NjU0NTd9LmhpZ2hsaWdodCAuaywuaGlnaGxpZ2h0IC5rdntjb2xvcjojNjZkOWVmO2ZvbnQtd2VpZ2h0OmJvbGR9LmhpZ2hsaWdodCAua2N7Y29sb3I6IzY2ZDllZjtmb250LXdlaWdodDpib2xkfS5oaWdobGlnaHQgLmtke2NvbG9yOiM2NmQ5ZWY7Zm9udC13ZWlnaHQ6Ym9sZH0uaGlnaGxpZ2h0IC5rcHtjb2xvcjojNjZkOWVmO2ZvbnQtd2VpZ2h0OmJvbGR9LmhpZ2hsaWdodCAua3J7Y29sb3I6IzY2ZDllZjtmb250LXdlaWdodDpib2xkfS5oaWdobGlnaHQgLmt0e2NvbG9yOiM2NmQ5ZWY7Zm9udC13ZWlnaHQ6Ym9sZH0uaGlnaGxpZ2h0IC5rbntjb2xvcjojZjkyNjcyO2ZvbnQtd2VpZ2h0OmJvbGR9LmhpZ2hsaWdodCAub3d7Y29sb3I6I2Y5MjY3Mjtmb250LXdlaWdodDpib2xkfS5oaWdobGlnaHQgLm97Y29sb3I6I2Y5MjY3Mjtmb250LXdlaWdodDpib2xkfS5oaWdobGlnaHQgLm1me2NvbG9yOiNhZjg3ZmZ9LmhpZ2hsaWdodCAubWh7Y29sb3I6I2FmODdmZn0uaGlnaGxpZ2h0IC5pbHtjb2xvcjojYWY4N2ZmfS5oaWdobGlnaHQgLm1pe2NvbG9yOiNhZjg3ZmZ9LmhpZ2hsaWdodCAubW97Y29sb3I6I2FmODdmZn0uaGlnaGxpZ2h0IC5tLC5oaWdobGlnaHQgLm1iLC5oaWdobGlnaHQgLm14e2NvbG9yOiNhZjg3ZmZ9LmhpZ2hsaWdodCAuc2V7Y29sb3I6I2FmODdmZn0uaGlnaGxpZ2h0IC5zYntjb2xvcjojZDdkNzg3fS5oaWdobGlnaHQgLnNje2NvbG9yOiNkN2Q3ODd9LmhpZ2hsaWdodCAuc2R7Y29sb3I6I2Q3ZDc4N30uaGlnaGxpZ2h0IC5zMntjb2xvcjojZDdkNzg3fS5oaWdobGlnaHQgLnNoe2NvbG9yOiNkN2Q3ODd9LmhpZ2hsaWdodCAuc2l7Y29sb3I6I2Q3ZDc4N30uaGlnaGxpZ2h0IC5zeHtjb2xvcjojZDdkNzg3fS5oaWdobGlnaHQgLnNye2NvbG9yOiNkN2Q3ODd9LmhpZ2hsaWdodCAuczF7Y29sb3I6I2Q3ZDc4N30uaGlnaGxpZ2h0IC5zc3tjb2xvcjojZDdkNzg3fS5oaWdobGlnaHQgLnN7Y29sb3I6I2Q3ZDc4N30uaGlnaGxpZ2h0IC5uYXtjb2xvcjojYTZlMjJlfS5oaWdobGlnaHQgLm5je2NvbG9yOiNhNmUyMmU7Zm9udC13ZWlnaHQ6Ym9sZH0uaGlnaGxpZ2h0IC5uZHtjb2xvcjojYTZlMjJlO2ZvbnQtd2VpZ2h0OmJvbGR9LmhpZ2hsaWdodCAubmV7Y29sb3I6I2E2ZTIyZTtmb250LXdlaWdodDpib2xkfS5oaWdobGlnaHQgLm5me2NvbG9yOiNhNmUyMmU7Zm9udC13ZWlnaHQ6Ym9sZH0uaGlnaGxpZ2h0IC5ub3tjb2xvcjojNjZkOWVmfS5oaWdobGlnaHQgLmJwe2NvbG9yOiNmOGY4ZjJ9LmhpZ2hsaWdodCAubmJ7Y29sb3I6I2Y4ZjhmMn0uaGlnaGxpZ2h0IC5uaXtjb2xvcjojZjhmOGYyfS5oaWdobGlnaHQgLm5ue2NvbG9yOiNmOGY4ZjJ9LmhpZ2hsaWdodCAudmN7Y29sb3I6I2Y4ZjhmMn0uaGlnaGxpZ2h0IC52Z3tjb2xvcjojZjhmOGYyfS5oaWdobGlnaHQgLnZpe2NvbG9yOiNmOGY4ZjJ9LmhpZ2hsaWdodCAubnZ7Y29sb3I6I2Y4ZjhmMn0uaGlnaGxpZ2h0IC53e2NvbG9yOiNmOGY4ZjJ9LmhpZ2hsaWdodCAubmx7Y29sb3I6I2Y4ZjhmMjtmb250LXdlaWdodDpib2xkfS5oaWdobGlnaHQgLm50e2NvbG9yOiNmOTI2NzJ9LmhpZ2hsaWdodHtjb2xvcjojZjhmOGYyO2JhY2tncm91bmQtY29sb3I6IzFmMjMzMH0K">
+  <link rel="canonical" href="https://floooh.github.io/2018/06/17/handles-vs-pointers.html">
+  <link rel="alternate" type="application/rss+xml" title="The Brain Dump" href="https://floooh.github.io/feed.xml">
+<meta name="robots" content="none"></meta></head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="https://floooh.github.io/">The Brain Dump</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"></path>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"></path>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"></path>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="https://floooh.github.io/about/">About</a>
+          
+        
+          
+          <a class="page-link" href="https://floooh.github.io/archive/">Archive</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="" itemtype="https://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Handles are the better pointers</h1>
+    <p class="post-meta"><time datetime="2018-06-17T00:00:00+00:00" itemprop="datePublished">Jun 17, 2018</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><strong>28-Nov-2018</strong>: I’ve added a small update at the end on how to prevent
+‘handle collisions’ with a per-slot generation counter</p>
+
+<p><strong>Original Post</strong>:</p>
+
+<p>…wherein I talk a bit about how I’m doing dynamic memory management in C
+and C++ these days which basically replaces raw- and smart-pointers with
+‘index-handles’.</p>
+
+<p>In my <a href="https://floooh.github.io/2018/06/02/one-year-of-c.html">last blog post</a> I was mentioning
+pointer- and allocation-free programming, but was skipping over
+the details. This is what the following blog post is
+about.</p>
+
+<p>This is all based on the (sometimes painful) experience of wrestling for 15+
+years with fairly big C++ code bases (0.5 to around 1 mloc) where memory is
+often managed through smart pointers. The worst case being tens- to
+hundreds-of-thousands of small C++ objects, each in its own heap
+allocation, pointing to each other through smart pointers. While such code
+is quite robust in terms of memory corruption (segfaults and corruption
+rarely happens, since most attempts are caught by asserts when dereferencing
+smart pointers), this type of ‘object spiderweb code’ is also dog-slow
+without obvious starting points for optimization, since the entire code is full of
+cache misses. Other typical problems are memory fragmentation and ‘fake
+memory leaks’ because a forgotten smart pointer prevents freeing the
+underlying memory (I call them ‘fake leaks’ because this type of leaks cannot
+be caught by memory debugging tools).</p>
+
+<p>Nothing presented here is particularly new or clever, it’s just
+a collection of a few simple ideas which together work fairly well in bigger
+code bases to prevent (or at least detect early) a number of common
+memory-related problems in C and C++, and may even be useful in higher-level
+garbage-collected languages to reduce pressure on the garbage collector.</p>
+
+<p>However, the underlying design philosophy doesn’t fit very well into a
+classical OOP world where applications are built from small autonomous
+objects interacting with each other. That’s why it’s also quite tricky to
+implement those ideas in a big existing OOP code base, where object creation
+and destruction happens ‘decentralized’ all over the code.</p>
+
+<p>The approach described here works very well though with a data-oriented
+architecture, where central systems work on arrays of data items packed
+tightly in memory.</p>
+
+<p>Most of the following blog post is written from a game developer’s
+perspective, but should also apply to other areas where a program needs to
+juggle a few hundred to a few million objects (or generally ‘data items’) in
+memory, and where such items are created and destroyed frequently.</p>
+
+<p>The gist is:</p>
+
+<ul>
+  <li>move all memory management into centralized systems (like rendering, physics, animation, …), with the systems being the sole owner of their memory allocations</li>
+  <li>group items of the same type into arrays, and treat the array base pointer as system-private</li>
+  <li>when creating an item, only return an ‘index-handle’ to the outside world, not a pointer to the item</li>
+  <li>in the index-handles, only use as many bits as needed for the array index, and use the remaining bits for additional memory safety checks</li>
+  <li>only convert a handle to a pointer when absolutely needed, and don’t store the pointer anywhere</li>
+</ul>
+
+<p>I’ll explain each of those points in detail below. But the idea is basically
+that common ‘user-level’ code doesn’t directly call memory allocation
+functions (like malloc, new or make_shared/make_unique), and reduces the use
+of pointers to an absolute minimum (only as short-lived references when
+direct memory access to an item is absolutely needed). Most importantly,
+pointers are never the ‘owner’ of an item’s underlying memory.</p>
+
+<p>Instead, direct memory manipulation happens as much as possible inside a few
+centralized systems where memory-related problems are easier to debug and
+optimize.</p>
+
+<h2 id="move-memory-management-into-central-systems">Move memory management into central systems</h2>
+
+<p>In this blog post, a ‘system’ is a (usually fairly big) part of a code base
+which takes care of a number of related tasks, like ‘rendering’, ‘physics’,
+‘AI’, ‘character animation’ and so on. Such a system is separated from other
+systems and ‘user-code’ through a clearly defined function API, and the work
+that happens on the system’s data is performed in tight central loops instead
+of being spread out all over the code base.</p>
+
+<p>Systems often work on items created and destroyed under control of user code
+(but note that creation and destruction of items is different from allocating
+and freeing the memory used by those items!). For instance a rendering system
+might deal with vertex buffers, textures, shaders and pipeline state objects.
+A physics system works with rigid bodies, joints and collision primitives,
+and an animation system works with animation keys and curves.</p>
+
+<p>It makes sense to move the memory management for such items into the systems
+themselves, because a general memory allocator doesn’t have the
+system-specific ‘domain knowledge’ about how data items are processed and the
+relationships between data items. This allows the system to optimize memory
+allocations, perform additional validation checks when creating and
+destroying items, and arrange items in memory for making best use of the
+CPU’s data caches.</p>
+
+<p>A good example for this ‘system domain knowledge’ is the destruction of
+rendering resource objects with modern 3D APIs: a resource object can not
+simply be destroyed immediately when the user code says so because the
+resource might still be referenced in a command list waiting to be consumed
+by the GPU. Instead the rendering system would only mark the resource object
+for destruction when the user code requests its destruction, but the actual
+destruction happens at a later time when the GPU no longer uses the resource.</p>
+
+<h2 id="group-items-of-the-same-type-into-arrays">Group items of the same type into arrays</h2>
+
+<p>Once all memory management has moved into systems, the system can optimize
+memory allocations and memory layout with its additional knowledge about how
+items are used. One obvious optimization is to reduce the number of general
+memory allocations by grouping items of the same type into arrays, and
+allocate those arrays at system startup.</p>
+
+<p>Instead of performing a memory allocation each time a new item is created,
+the system keeps track of free array slots, and picks the next free slot.
+When the user code no longer needs the item, the system simply marks the slot
+as free again instead of performing a deallocation (not different
+from a typical pool allocator).</p>
+
+<p>This pool allocation is most likely a little bit faster than performing a
+memory allocation per item, but this is not even the main reason for keeping
+items in arrays (modern general allocators are quite fast too for small
+allocations).</p>
+
+<p>A few additional advantages are:</p>
+
+<ul>
+  <li>items are guaranteed to be packed tightly in memory, general allocators sometimes need to keep some housekeeping data next to the actual item memory</li>
+  <li>it’s easier to keep ‘hot items’ in continuous memory ranges, so that the CPU can make better use of its data caches</li>
+  <li>it’s also possible to split the data of a single item into several subitems in different arrays for even tighter packing and better data cache usage (AoS vs SoA and everything inbetween), and all those data layout details remain private to the system and are trivial to change without affecting ‘outside code’</li>
+  <li>as long as the system doesn’t need to reallocate arrays, it is guaranteed that there will be no memory fragmentation (although this is less of an issue in a 64-bit address space)</li>
+  <li>it’s easier to detect memory leaks early, and provide more useful error messages: when a new item is created a system can trivially check the current number of items against an expected upper bound (for instance a game might know that there should never be more than 1024 textures alive at a time, and since all textures are created through the rendering system, the system can print out a more useful warning message when this number is exceeded)</li>
+</ul>
+
+<h2 id="public-index-handles-instead-of-pointers">Public index-handles instead of pointers</h2>
+
+<p>Keeping system items in arrays instead of unique allocations has the
+advantage that an item can be identified through an array index instead of
+requiring a full pointer. This is very useful for memory safety.
+Instead of handing memory pointers to the outside world, the system can treat
+the array base pointers as ‘private knowledge’, and only hand out array
+indices to the public. Without the base pointer to compute an item’s memory
+location, the outside code can’t access the item’s memory, even with a lot
+of criminal energy.</p>
+
+<p>This has a number of further advantages:</p>
+
+<ul>
+  <li>In many situations, code outside the system never even needs to directly access memory of an item, only the system does. In such an ‘ideal’ situation, user code never accesses memory through pointers, and can never cause memory corruption.</li>
+  <li>Since only the system knows the array base pointers, it’s free to move or reallocate the item arrays at will without invalidating existing index handles.</li>
+  <li>Array indices need fewer bits than full pointers, and a smaller data type can be picked for them, which in turn allows tighter packing of data structures and better data cache usage (this has the caveat that additional handle bits can be used to increase memory safety, more about this below)</li>
+</ul>
+
+<p>If user code needs to access the memory of an item directly it needs to obtain
+a pointer through a ‘lookup function’ which takes a handle as input and returns
+a pointer. As soon as such a lookup function exists, the fairly watertight 
+memory safety scenario outlined above is no longer guaranteed, and the user code
+should adhere to a few rules:</p>
+
+<ul>
+  <li>pointers should never be stored anywhere, since the next time the pointer is used it may no longer point to the same item, or even to valid memory</li>
+  <li>a pointer should only be used in a simple code block, and not ‘across’ function calls</li>
+</ul>
+
+<p>Every time a handle is converted into a pointer, the system can guarantee
+that the returned pointer still points to the same item that the handle was
+originally created for (more on this below), but this guarantee ‘decays’ over
+time since the item under the pointer may have been destroyed, or the underlying
+memory may have been reallocated to a different location (this is the same
+problem as iterator invalidation in C++).</p>
+
+<p>The two simple rules above are easy to memorize and are a good compromise between
+not exposing pointers to user code at all, and having a (somewhat costly) 
+handle-to-pointer conversion for every single memory access.</p>
+
+<h2 id="memory-safety-considerations">Memory safety considerations</h2>
+
+<p>First, each type of handle should get its own C/C++ type, so that attempting
+to pass the wrong handle type to a function is already detected at compile
+time (note that a simple typedef isn’t enough to produce a compiler warning,
+the handle must be wrapped into its own struct or class - however this could
+be limited to debug compilation mode).</p>
+
+<p>All runtime memory safety checks happen in the function which converts a
+handle into a pointer. If the handle is just an array index, it would look
+like this:</p>
+
+<ul>
+  <li>a range check happens for the index against the current item array size, this prevents segmentation faults and reading or writing allocated but unrelated memory areas</li>
+  <li>a check needs to happen whether the indexed array item slot contains an active item (is not currently a ‘free slot’), this prevents the simple variant of ‘use after free’</li>
+  <li>finally the item pointer is computed from the private array base pointer and public item index</li>
+</ul>
+
+<p>The resulting pointer is safe to use as long as:</p>
+
+<ul>
+  <li>the item array isn’t reallocated</li>
+  <li>the indexed item hasn’t been destroyed</li>
+</ul>
+
+<p>Both can only happen inside one of the system’s functions, that’s why the two
+‘pointer usage rules’ exist (don’t store pointers, don’t keep pointers across
+function calls).</p>
+
+<p>There is a pretty big hole in the above use-after-free check though: if we only
+check if an array slot behind an index-handle contains a valid item, it’s
+not guaranteed that it is the <em>same</em> item the handle was originally created
+for. It can happen that the original item was destroyed, and the same
+array slot was reused for a <em>new</em> item.</p>
+
+<p>This is where the ‘free bits’ in a handle come in: Let’s say our
+handles are 16-bits, but we only ever need 1024 items alive
+at the same time. Only 10 index bits are needed to address 1024 items, which
+leaves 6 bits free for something else.</p>
+
+<p>If those 6 bits contain some sort of ‘unique pattern’, it’s possible to
+detect dangling accesses:</p>
+
+<ul>
+  <li>When an item is created, a free array item is picked and its index is put into the lower 10 handle bits. The upper 6 bits are set to a ‘unique bit pattern’</li>
+  <li>The resulting 16-bit handle (10 bits index + 6 bit ‘unique pattern’) are returned to the outside world, and at the same time stored with the array slot.</li>
+  <li>When an item is destroyed, the item handle stored with the array slot is set to the ‘invalid handle’ value (can be zero, as long as zero is never returned as a valid handle to the outside world)</li>
+  <li>When the handle is converted to a pointer, the lower 10 bits are used as array index to lookup the array slot, and the entire 16-bit handle is compared against the handle that’s currently stored with the array slot:
+    <ul>
+      <li>if both handles are equal, the pointer is valid and points to the same item the handle was created for</li>
+      <li>otherwise this is a dangling access, the slot item has either been destroyed (in that case the stored handle would have the ‘invalid handle’ value), or has been destroyed and reused for a new item (in that case the upper 6 ‘unique pattern’ bits don’t match)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>This handle-comparison check when converting a handle to a pointer works
+quite well to detect dangling-accesses, but it isn’t waterproof because the
+same combination of array index and ‘unique pattern’ will be created sooner or
+later.
+But it’s still better than no dangling protection at all (like raw pointers),
+or a ‘fake memory leak’ which would happen in similar situations with smart pointers.</p>
+
+<p>Finding good strategies to create unique handles that collide as rarely as
+possible is the most important part of course, and left as an excercise to
+the reader ;P</p>
+
+<p>Obviously it’s good to use as many bits for the unique pattern as possible, and the
+way how free array slots are reused is important as well (e.g. LIFO vs FIFO). It’s
+probably also good to write a little creation/destruction stress-test which
+checks for handle collisions and can be used to tweak the unique-pattern creation for
+specific use cases. A system where items are created and destroyed with a very
+high frequency needs more effort (or simply more handle bits) than systems 
+where item creation and destruction is a rare occurance.</p>
+
+<h2 id="other-useful-properties-of-handles">Other useful properties of handles</h2>
+
+<p>Apart from the whole memory safety aspect, handles are also useful for other 
+situations where pointers are problematic:</p>
+
+<p>Handles can be used as shared object identifiers across processes (all you need is
+some sort of ‘create_item_with_handle()’ function, which doesn’t create a 
+new handle, but takes an existing handle as input argument). This is especially
+useful for online games where handles can be shared between the server and
+all clients in a game session, or in savegame systems to store references
+to other objects.</p>
+
+<p>Sometimes it’s useful to create a whole group of related items (for instance
+animation keys and curves), and reference the whole item group with a single
+handle. In that case some sort of ‘range handle’ can be used, which contains
+not only an index (of the first item), but also the number of items in the range.</p>
+
+<p>In some situations it’s also useful to reserve a few handle bits for an item
+type if static type checking at compile time isn’t sufficient.</p>
+
+<p>In conclusion, I find it quite surprising how naturally and elegantly handles
+solve many problems I encountered in the past with the traditional ‘pointers
+to objects on the heap’ model, and how little I miss this model now (and the
+parts of C++ that are built around it).</p>
+
+<h2 id="some-real-world-examples">Some real-world examples</h2>
+
+<p>The sokol-gfx API is an example of a C-API which uses handles instead of
+pointer of rendering resource objects (buffers, images, shaders, …):</p>
+
+<p><strong><a href="https://github.com/floooh/sokol#sokol_gfxh">sokol_gfx.h</a></strong></p>
+
+<p>The Oryol Gfx module is a similar 3D API wrapper, but written in C++:</p>
+
+<p><strong><a href="https://github.com/floooh/oryol/tree/sokol-gfx/code/Modules/Gfx">Oryol Gfx Module</a></strong></p>
+
+<p>The Oryol Animation extension module is a character animation system which keeps all its data in arrays:</p>
+
+<p><strong><a href="https://github.com/floooh/oryol-animation/tree/master/src/Anim">Oryol Anim Module</a></strong></p>
+
+<h2 id="update-28-nov-2018">Update 28-Nov-2018</h2>
+
+<p>…in the post above I was sort of handwaving away the problem of creating
+the same unique-tag twice for the same slot, and a nice person on twitter
+hinted me about a very simple, elegant and embarrassingly ‘obvious’ solution:</p>
+
+<p>Each array slot gets its own <strong>generation counter</strong>, which is bumped when a
+handle is released (can also happen when the handle is created, but bumping
+on release means you don’t need a reserved value for “free slots” to detect
+an invalid handle).</p>
+
+<p>To check if a handle is valid, simply compare its unique-tag with the current
+generation counter in its slot.</p>
+
+<p>Once the generation counter would ‘overflow’, <strong>disable</strong> that array slot, so
+that no new handles are returned for this slot.</p>
+
+<p>This is a perfect solution for avoiding handle collisions, but the handles
+will eventually run out since all array slots will be disabled eventually. But
+since each slot has its own counter, this only happens after <em>all</em>
+handle-bits are exhausted, not just the few unique-tag bits.</p>
+
+<p>So with 32-bit handles, you can always create 4 billion items, with at most
+2^(32 - num_counter_bits) alive at the same time. This also means the number of
+bits for the unique-tag can be reduced without compromising ‘handle safety’.</p>
+
+<p>It may also be possible to re-activate disabled slots once it can be
+guaranteed that no more handles for that slot are out in the wild
+(maybe at special places in the code like entering or exiting a level).</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Brain Dump</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>The Brain Dump</li>
+          <li><a href="mailto:floooh@gmail.com">floooh@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/floooh"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"></path></svg>
+</span><span class="username">floooh</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/flohofwoe"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"></path></svg>
+</span><span class="username">flohofwoe</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>This is the blog and personal web page of Andre Weissflog (Floh, floooh, flohofwoe) mostly about programming stuff.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  
+
+
+</body></html>

@@ -91,6 +91,19 @@ small {
     color: var(--small-color);
 }
 
+/* Archive links */
+.archive-link {
+    display: inline-block;
+    margin-left: 5px;
+    position: relative;
+    text-decoration: none !important;
+}
+
+.archive-link::after {
+    content: "🖫";
+    font-size: 0.9em;
+}
+
 /* Footer stuff */
 
 footer {
