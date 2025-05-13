@@ -98,19 +98,19 @@ def md_to_html(name: str, md: str) -> str:
     html = to_html(md, safe=False)
     end_time = perf_counter()
     elapsed = end_time - start_time
-    print(f"Converted {name}.md to HTML in {elapsed:.4f} second(s)")
+    print(f"Converted {name} to HTML in {elapsed:.4f} second(s)")
     return html
 
 def load_src(src_dir: Path) -> Dict[str, Tuple[str, str, Dict[str, str]]]:
     src = {}
     for ent in src_dir.iterdir():
         if not ent.is_file():
-            for name, (cont, suffix, front_matter) in load_src(ent).items():
-                src[ent.stem + "/" + name] = (cont, suffix, front_matter)
+            for name, (cont, front_matter) in load_src(ent).items():
+                src[ent.name + '/' + name] = (cont, front_matter)
         else:
             cont = ent.read_text(encoding="utf-8")
             cont, front_matter = extract_frontmatter(cont)
-            src[ent.stem] = (cont, ent.suffix, front_matter)
+            src[ent.name] = (cont, front_matter)
     return src
 
 if __name__ == "__main__":
@@ -121,9 +121,9 @@ if __name__ == "__main__":
 
     run(["rm", "-rf", str(out_dir)], check=True)
 
-    for name, (cont, suffix, front_matter) in src.items():
-        output_path = Path(str(out_dir / name) + suffix)
-        if suffix == ".md":
+    for name, (cont, front_matter) in src.items():
+        output_path = out_dir / name
+        if output_path.suffix == ".md":
             cont = md_to_html(name, cont)
             # Replace default suffix (.md) with .html.
             output_path = (out_dir / name).with_suffix(".html")
