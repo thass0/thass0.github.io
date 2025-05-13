@@ -119,7 +119,7 @@ that's still nice to use.
 I have personally taken tooling to a form of extreme. My blog is quite
 minimal, and, except for the Markdown to HTML conversion, the
 entire site generation is covered by a
-[120-line Python script](https://github.com/thass0/thass0.github.io/blob/465907cc883bc4134ecb01516fd505ff53b94547/generate.py).
+[120-line Python script](/public/code/2025-05-13-generate.py).
 The only dependency of my blog that doesn't come pre-installed
 with Ubuntu is Cmark, the reference implementation of the CommonMark
 Markdown specification. It's fast, well-tested, fuzzed, and actively

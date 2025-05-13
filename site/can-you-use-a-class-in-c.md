@@ -263,4 +263,5 @@ extern "C" Rational *make_rational(int numer, int denom) {
 
 In such a simple case it's also feasible to check if the denominator is 0 in `make_rational` but that doesn't apply to more realistic examples.
 
-You can find all the code for this post [on my GitHub](https://github.com/thass0/blog-code/tree/main/2023-08-11-can-you-use-a-class-in-c).
+You can download the code from this post [here](/public/code/2025-05-13-can-you-use-a-class-in-c.tar.gz).
+

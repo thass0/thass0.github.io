@@ -236,7 +236,7 @@ Mul
 
 `pTerm` and `pExpr` are very similar and can easily be abstracted into a function that parses any left-associative binary expression. Then, the production rule for any level of precedence can be implemented in a single line. Unary operators can also be added by extending `pFactor`.
 
-The code for this post can be found [here](https://github.com/thass0/blog-code/blob/3b8ea340e94f97c6892f92f64091f876c94b3993/2023-10-31-parsing-expressions-by-recursive-descent-in-haskell/Expr.hs). It includes such a generic function for parsing expressions.
+The code for this post can be found [here](/public/code/2025-05-13-Expr.hs). It includes such a generic function for parsing expressions.
 
 ---
 

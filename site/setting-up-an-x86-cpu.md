@@ -782,5 +782,4 @@ $(BUILD_DIR)/%.c.o: $(SRC_DIR)/%.c
 
 ![QEMU screenshot of the message printed by C code](/public/figures/qemu-c-screenshot.png)
 
-Cool if you actually came along this far. The
-[code is on GitHub](https://github.com/thass0/blog-code/tree/main/2024-07-13-setting-up-an-x86-cpu).
+Cool if you actually came along this far. You can download the code [here](/public/code/2025-05-13-setting-up-an-x86-cpu.tar.gz).
