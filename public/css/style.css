@@ -43,6 +43,9 @@ body {
     margin-right: auto;
     max-width: 750px;
     text-align: justify;
+
+    /* Create space after hazard banner */
+    padding-top: 50px;
 }
 
 .post-title {
@@ -100,6 +103,30 @@ small {
 .archive-link::after {
     content: "💾";
     font-size: 0.9em;
+}
+
+/* Hazard banner */
+
+.hazard-banner {
+    height: 50px;
+    width: 100%;
+    background: repeating-linear-gradient(45deg, #ffd700 0px, #ffd700 20px, #000000 20px, #000000 40px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hazard-text {
+    text-align: center;
+    background-color: #fff;
+    color: #000;
+    padding: 5px 10px;
+    width: 100%;
+    font-size: 13px;
 }
 
 /* Footer stuff */
