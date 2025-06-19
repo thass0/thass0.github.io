@@ -95,7 +95,7 @@ def link_footnotes(md: str) -> str:
 def md_to_html(name: str, md: str) -> str:
     start_time = perf_counter()
     md = link_footnotes(md)
-    html = to_html(md, safe=False)
+    html = to_html(md, safe=False, smart=True)
     end_time = perf_counter()
     elapsed = end_time - start_time
     print(f"Converted {name} to HTML in {elapsed:.4f} second(s)")

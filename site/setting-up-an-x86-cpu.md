@@ -43,7 +43,7 @@ of Operation. The path we're taking is highlighted in red.
 
 
 For everything up to 32-bit mode, take a look at
-["Writing a Simple Operating System -- from Scratch"](https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf)<a class="archive-link" href="/public/archive/writing-a-simple-os-from-scratch.pdf"></a>.
+["Writing a Simple Operating System --- from Scratch"](https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf)<a class="archive-link" href="/public/archive/writing-a-simple-os-from-scratch.pdf"></a>.
 It's unfinished but still very good.
 
 # Starting Point: BIOS

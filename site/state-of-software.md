@@ -58,7 +58,7 @@ been efforts in the past to restrict access.
 
 Many believe software should be free, i.e., they don't want to pay
 before (and often after) downloading a software. Business software like
-Microsoft Office is an exception -- people will pay when it directly
+Microsoft Office is an exception --- people will pay when it directly
 affects their income. But if you're trying to get your app adopted by
 the public, it better be free. Or rather, appear to be free. Software
 is not free, of course! People just don't mind giving away their
@@ -69,7 +69,7 @@ Looking forward, there is a subtle thread to free speech here. While we can
 speak freely today, the massive collection of personal data creates the
 infrastructure for future manipulation and control. Every piece of data
 collected builds a more detailed system for potential exploitation. The
-real danger isn't just today's targeted ads and manipulated content --
+real danger isn't just today's targeted ads and manipulated content ---
 it's how this accumulated surveillance power could be used to restrict and
 shape public discourse in the future.
 
@@ -124,7 +124,7 @@ to avoid. Users lack a mental model of what better software would look and
 feel like. They have accepted that clicking a button means waiting tenths
 of seconds for a response (this is the case with many interaction on LinkedIn
 for example), that typing in Word or Notion will always lack behind their
-keystrokes. In reality, these delays aren't technical necessities -- they
+keystrokes. In reality, these delays aren't technical necessities --- they
 are failures of design and implementation that we've been conditioned to accept.
 
 Even cheap computers today are powerful enough to easily handle

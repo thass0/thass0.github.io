@@ -18,7 +18,7 @@ try to provide "interesting" content, but they are, well, walled gardens and
 generally work towards getting you addicted to their service in order to sell
 even more ads.
 
-Fortunately for us, there is the "small web" -- the part of the internet made
+Fortunately for us, there is the "small web" --- the part of the internet made
 up of personal blogs and other kinds of privately run, small-scale websites
 that are primarily operated for a fun. There is nothing wrong with making a
 profit on the web, of course. There are great for-profit services, like
@@ -102,7 +102,7 @@ to a 10% increase from source to built page.
 
 Compare this to a random post on Substack that was just on Hacker News,
 where the total size of the HTML was somehow ten times that of the word
-count. And now think how much -- from the user's point of view -- the
+count. And now think how much --- from the user's point of view --- the
 experience of reading the content of the post is better on Substack as
 compared to reading it on my blog. A randomly chosen user may prefer
 Substack for it's more elaborate design, but they probably won't like

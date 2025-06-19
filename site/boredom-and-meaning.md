@@ -61,8 +61,8 @@ and I miss the joy and meaning I found in programming.
 ---
 
 I started doing OS hacking right after I graduated from high school
-last year. I had done a lot of low-level programming before -- some
-OS stuff even -- but I hadn't seriously focused on OS programming.
+last year. I had done a lot of low-level programming before --- some
+OS stuff even --- but I hadn't seriously focused on OS programming.
 
 At the time I figured I should learn more about (a) OS development and
 systems programming or (b) AI and machine learning. I was already
@@ -103,4 +103,3 @@ more settled in at university.
 Zurich is beautiful, by the way. Have a good day, friend.
 
 ![View from Rämistrasse at the ETH main building on a sunny fall day](/public/figures/eth-main-building.jpg)
-
