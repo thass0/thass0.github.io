@@ -3,12 +3,25 @@ layout: post
 ---
 
 <h1 class="post-title">
-  <a href="/key-and-me.html">Announcing KeyAnd.Me</a>
+  <a href="/key-and-me.html">Announcing KeyAnd.Me (fiction)</a>
 </h1>
 
 <small>
     <time datetime="2025-07-11">11 Jul 2025</time>
 </small>
+
+**Update: (<time datetime="2025-09-07">07 Sep 2025</time>):** We are sorry to inform you that
+KeyAnd.Me is closing down today. After highly sensitive customer data was leaked in a breach of
+security last month, we and our investors have decided it's best to sunset the service. I'm
+grateful for the entire experience and for getting the chance to work with my incredible
+co-founders. We all learned a ton! Now it's back to studying.
+
+**Update (<time datetime="2025-08-01">01 Aug 2025</time>):** This past week we have been informed
+about a breach of security in our system. The root cause was a vulnerability in one of our
+dependencies which has since been replaced to fix the issue. We are still investigating, but, as
+yet, we couldn't find any evidence of customer data being compromised.
+
+---
 
 Today my co-founders and I are sharing news about our new company: KeyAnd.Me. We offer a
 privacy-first security service that empowers enterprises to keep their encryption safe.
