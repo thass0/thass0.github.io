@@ -2,7 +2,7 @@
 layout: recipe
 ---
 
-## Marble Cake
+# Marble Cake
 
 <div class="recipe-controls">
     <label for="marble-scale">Scale: </label>
