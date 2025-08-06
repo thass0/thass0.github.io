@@ -26,9 +26,9 @@ layout: recipe
 
 **Instructions:**
 1. Pour milk into a large bowl. Gradually whisk in flour until smooth, making sure the flour doesn't clump.
-2. Let rest for at least 30 minutes (2 hours works well too).
+2. Let rest for at least 30&nbsp;minutes (2&nbsp;hours works well too).
 3. Preheat pan on high heat with half the butter.
-4. Beat the eggs with a fork --- doesn't need to be perfect.
+4. Beat the eggs with a fork&nbsp;---&nbsp;doesn't need to be perfect.
 5. Gently fold eggs into the rested batter. Maintain the batter's consistency, less mixing is better than more.
 6. Pour batter 2--3cm thick into the buttered pan and throw raisins into the batter with momentum. (Alternatively, raisins can be briefly sautéed in butter first.) Cover with lid if possible and bake/fry at medium heat.
 7. When edges, bottom and ideally most of the pancake has firmed up, flip over. Cook/fry for similar time on the second side.

@@ -27,9 +27,9 @@ layout: recipe
 **Instructions:**
 1. Put butter in mixing bowl and cream with sugar, flour/cornstarch, eggs, vanilla sugar and baking powder.
 2. Put half of the batter into the greased cake pan, add cocoa and sugar to the other half and mix.
-3. Preheat oven for 15 minutes at 175°C with bottom heat.
-4. Bake on the lower rack with for 60 minutes.
-5. Leave the cake in the oven for another 10 minutes after turning off the oven.
+3. Preheat oven for 15&nbsp;minutes at 175°&nbsp;C with bottom heat.
+4. Bake on the lower rack with for 60&nbsp;minutes.
+5. Leave the cake in the oven for another 10&nbsp;minutes after turning off the oven.
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
