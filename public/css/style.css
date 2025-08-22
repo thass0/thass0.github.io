@@ -12,8 +12,6 @@ html {
     --background-color: #ffffff;
     --link-color: #0000f0;
     --link-interact-color: #000080;
-    --table-border-color: #e5e5e5;
-    --table-background-color: #f9f9f9;
     --code-background-color: #f3f3f3;
     --code-border-color: #606060;
 
@@ -144,6 +142,77 @@ footer {
     }
 }
 
+/***************/
+/* Dated table */
+/***************/
+
+/* Styles for HTML tables with a relatively narrow first column of dates
+   and a second column of arbitrary information. */
+
+.dated-table {
+    width: 100%;
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 0;
+    container-type: inline-size; /* Enable container queries */
+}
+
+.dated-table tr {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent individual wrapping */
+    align-items: flex-start;
+    margin-bottom: 1em;
+}
+
+.dated-table td:first-child {
+    flex: 0 0 auto;
+    padding-right: 15px;
+    min-width: 140px;
+}
+
+.dated-table td:last-child {
+    flex: 1 1 auto;
+    min-width: 0; /* Allow text to shrink */
+}
+
+/* Container query -- when table gets too narrow, switch all entries to stacked layout */
+@container (max-width: 700px) {
+    .dated-table tr {
+        flex-direction: column;
+    }
+
+    .dated-table td:first-child {
+        padding-right: 0;
+        min-width: unset;
+    }
+}
+
+/* Fallback for browsers that don't support container queries */
+@media screen and (max-width: 700px) {
+    .dated-table tr {
+        flex-direction: column;
+    }
+
+    .dated-table td:first-child {
+        padding-right: 0;
+        padding-bottom: 5px;
+        min-width: unset;
+    }
+}
+
+@media (max-width: 700px) {
+    table {
+        border-top: 1px solid var(--text-color);
+    }
+
+    .dated-table tr {
+        border-bottom: 1px solid var(--text-color);
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        margin-bottom: 0em;
+    }
+}
+
 /************/
 /* Masthead */
 /************/
@@ -170,34 +239,6 @@ footer {
 
 .index-about-links {
     flex: 1 1 20%;
-}
-
-/**************/
-/* Post index */
-/**************/
-
-.posts {
-    text-align: left;
-}
-
-@media (max-width: 50em) {
-    .posts {
-        border-collapse: collapse;
-        width: 100%;
-        border-style: solid;
-        border-width: 1px 0;
-        border-color: var(--text-color);
-    }
-
-    .posts tr {
-        border-bottom: 1px solid var(--text-color);
-    }
-
-    .posts td,
-    .posts th {
-        padding-top: 0.3em;
-        padding-bottom: 0.3em;
-    }
 }
 
 /********/
