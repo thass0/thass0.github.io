@@ -41,7 +41,7 @@ body {
     width: 87.5%;
     margin-left: auto;
     margin-right: auto;
-    max-width: 1024px;
+    max-width: 750px;
     text-align: justify;
 }
 
@@ -176,7 +176,7 @@ footer {
 }
 
 /* Container query -- when table gets too narrow, switch all entries to stacked layout */
-@container (max-width: 700px) {
+@container (max-width: 600px) {
     .dated-table tr {
         flex-direction: column;
     }
@@ -188,7 +188,7 @@ footer {
 }
 
 /* Fallback for browsers that don't support container queries */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 600px) {
     .dated-table tr {
         flex-direction: column;
     }
@@ -200,7 +200,7 @@ footer {
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
     table {
         border-top: 1px solid var(--text-color);
     }
