@@ -160,16 +160,16 @@ footer {
 .index-about-content {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 0px;
     text-align: left;
 }
 
 .index-about-text {
-    flex: 2 1 450px;
+    flex: 3 1 80%;
 }
 
 .index-about-links {
-    flex: 1 1 200px;
+    flex: 1 1 20%;
 }
 
 /**************/
