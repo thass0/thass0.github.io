@@ -1,0 +1,198 @@
+<!-- Saved from https://www.scattered-thoughts.net/writing/how-safe-is-zig/ at 2025-11-28T21:45:43Z using monolith v2.10.1 -->
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-eval' 'unsafe-inline' data:; script-src 'none';"></meta>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:type" content="article">
+  
+      <meta property="og:title" content="How (memory) safe is zig?">
+      
+  
+  
+  
+      <meta property="og:url" content="https://www.scattered-thoughts.net/writing/how-safe-is-zig/">
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@sc13ts">
+  <meta name="twitter:creator" content="@sc13ts">
+  
+      <title>How (memory) safe is zig?</title>
+  
+  
+  
+      <link rel="canonical" href="https://www.scattered-thoughts.net/writing/how-safe-is-zig/">
+  
+  <link rel="alternate" type="application/atom+xml" title="Scattered Thoughts" href="https://www.scattered-thoughts.net/atom.xml">
+  <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUDAAAFAwAABQMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAwAABQMABAUDAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUDAAQFAwAEBQMABAUDAAQFAwAEBQMABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAwAEBQMABAAAAAAFAwD/BQMA/wUDAAAFAwAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQMABAUDAAAFAwD/BQMA/wUDAP8FAwD/BQMAAAUDAAQFAwAABQMAAAAAAAAAAAAABQMAAAUDAAAAAAAAAAAAAAUDAAAFAwD/BQMAAAAAAAAAAAAABQMAAAUDAP8FAwAABQMAAAUDAAAAAAAABQMAAAUDAAAFAwAABQMAAAUDAAAFAwD/BQMAAAAAAAAAAAAAAAAAAAAAAAAFAwACBQMA/wUDAAIAAAAABQMAAAAAAAAFAwD/BQMA/wUDAAAFAwAABQMAAAAAAAAAAAAAAAAAAAAAAAAFAwAABQMAAgUDAAIFAwACBQMAAgAAAAAFAwD/BQMA/wUDAP8FAwD/AAAAAAAAAAAAAAAAAAAAAAUDAAIFAwAABQMAAgUDAAIFAwACBQMAAgUDAAIFAwD/BQMAAgAAAAAAAAAABQMAAAUDAP8AAAAAAAAAAAAAAAAFAwACBQMAAgUDAAIFAwD/BQMA/wUDAAAFAwACBQMAAgUDAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAwAABQMAAgAAAAAFAwDyBQMA/wUDAP8FAwD/BQMAAAUDAAIFAwACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUDAAIFAwDyAAAAAAAAAAAAAAAABQMAAgUDAP8FAwACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAwDyAAAAAAAAAAAAAAAABQMAAgUDAAIFAwACBQMA/wUDAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQMAAgUDAAIFAwAAAAAAAAUDAAIFAwACBQMAAgUDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUDAAAFAwAABQMAAAUDAAAFAwAABQMAAAUDAAAFAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQMAAAAAAAAAAAAA//8AAP//AAD//wAA5/8AAMP/AAC9/wAAfvMAAP/hAAD/3gAA/P8AAPh/AAD3vwAA798AAP//AAD//wAA//8AAA==" type="image/x-icon">
+  
+  <style>
+    progress,sub,sup{vertical-align:baseline}button,hr,input{overflow:visible}html{font-family:sans-serif;line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}figcaption,menu,article,aside,details,figure,footer,header,main,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:rgba(0,0,0,0);-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:0.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,select{text-transform:none}[type=submit],[type=reset],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:ButtonText dotted 1px}fieldset{border:1px solid silver;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:0.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}
+    body{padding:32px;color:#333;background-color:#fff;font-family:Fira Sans,Georgia,serif;font-size:20px}.container{max-width:45em;margin:0 auto}body blockquote{border-left:2px solid #333 !important}html{font-size:1em;font-size-adjust:0.5}h1,h2,h3{font-weight:800;font-family:Fira Sans,Helvetica,sans-serif}h1{text-align:center;font-size:2em}h2{text-align:center;font-size:1.2em}article h2{margin-top:4em}h3{text-align:center;font-size:1em;margin:0em}.links a,.links a:visited,nav a,nav a:visited{text-decoration:none;color:#333}a,a:visited,a:active{color:#008099}a:hover{color:#008099 !important}.links{text-align:center}blockquote{margin:0;padding:0px 10px 0px 10px;border-radius:5px}article img{margin-left:auto;margin-right:auto;max-width:100%;display:block}article>pre{padding:0 1em 0 1em;background-color:#fff !important}code{color:#61676c}code,pre{white-space:pre;overflow:visible;font-family:Fira Code,monospace}ul,ol{padding:0}ul{padding-left:30px;list-style:disc}ol{padding-left:30px;list-style:decimal}header{margin:2em 0 2em 0;text-align:center}footer{margin-top:4em;text-align:center;font-style:italic}iframe{width:560px;height:315px;display:block;margin:0 auto;padding-top:1em}article hr{width:7em;margin-top:3em;margin-bottom:3em;border:0;height:1px;background-image:linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0))}.spacer-1{padding:0.5em}.sc13ts-button{border:none !important;border-radius:2rem !important;padding:1rem !important;text-decoration:none !important;background:#008099 !important;color:#fff !important}.sc13ts-button:hover{background:#00d5ff !important;color:#fff !important}.footnote-definition p{display:inline}li:has(span:target){border:solid #32cd32;padding:0.5em}
+  </style>
+<meta name="robots" content="none"></meta></head>
+
+<body>
+
+  <div style="padding: 2rem;"></div>
+
+  <div class="container">
+    
+
+<nav style="position: absolute; left: 1em; top: 1em;">
+  <a href="https://www.scattered-thoughts.net/" title="Home">
+   <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="2em" height="2em" viewBox="0 0 547.596 547.596" style="enable-background:new 0 0 547.596 547.596;" xml:space="preserve">
+<g>
+	<path d="M540.76,254.788L294.506,38.216c-11.475-10.098-30.064-10.098-41.386,0L6.943,254.788
+		c-11.475,10.098-8.415,18.284,6.885,18.284h75.964v221.773c0,12.087,9.945,22.108,22.108,22.108h92.947V371.067
+		c0-12.087,9.945-22.108,22.109-22.108h93.865c12.239,0,22.108,9.792,22.108,22.108v145.886h92.947
+		c12.24,0,22.108-9.945,22.108-22.108v-221.85h75.965C549.021,272.995,552.081,264.886,540.76,254.788z"></path>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+  </a>
+</nav>
+
+<h1>How (memory) safe is zig?</h1>
+
+
+<div style="text-align: center; margin-top: -1.8em; font-style: italic; font-weight: light; font-size: 0.7em;">Published 2021-03-19</div>
+
+<div style="text-align: center; font-style: italic; font-weight: light; font-size: 0.7em;">Updated 2022-09-21</div>
+
+
+
+<article>
+  <p>I keep seeing discussions that equate zig's level of memory safety with c (or occasionally with rust!). Neither is particularly accurate. This is an attempt at a more detailed breakdown.</p>
+<p>This article is limited to memory safety. See <a href="https://www.scattered-thoughts.net/writing/assorted-thoughts-on-zig-and-rust/">Assorted thoughts on zig and rust</a> for a more general comparison.</p>
+<p>I'm concerned mostly with security. In practice, it doesn't seem that any level of testing is sufficient to prevent vulnerabilities due to memory safety in large programs. So I'm not covering tools like AddressSanitizer that are intended for testing and are <a href="https://www.openwall.com/lists/oss-security/2016/02/17/9">not recommended</a> for production use. Instead I'll focus on tools which can systematically rule out errors (eg compiler-inserted bounds checks completely prevent out-of-bounds heap read/write).</p>
+<p>I'm also focusing on software as it is typically shipped, ignoring eg bounds checking compilers like <a href="https://bellard.org/tcc/">tcc</a> or quarantining allocators like <a href="https://github.com/GrapheneOS/hardened_malloc">hardened_malloc</a> which are rarely used because of the performance overhead.</p>
+<p>Finally, note the 'Updated' date below the title. Zig in particular is still under rapid development and will likely change faster than this article updates. (See the <a href="https://github.com/ziglang/zig/issues/2301">tracking issue</a> for safety mechanisms).</p>
+<hr>
+<p>I see two major categories of safety mechanisms:</p>
+<p><strong>Adhoc runtime checks</strong>. These appear in all zig and rust codebases but are very rare in idomatic c. Many of these checks are also idiomatic in modern c++ codebases but are hamstrung by backwards-compatible interfaces. These checks are easy to implement and probably sufficiently non-controversial that any new systems language will have similar features. Examples include:</p>
+<ul>
+<li>Pervasive use of a slice type (pointer + length) and bounds-checking reads/writes of those slices.</li>
+<li>Disallowing null pointers, except via an 'optional' type which cannot be derefenced without checking for null.</li>
+<li>Builtin support for tagged unions which cannot be accessed without checking the tag.</li>
+<li>Automatic checking of over/underflow in arithmetic and when casting between numeric types.</li>
+<li>Using a separate type for null-terminated strings, to prevent accidentally passing a non-null-terminated string when a null-terminated string was expected (usually when interfacing with c/c++ code).</li>
+<li>Tracking pointer alignment in the type system and checking for correct alignment when casting between pointer types.</li>
+</ul>
+<p><strong>Composable compile-time proofs</strong>. These are unique to rust and are novel, non-trivial to implement and add a significant amount of complexity to the language. The 'composable' part is key. 'Unsafe' code allows adding new axioms to the system, and the compiler verifies that those axioms are composed in valid ways. All rust code is built out of combinations of a small number of such axioms. This is why it has been possible to write complex systems in rust with very little unsafe code and a high level of memory safety, whereas after-the-fact global static analysis has been limited to much more restrictive coding styles. This is also why I don't expect to see a post-hoc static analysis tool for zig that approaches the same level of safety and flexibility that rust achieves - the library apis have to be designed with the proof system in mind.</p>
+<p>Zig also has some improvements over c which don't fit into either of these categories:</p>
+<ul>
+<li>The standard library includes a set of allocators which catch use-after-free and double-free at runtime. It's <a href="https://lobste.rs/s/v5y4jb/how_safe_is_zig#c_l9voqf">not yet clear</a> how high the runtime and memory overhead will be. Similar allocators do exist for c and are not widely used, which makes me somewhat pessimistic, but I'd be happy to be proved wrong.</li>
+<li>The pervasive allocator api makes it easier to use arena allocation or garbage-collected pools to simplify lifetime management.</li>
+<li>Using <code>defer</code> and <code>errdefer</code> simplifies resource cleanup inside complicated control flow, reducing the possibility of mistakes.</li>
+<li>Support for generics almost entirely eliminates the need to cast to/from void pointers.</li>
+<li>In zig creating an unitialized variable also requires using the <code>undefined</code> keyword which helps flag such cases for review. In debug/release-safe, assigning <code>undefined</code> to a variable or pointer also fills that memory region with <code>0xAA</code>, increasing the chance of an immediate crash on access and making debugging easier.</li>
+<li>In c unitialized variables are often used when the variable can't easily be initialized by a single expression. In zig it's often possible to avoid uninitialized variables by using a labeled block that returns the initial value, or using an optional type and initializing it to null.</li>
+<li><a href="https://ziglang.org/documentation/master/#bitCast">@bitcast</a> produces compile errors if you try to cast between two types with incompatible or undefined representations.</li>
+<li>When compiling c code, the zig compiler has safer default options than gcc or clang (eg asan is enabled by default).</li>
+</ul>
+<hr>
+<p>To summarize: Zig removes some of the most egregious footguns from c, has better defaults, makes some good practices more ergonomic, and benefits from a fresh start in the standard library (eg using slices everywhere). But it does not nearly approach the level of systematic prevention of memory unsafety that rust achieves. It is still trivial to violate memory safety in zig. Here are some categories I often run into:</p>
+<pre data-lang="zig" style="background-color:#fafafa;color:#61676c;" class="language-zig "><code class="language-zig" data-lang="zig"><span style="font-style:italic;color:#abb0b6;">// use after free
+</span><span style="color:#fa6e32;">var</span><span> hello </span><span style="color:#ed9366;">= </span><span style="color:#fa6e32;">try</span><span> allocator.</span><span style="color:#f29718;">dupe</span><span>(u8</span><span style="color:#61676ccc;">, </span><span style="color:#86b300;">"hello world"</span><span>)</span><span style="color:#61676ccc;">;
+</span><span>allocator.</span><span style="color:#f29718;">free</span><span>(hello)</span><span style="color:#61676ccc;">;
+</span><span>std.debug.</span><span style="color:#f29718;">print</span><span>(</span><span style="color:#86b300;">"{s}</span><span style="color:#4cbf99;">\n</span><span style="color:#86b300;">"</span><span style="color:#61676ccc;">,</span><span> .{hello})</span><span style="color:#61676ccc;">;
+</span><span>
+</span><span style="font-style:italic;color:#abb0b6;">// use after realloc / iterator invalidation
+</span><span style="color:#fa6e32;">const</span><span> init_queue </span><span style="color:#ed9366;">=</span><span> [</span><span style="color:#ff8f40;">5</span><span>]</span><span style="color:#fa6e32;">usize</span><span>{ </span><span style="color:#ff8f40;">0</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">1</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">2</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">3</span><span style="color:#61676ccc;">, </span><span style="color:#ff8f40;">4 </span><span>}</span><span style="color:#61676ccc;">;
+</span><span style="color:#fa6e32;">var</span><span> queue </span><span style="color:#ed9366;">= </span><span style="color:#fa6e32;">try</span><span> std.</span><span style="color:#f29718;">ArrayList</span><span>(usize).</span><span style="color:#f29718;">initCapacity</span><span>(allocator</span><span style="color:#61676ccc;">,</span><span> init_queue.len)</span><span style="color:#61676ccc;">;
+</span><span style="color:#fa6e32;">try</span><span> queue.</span><span style="color:#f29718;">appendSlice</span><span>(</span><span style="color:#ed9366;">&amp;</span><span>init_queue)</span><span style="color:#61676ccc;">;
+</span><span style="color:#fa6e32;">for </span><span>(queue.items) </span><span style="color:#ed9366;">|*</span><span>item</span><span style="color:#ed9366;">| </span><span>{
+</span><span>    item</span><span style="color:#ed9366;">.* += </span><span style="color:#ff8f40;">1</span><span style="color:#61676ccc;">;
+</span><span>    </span><span style="color:#fa6e32;">try</span><span> queue.</span><span style="color:#f29718;">append</span><span>(item</span><span style="color:#ed9366;">.*</span><span>)</span><span style="color:#61676ccc;">;
+</span><span>}
+</span><span>std.debug.</span><span style="color:#f29718;">print</span><span>(</span><span style="color:#86b300;">"{any}</span><span style="color:#4cbf99;">\n</span><span style="color:#86b300;">"</span><span style="color:#61676ccc;">,</span><span> .{queue.items})</span><span style="color:#61676ccc;">;
+</span><span>
+</span><span style="font-style:italic;color:#abb0b6;">// invalidating an interior pointer
+</span><span style="color:#fa6e32;">const </span><span style="color:#399ee6;">Value </span><span style="color:#ed9366;">= </span><span style="color:#fa6e32;">union</span><span>(</span><span style="color:#fa6e32;">enum</span><span>) {
+</span><span>    string</span><span style="color:#61676ccc;">:</span><span> []</span><span style="color:#fa6e32;">const u8</span><span style="color:#61676ccc;">,
+</span><span>    number</span><span style="color:#61676ccc;">: </span><span style="color:#fa6e32;">usize</span><span style="color:#61676ccc;">,
+</span><span>}</span><span style="color:#61676ccc;">;
+</span><span style="color:#fa6e32;">var</span><span> value </span><span style="color:#ed9366;">= </span><span style="color:#fa6e32;">Value</span><span>{ .number </span><span style="color:#ed9366;">= </span><span style="color:#ff8f40;">42 </span><span>}</span><span style="color:#61676ccc;">;
+</span><span style="color:#fa6e32;">const</span><span> number </span><span style="color:#ed9366;">= &amp;</span><span>value.number</span><span style="color:#61676ccc;">;
+</span><span>value </span><span style="color:#ed9366;">= </span><span style="color:#fa6e32;">Value</span><span>{ .string </span><span style="color:#ed9366;">= </span><span style="color:#86b300;">"hello world" </span><span>}</span><span style="color:#61676ccc;">;
+</span><span>number</span><span style="color:#ed9366;">.* -= </span><span style="color:#ff8f40;">42</span><span style="color:#61676ccc;">;
+</span><span>std.debug.</span><span style="color:#f29718;">print</span><span>(</span><span style="color:#86b300;">"{s}</span><span style="color:#4cbf99;">\n</span><span style="color:#86b300;">"</span><span style="color:#61676ccc;">,</span><span> .{value.string})</span><span style="color:#61676ccc;">;
+</span></code></pre>
+<p>I've seen claims (not from the zig team) that zig has 'complete spatial memory safety'. I suspect this is based on misreading earlier versions of this article where I used 'spatial safety' and 'temporal safety' as the names of the two groups above. I don't know of any formal definition of 'complete spatial memory safety', but any reasonable definition would surely be violated by the interior pointer example above.</p>
+<hr>
+<p>How do these differences in mitigations actually translate to numbers of bugs?</p>
+<p>In <a href="https://github.com/MaterializeInc/materialize/">materialize</a> we wrote ~140kloc of rust in the first 14 months while growing the team from ~3 to ~20 people. It's a complex system with high demands on both throughput and latency. We reached that point with (IIRC) only 9 unsafe blocks, all of which were in a single module and existed to work around a performance bug in the equivalent safe api. Despite heavy generative testing and fuzzing, we only discovered one memory safety bug (in the unsafe module, naturally) which was easy to debug and fix.</p>
+<p>By comparison, in several much smaller and much simpler zig codebases where I am the only developer, I run into multiple memory safety bugs per week. This isn't a perfect comparison, because my throwaway research projects in zig are not written carefully (=&gt; more bugs added) but are also not tested thoroughly (=&gt; fewer bugs detected). But it does make me doubt my ability to ship secure zig programs without substantial additional mitigations.</p>
+<p>In at least one of those codebases, the memory safety bugs are outnumbered 20:1 by bounds-check panics. So I assume that if I wrote that same project in idiomatic c (ie without bounds checks) then I would encounter at least 20x as many memory safety bugs per week.</p>
+<hr>
+<p>In an older version of this article I tried to use CVE reports to guesstimate how many CVEs would have been prevented by using zig instead of c or c++. This involved far too much guesswork to be informative so I have removed it.</p>
+<hr>
+<p>I work mostly on query languages, database engines, <a href="https://www.scattered-thoughts.net/writing/an-opinionated-map-of-incremental-and-streaming-systems">streaming systems</a> etc. Latency, memory usage and memory access patterns are critical. Until recently almost all of these systems were written in c, c++ or java.</p>
+<p>In java, the typical strategy is to have the data plane operate on hand-packed off-heap buffers (eg <a href="https://arrow.apache.org/overview/">arrow</a>) so that the gc only has to traverse the much smaller heap in the control plane. This does work, but it's painful and the performance ceiling is usually lower than c++ (see eg <a href="https://redpanda.com/blog/redpanda-vs-kafka-faster-safer">redpanda vs kafka</a>, <a href="https://www.scylladb.com/2021/08/24/apache-cassandra-4-0-vs-scylla-4-4-comparing-performance/">scylladb vs cassandra</a>, <a href="https://www.youtube.com/watch?v=Pz-4co8IaI8">java vs c++ implementations of aeron</a>).</p>
+<p>On the other hand, it seems impossible to secure c or c++. Even a codebase as <a href="https://www.sqlite.org/testing.html">heavily tested</a> as sqlite is vulnerable to <a href="https://research.checkpoint.com/2019/select-code_execution-from-using-sqlite/">code execution from untrusted sql</a>. This isn't a fatal problem for traditional database deployments hidden behind a trusted backend server (as long as the backend prevents sql injection attacks). But it's a big deal for backend-as-a-service companies, multi-tenant cloud databases, and even operating systems like android/ios where apps aren't trusted but still need to access shared databases.</p>
+<p>In this context rust is wildly appealing. The performance ceiling is similar to c++, the effort required for security is similar to java, and all of this comes packaged in a clean-slate design that had the chance to avoid the biggest mistakes of both. There are still some major pain points: the <a href="https://doc.rust-lang.org/std/alloc/trait.Allocator.html">allocator api</a> is still unstable and used by very few libraries which means that eg <a href="https://manishearth.github.io/blog/2021/03/15/arenas-in-rust/">arena/slab allocation requires rewriting libraries</a>, self-referential objects are still very limited, pinning is error-prone, there's <a href="https://lwn.net/SubscriberLink/907876/ae07b6d9e121d1f4/">no equivalent to placement new</a> etc. But it's not as painful as manually packing bytes in java and trying to reason about performance of the jit and gc, or trying to expose a c++ program to untrusted input.</p>
+<hr>
+<p>Despite that, I don't think that the future of data systems is rust, only rust and nothing but rust.</p>
+<p>First, managed languages continue to push the performance ceiling:</p>
+<p>Garbage collectors are constantly improving eg <a href="https://hazelcast.com/resources/benchmark-hazelcast-azul-zing/">azul zing consistently trounces hotspot in latency benchmarks</a>.</p>
+<p>Historically, garbage-collected languages have been pointer-heavy and provided little control over memory layout, because a) it's easier to write a garbage collector for a language with simple layout and b) several decades ago, when most of these languages were designed, the relative cost of a cache miss was much lower. But this is changing. C# has <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/value-types">value types</a> and java is <a href="https://openjdk.org/projects/valhalla/">working on them</a>. Julia's combination of value types and parametric struct types provides even more control - allowing writing eg btrees which store data inline. Newer languages also make it easier to provide zero-cost abstractions over manual byte-packing (eg <a href="https://www.scattered-thoughts.net/writing/zero-copy-deserialization-in-julia/">blobs.jl</a>).</p>
+<p>There are also promising experiments with non-garbage-collected managed languages. Eg both <a href="https://www.val-lang.dev/">val</a> and <a href="https://www.roc-lang.org/">roc</a> feature deterministic memory management and c/rust-like levels of control over memory layout while still preserving the simple experience of a garbage-collected language. I think it's likely that we'll see at least one production-ready language in this vein within the next decade.</p>
+<p>Second, there are several niches where rust's memory safety isn't as huge an advantage:</p>
+<p>In contexts where memory safety bugs are harder to exploit there is less pressure on language-level guarantees of memory safety. Eg <a href="https://github.com/tigerbeetledb/tigerbeetle">TigerBeetle</a> is a single-tenant database which talks only to trusted clients using an easily-parseable binary protocol over a private network and doesn't dynamically allocate memory. Memory safety bugs are still bugs and so need to be prevented, but they are less likely to occur and it's hard to see how they could be exploited. Writing TigerBeetle in rust instead of zig might make some bugs easier to catch but would also make other areas more error-prone eg the compile-time configuration would have to be replaced by adhoc code generation.</p>
+<p>There may also be a niche for zig in untrusted plugins that are already sandboxed. Eg in a serverless http handler where every request is a fresh wasm sandbox, a zig program that has runtime checks turned on and mostly relies on arena allocation (or even static pre-allocation) might be reasonably secure. Zig's ability to produce very small wasm binaries, start quickly and keep memory usage low seems appealing here. I'm also interested in using comptime configuration to aggresively specialize eg html templates and database queries. (My <a href="https://www.scattered-thoughts.net/writing/a-practical-relational-query-compiler-in-500-lines/">experiments in julia</a> were promising but the julia runtime is not well-suited to wasm. My <a href="https://www.scattered-thoughts.net/writing/staged-interpreters-in-rust/">experiments in rust</a> were a Turing-tarpit puzzle session. But zig is practically tailor-made for this.)</p>
+<p>Larger zig programs might potentially be secured by building programs out of multiple wasm sandboxes (see eg <a href="https://rlbox.dev/">rlbox</a>, <a href="https://kripken.github.io/blog/wasm/2020/07/27/wasmboxc.html">wasmboxc</a>). This is untested as yet - we don't know how much safety vs how much performance overhead we'll get - but I expect to see this explored anyway for hardening legacy code and protecting against supply chain attacks, and then maybe we can extrapolate the results to zig. Similarly for hardware-assisted mitigations like <a href="https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/">cheri</a>.</p>
+<hr>
+<p>In the long run, if rust (and other memory-safe languages) can be used everywhere but zig is only usable in certain niches, then network effects will give rust a huge advantage even in those niches. So I suspect zig's future, at least in my field, hinges on the successful development of cheap runtime mitigations.</p>
+<p>I hope that this doesn't cause PL researchers and language designers to ignore zig though. The comptime mechanism dramatically simplifies the language and enables new kinds of abstractions, and I'm only just starting to explore the possibilities for aggressive compile-time specialization of all kinds of libraries. Even if the lack of memory safety makes industrial adoption harder, I want to see other languages explore this mechanism and push it even further. Could we combine it with a Julia-like dynamic type system (the version of zig executed at comptime is dynamically-typed and garbage-collected)? Could we remove the two stage limit and have a builtin function for runtime specialization? Could we mix memory-safe and -unsafe subsets within a language (like <a href="https://terralang.org/">terra</a> but with a single language)? Maybe even limit the unsafe subset to running inside wasm sandboxes? There is so much potential here.</p>
+
+</article>
+
+<footer>
+  <hr>
+  <div class="spacer-1"></div>
+  <div><a href="mailto:jamie@scattered-thoughts.net">jamie@scattered-thoughts.net</a></div>
+  <div class="spacer-1"></div>
+<div><form action="https://buttondown.email/api/emails/embed-subscribe/scattered-thoughts" method="post" target="popupwindow">Updates via <a href="https://www.scattered-thoughts.net/atom.xml">atom</a> or <input style="display: inline" type="email" name="email" id="bd-email" placeholder="email"> <input style="display: inline; font-style: normal" type="submit" value="✉"></form></div>
+  <div class="spacer-1"></div>
+  <div>I'm currently available for <a href="https://www.scattered-thoughts.net/consulting">consulting</a>.</div>
+  <div class="spacer-1"></div>
+  <div><a href="https://github.com/sponsors/jamii">Support</a> my work on github sponsors.</div>
+</footer>
+
+
+  </div>
+
+   
+
+
+
+</body></html>
