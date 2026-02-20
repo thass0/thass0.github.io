@@ -4,6 +4,7 @@ title: Can You Use a Class in C?
 date: 11 Aug 2023
 datetime: 2023-08-11
 path: /can-you-use-a-class-in-c.html
+redirect_from: /2023/08/11/can-you-use-a-class-in-c/
 ---
 
 Discussion: [Hacker News](https://news.ycombinator.com/item?id=37097775)<a class="archive-link" href="/archive/Can%20you%20use%20a%20class%20in%20C%20-%20Hacker%20News-2025-05-12T14_19_04Z.html"></a> \| [Lobsters](https://lobste.rs/s/tjkdv7/can_you_use_c_class_c)<a class="archive-link" href="/archive/Can%20you%20use%20a%20C%2B%2B%20class%20in%20C%20-%20Lobsters-2025-05-12T14_19_07Z.html"></a>

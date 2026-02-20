@@ -178,6 +178,28 @@ def load_pages(pages_dir: Path) -> Dict[str, Tuple[str, str, Dict[str, str]]]:
     return pages
 
 
+def generate_redirect(redirect_from: str, redirect_to: str, out_dir: Path):
+    redirect_html = (
+        f'<!DOCTYPE html>\n'
+        f'<html>\n'
+        f'<head>\n'
+        f'    <meta http-equiv="refresh" content="0; url={redirect_to}">\n'
+        f'    <link rel="canonical" href="{redirect_to}">\n'
+        f'</head>\n'
+        f'<body>\n'
+        f'    <p>If you are not redirected, <a href="{redirect_to}">click here</a>.</p>\n'
+        f'</body>\n'
+        f'</html>\n'
+    )
+    redirect_path = Path(redirect_from.strip("/"))
+    if redirect_path.suffix:
+        path = out_dir / redirect_path
+    else:
+        path = out_dir / redirect_path / "index.html"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(redirect_html, encoding="utf-8")
+
+
 ########
 # Main #
 ########
@@ -199,6 +221,9 @@ if __name__ == "__main__":
             cont = render_layout(layouts[layout_name], content=cont, **frontmatter)
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(cont, encoding="utf-8")
+        if redirect_from := frontmatter.pop("redirect_from", None):
+            redirect_to = "/" + str(output_path.relative_to(out_dir))
+            generate_redirect(redirect_from, redirect_to, out_dir)
 
     run(["cp", "-r", "public/", "build/"], check=True)
 

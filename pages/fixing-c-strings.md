@@ -4,6 +4,7 @@ title: Fixing C Strings
 date: 16 Dec 2024
 datetime: 2024-12-16
 path: /fixing-c-strings.html
+redirect_from: /2024/12/16/fixing-c-strings.html
 ---
 
 Disussion: [Hacker News](https://news.ycombinator.com/item?id=42439654)<a class="archive-link" href="/archive/Fixing%20C%20Strings%20-%20Hacker%20News-2025-05-12T15_32_27Z.html"></a> \| [r/programming](https://www.reddit.com/r/programming/comments/1hhyngu/fixing_c_strings/)<a class="archive-link" href="/archive/Fixing%20C%20strings%20%20-%20%20programming-2025-05-12T15_33_02Z.html"></a> \| [Lobsters](https://lobste.rs/s/ek1fzc/fixing_c_strings)<a class="archive-link" href="/archive/Fixing%20C%20strings%20-%20Lobsters-2025-05-12T15_32_32Z.html"></a> \| [Hackaday](https://hackaday.com/2024/12/19/better-c-strings-simply/)<a class="archive-link" href="/archive/Better%20C%20Strings%2C%20Simply%20-%20Hackaday-2025-05-12T15_32_35Z.html"></a>

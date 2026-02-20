@@ -4,6 +4,7 @@ title: Setting Up an x86 CPU in 64-Bit Mode
 date: 13 Jul 2024
 datetime: 2024-07-13
 path: /setting-up-an-x86-cpu.html
+redirect_from: /2024/07/13/setting-up-an-x86-cpu.html
 ---
 
 Discussion: [Hacker News](https://news.ycombinator.com/item?id=40959742)<a class="archive-link" href="/archive/Writing%20a%20BIOS%20bootloader%20for%2064-bit%20mode%20from%20scratch%20-%20Hacker%20News-2025-05-12T15_17_26Z.html"></a> \| [r/programming](https://www.reddit.com/r/programming/comments/1ews2rz/setting_up_an_x86_cpu_in_64bit_mode/)<a class="archive-link" href="/archive/Setting%20up%20an%20x86%20CPU%20in%2064-bit%20mode%20%20-%20%20programming-2025-05-12T15_25_35Z.html"></a> \| [Lobsters](https://lobste.rs/s/etf2ct/setting_up_x86_cpu_64_bit_mode)<a class="archive-link" href="/archive/Setting%20up%20an%20x86%20CPU%20in%2064-bit%20mode%20-%20Lobsters-2025-05-12T15_17_29Z.html"></a> \| [Hackaday](https://hackaday.com/2024/07/14/a-64-bit-x86-bootloader-from-scratch/)<a class="archive-link" href="/archive/A%2064-bit%20X86%20Bootloader%20From%20Scratch%20-%20Hackaday-2025-05-12T15_17_32Z.html"></a>
