@@ -12,21 +12,75 @@ from time import perf_counter
 from paka.cmark import to_html
 import re
 
-def die(msg: str):
-    import sys
-    print("Error:", msg, file=sys.stderr)
-    sys.exit(1)
+def is_valid_name(name: str) -> bool:
+    if not name:
+        return False
+    if not (name[0].isalpha() or name[0] == '_'):
+        return False
+    return all(c.isalnum() or c == '_' for c in name[1:])
+
 
 def extract_frontmatter(cont: str) -> Tuple[str, Dict[str, str]]:
     if not cont.startswith("---\n"):
         return (cont, {})
-    end_idx = cont.find("\n---", 4) # End of the front matter
-    front_matter = { k: v for k, v in (map(str.strip, line.split(": ", maxsplit=1)) for line in cont[4:end_idx].splitlines()) }
-    return (cont[end_idx + 4:], front_matter)
+
+    end_idx = cont.find("\n---", 4)
+    if end_idx == -1:
+        raise Exception("Unterminated frontmatter")
+
+    frontmatter = {}
+    for line in cont[4:end_idx].splitlines():
+        parts = line.split(": ", maxsplit=1)
+        if len(parts) != 2:
+            raise Exception(f"Malformed frontmatter line: {line!r}")
+        name = parts[0].strip()
+        value = parts[1].strip()
+        if not is_valid_name(name):
+            raise Exception(f"Invalid frontmatter variable name: {name!r}")
+        frontmatter[name] = value
+
+    return (cont[end_idx + 4:], frontmatter)
+
 
 ###########
 # Layouts #
 ###########
+
+def render_layout(layout: str, **variables: str) -> str:
+    """Render a layout string by substituting variables and expanding quotes.
+
+    Variables are referenced as {{ name }} and replaced with their value.
+    Quoted blocks start with {{" and end with the first "}} encountered;
+    their content is emitted verbatim without any parsing.
+    """
+
+    out = []
+    i = 0
+    while i < len(layout):
+        if layout[i] == '{' and i + 1 < len(layout) and layout[i + 1] == '{':
+            if i + 2 < len(layout) and layout[i + 2] == '"':
+                end = layout.find('"}}', i + 3)
+                if end == -1:
+                    raise Exception('Unterminated quote block')
+                out.append(layout[i + 3 : end])
+                i = end + 3
+            else:
+                end = layout.find('}}', i + 2)
+                if end == -1:
+                    raise Exception('Unterminated variable block')
+                name = layout[i + 2 : end].strip()
+                if not is_valid_name(name):
+                    raise Exception(f'Invalid variable name: {name!r}')
+                if name not in variables:
+                    raise Exception(f'Undefined variable: {name!r}')
+                out.append(variables[name])
+                i = end + 2
+        else:
+            out.append(layout[i])
+            i += 1
+
+    return ''.join(out)
+
 
 def topo_sort(deps: Dict[str, str]) -> List[str]:
     dep_graph = {} # Map of nodes (the parent) to a set of nodes that depend on them (the children)
@@ -50,36 +104,39 @@ def topo_sort(deps: Dict[str, str]) -> List[str]:
                 no_deps.append(dependent)
 
     if any(dep_graph.values()):
-        die("Circular dependency detected, topo sort failed")
+        raise Exception("Circular dependency detected, topo sort failed")
 
     return sorted
 
-def load_layouts(layouts_dir: Path) -> Dict[str, Tuple[str, str]]:
-    pattern = re.compile(r"\{\{\s*content\s*\}\}")
-    layouts = {}
-    deps = {}
-    for layout in layouts_dir.iterdir():
-        if not layout.is_file():
-            print(f"Layout '{layout}' is not a file, skipping ...")
-            continue
-        cont = layout.read_text(encoding="utf-8")
-        cont, front_matter = extract_frontmatter(cont)
-        parts = pattern.split(cont, maxsplit=1)
-        name = layout.stem
-        if not len(parts) == 2:
-            die(f"Layout '{name}' doesn't contain '{{ content }}' exactly once, invalid")
-        deps[name] = front_matter.get("layout")
-        layouts[name] = (parts[0], parts[1])
 
-    sorted_layouts = topo_sort(deps)
+def load_layouts(layouts_dir: Path) -> Dict[str, Tuple[str, str]]:
+    raw_layouts = {}
+    frontmatters = {}
+    deps = {}
+    layouts = {}
+
+    for ent in layouts_dir.iterdir():
+        if not ent.is_file():
+            print(f"Layout '{ent}' is not a file, skipping ...")
+            continue
+        cont = ent.read_text(encoding="utf-8")
+        cont, frontmatter = extract_frontmatter(cont)
+        if (parent := frontmatter.get("layout")) is not None:
+            del frontmatter["layout"]
+        name = ent.stem
+        deps[name] = parent
+        raw_layouts[name] = cont
+        frontmatters[name] = frontmatter
 
     # The topological sorting means the parent layout will already be completely
-    # processed before the current layout is procssed. This way we don't run into
+    # processed before the current layout is processed. This way we don't run into
     # dependency issues.
-    for name in sorted_layouts:
-        parent = deps[name]
-        if parent:
-            layouts[name] = (layouts[parent][0] + layouts[name][0], layouts[name][1] + layouts[parent][1])
+    for name in topo_sort(deps):
+        parent_name = deps[name]
+        if parent_name:
+            layouts[name] = render_layout(layouts[parent_name], content=raw_layouts[name], **frontmatter)
+        else:
+            layouts[name] = raw_layouts[name]
 
     return layouts
 
@@ -108,12 +165,12 @@ def load_pages(pages_dir: Path) -> Dict[str, Tuple[str, str, Dict[str, str]]]:
     pages = {}
     for ent in pages_dir.iterdir():
         if not ent.is_file():
-            for name, (cont, front_matter) in load_pages(ent).items():
-                pages[ent.name + '/' + name] = (cont, front_matter)
+            for name, (cont, frontmatter) in load_pages(ent).items():
+                pages[ent.name + '/' + name] = (cont, frontmatter)
         else:
             cont = ent.read_text(encoding="utf-8")
-            cont, front_matter = extract_frontmatter(cont)
-            pages[ent.name] = (cont, front_matter)
+            cont, frontmatter = extract_frontmatter(cont)
+            pages[ent.name] = (cont, frontmatter)
     return pages
 
 
@@ -129,15 +186,13 @@ if __name__ == "__main__":
 
     run(["rm", "-rf", str(out_dir)], check=True)
 
-    for name, (cont, front_matter) in pages.items():
+    for name, (cont, frontmatter) in pages.items():
         output_path = out_dir / name
         if output_path.suffix == ".md":
             cont = md_to_html(name, cont)
-            # Replace default suffix (.md) with .html.
             output_path = (out_dir / name).with_suffix(".html")
-        if front_matter.get("layout") in layouts:
-            layout = layouts[front_matter["layout"]]
-            cont = layout[0] + cont + layout[1]
+        if layout_name := frontmatter.pop("layout", None):
+            cont = render_layout(layouts[layout_name], content=cont, **frontmatter)
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(cont, encoding="utf-8")
 
