@@ -1,14 +1,10 @@
 ---
 layout: post
+title: Principled Blogging
+date: 12 Apr 2025
+datetime: 2025-04-12
+path: /principled-blogging.html
 ---
-
-<h1 class="post-title">
-  <a href="/principled-blogging.html">Principled Blogging</a>
-</h1>
-
-<small>
-    <time datetime="2025-04-12">12 Apr 2025</time>
-</small>
 
 Before building your blog, first note that the web is kind of crappy today.
 I'm not claiming it's ever been better. It may well be that it has always been

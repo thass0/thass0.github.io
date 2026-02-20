@@ -1,14 +1,10 @@
 ---
 layout: post
+title: Parsing Expressions by Recursive Descent in Haskell
+date: 31 Oct 2023
+datetime: 2023-10-31
+path: /parsing-expressions-by-recursive-descent-in-haskell.html
 ---
-
-<h1 class="post-title">
-    <a href="/parsing-expressions-by-recursive-descent-in-haskell.html">Parsing Expressions by Recursive Descent in Haskell</a>
-</h1>
-
-<small>
-    <time datetime="2023-10-31">31 Oct 2023</time>
-</small>
 
 Parsing numerical expressions by recursive descent is a joy in Haskell! It is incredibly concise and elegant, yet very simple.
 

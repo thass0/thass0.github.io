@@ -46,7 +46,7 @@ def extract_frontmatter(cont: str) -> Tuple[str, Dict[str, str]]:
 # Layouts #
 ###########
 
-def render_layout(layout: str, **variables: str) -> str:
+def render_layout(layout: str, ignore_undefined=False, **variables: str) -> str:
     """Render a layout string by substituting variables and expanding quotes.
 
     Variables are referenced as {{ name }} and replaced with their value.
@@ -69,8 +69,12 @@ def render_layout(layout: str, **variables: str) -> str:
                 if end == -1:
                     raise Exception('Unterminated variable block')
                 name = layout[i + 2 : end].strip()
-                if not is_valid_name(name):
-                    raise Exception(f'Invalid variable name: {name!r}')
+                if name not in variables:
+                    if ignore_undefined:
+                        out.append(layout[i : end + 2])
+                        i = end + 2
+                        continue
+                    raise Exception(f'Undefined variable: {name!r}')
                 if name not in variables:
                     raise Exception(f'Undefined variable: {name!r}')
                 out.append(variables[name])
@@ -134,7 +138,7 @@ def load_layouts(layouts_dir: Path) -> Dict[str, Tuple[str, str]]:
     for name in topo_sort(deps):
         parent_name = deps[name]
         if parent_name:
-            layouts[name] = render_layout(layouts[parent_name], content=raw_layouts[name], **frontmatter)
+            layouts[name] = render_layout(layouts[parent_name], ignore_undefined=True, content=raw_layouts[name], **frontmatter)
         else:
             layouts[name] = raw_layouts[name]
 

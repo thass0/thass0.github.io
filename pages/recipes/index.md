@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Recipes
 ---
 
 * [Kaiserschmarrn](/recipes/kaiserschmarrn.html)

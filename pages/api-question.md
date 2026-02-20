@@ -1,14 +1,10 @@
 ---
 layout: post
+title: Are Good APIs All You Need To Be Memory-Safe?
+date: 28 Nov 2025
+datetime: 2025-11-28
+path: /api-question.html
 ---
-
-<h1 class="post-title">
-  <a href="/api-question.html">Are Good APIs All You Need To Be Memory-Safe?</a>
-</h1>
-
-<small>
-    <time datetime="2025-11-28">28 Nov 2025</time>
-</small>
 
 It's well-known that
 [roughly 70%](https://www.memorysafety.org/docs/memory-safety/#how-common-are-memory-safety-vulnerabilities)

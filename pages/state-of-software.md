@@ -1,14 +1,10 @@
 ---
 layout: post
+title: Notes on the State of Software
+date: 14 Feb 2025
+datetime: 2025-02-14
+path: /state-of-software.html
 ---
-
-<h1 class="post-title">
-    <a href="/state-of-software.html">Notes on the State of Software</a>
-</h1>
-
-<small>
-    <time datetime="2025-02-14">14 Feb 2025</time>
-</small>
 
 I get emotional about software at times, and by getting emotional I mean
 getting upset. I want to dig into the issues frustrating me and what should

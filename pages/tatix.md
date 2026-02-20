@@ -1,14 +1,10 @@
 ---
 layout: post
+title: The Tatix System
+date: 18 Sep 2025
+datetime: 2025-09-18
+path: /tatix.html
 ---
-
-<h1 class="post-title">
-  <a href="/tatix.html">The Tatix System</a>
-</h1>
-
-<small>
-    <time datetime="2025-09-18">18 Sep 2025</time>
-</small>
 
 This week I finished up an OS project I have been working on for over a year.
 It's a from-scratch kernel designed to serve this blog. The project originated

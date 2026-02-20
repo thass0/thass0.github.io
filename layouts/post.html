@@ -3,7 +3,16 @@ layout: default
 ---
 
 <article>
-    {{ content }}
+    <header>
+    <h1 class="post-title">
+    <a href="{{ path }}">{{ title }}</a>
+</h1>
+
+<small>
+    <time datetime="{{ datetime }}">{{ date }}</time>
+</small>
+    </header>
+{{ content }}
 </article>
 
 <footer>

@@ -1,5 +1,6 @@
 ---
 layout: recipe
+title: Marble Cake
 ---
 
 # Marble Cake
