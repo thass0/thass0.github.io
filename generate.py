@@ -54,7 +54,7 @@ def topo_sort(deps: Dict[str, str]) -> List[str]:
 
     return sorted
 
-def preload_layouts(layouts_dir: Path) -> Dict[str, Tuple[str, str]]:
+def load_layouts(layouts_dir: Path) -> Dict[str, Tuple[str, str]]:
     pattern = re.compile(r"\{\{\s*content\s*\}\}")
     layouts = {}
     deps = {}
@@ -83,14 +83,16 @@ def preload_layouts(layouts_dir: Path) -> Dict[str, Tuple[str, str]]:
 
     return layouts
 
-########
-# Site #
-########
+
+#########
+# Pages #
+#########
 
 def link_footnotes(md: str) -> str:
     md = re.sub(r"\[\^([^\]]+)\]:\s?", lambda m: f"<sup id=\"footnote-{m.group(1)}\"><a href=\"#footnode-back-{m.group(1)}\">{m.group(1)}</a></sup>: ", md)
     md = re.sub(r"\[\^([^\]]+)\]", lambda m: f"<sup id=\"footnode-back-{m.group(1)}\"><a href=\"#footnote-{m.group(1)}\">{m.group(1)}</a></sup>", md)
     return md
+
 
 def md_to_html(name: str, md: str) -> str:
     start_time = perf_counter()
@@ -101,27 +103,33 @@ def md_to_html(name: str, md: str) -> str:
     print(f"Converted {name} to HTML in {elapsed:.4f} second(s)")
     return html
 
-def load_src(src_dir: Path) -> Dict[str, Tuple[str, str, Dict[str, str]]]:
-    src = {}
-    for ent in src_dir.iterdir():
+
+def load_pages(pages_dir: Path) -> Dict[str, Tuple[str, str, Dict[str, str]]]:
+    pages = {}
+    for ent in pages_dir.iterdir():
         if not ent.is_file():
-            for name, (cont, front_matter) in load_src(ent).items():
-                src[ent.name + '/' + name] = (cont, front_matter)
+            for name, (cont, front_matter) in load_pages(ent).items():
+                pages[ent.name + '/' + name] = (cont, front_matter)
         else:
             cont = ent.read_text(encoding="utf-8")
             cont, front_matter = extract_frontmatter(cont)
-            src[ent.name] = (cont, front_matter)
-    return src
+            pages[ent.name] = (cont, front_matter)
+    return pages
+
+
+########
+# Main #
+########
 
 if __name__ == "__main__":
     start_time = perf_counter()
-    layouts = preload_layouts(Path("layouts/"))
-    src = load_src(Path("site/"))
+    layouts = load_layouts(Path("layouts/"))
+    pages = load_pages(Path("pages/"))
     out_dir = Path("build/")
 
     run(["rm", "-rf", str(out_dir)], check=True)
 
-    for name, (cont, front_matter) in src.items():
+    for name, (cont, front_matter) in pages.items():
         output_path = out_dir / name
         if output_path.suffix == ".md":
             cont = md_to_html(name, cont)
@@ -138,3 +146,4 @@ if __name__ == "__main__":
     end_time = perf_counter()
     elapsed = end_time - start_time
     print(f"Done generating after {elapsed:.4f} second(s)")
+
