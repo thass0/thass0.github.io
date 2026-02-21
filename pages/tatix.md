@@ -22,7 +22,7 @@ with essential functions (allocations, strings, lists, buffers, printing, format
 etc.), among other things.
 
 I wrote about the internals of the interesting parts of the
-[GitHub page](https://github.com/thass0/tatix)<a class="archive-link" href="/archive/GitHub%20-%20thass0_tatix%3A%20From-scratch%20kernel%20built%20to%20serve%20web%20pages.html"></a>.
+[GitHub page](https://github.com/thass0/tatix)<a class="archive-link" href="/public/archive/GitHub%20-%20thass0_tatix%3A%20From-scratch%20kernel%20built%20to%20serve%20web%20pages.html"></a>.
 
 I was fortunate to do an internship at Unikraft last summer because, while working
 there, I got to (somewhat) understand the design and internals of a production-grade

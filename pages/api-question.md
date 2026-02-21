@@ -8,7 +8,7 @@ path: /api-question.html
 
 It's well-known that
 [roughly 70%](https://www.memorysafety.org/docs/memory-safety/#how-common-are-memory-safety-vulnerabilities)
-<a class="archive-link" href="/archive/What%20is%20memory%20safety%20and%20why%20does%20it%20matter%20-%20Prossimo-2025-11-28T21_43_44Z.html"></a>
+<a class="archive-link" href="/public/archive/What%20is%20memory%20safety%20and%20why%20does%20it%20matter%20-%20Prossimo-2025-11-28T21_43_44Z.html"></a>
 of vulnerabilities are due to memory safety issues. A popular proposal for addressing this problem
 is incrementally moving to memory-safe languages, such as Rust, Java, Python, Haskell, etc. Rust
 in particular is a hot topic because it can be compiled into binaries with small runtimes just
@@ -20,7 +20,7 @@ do this when a direct solution to their problem is hard or impossible to express
 
 Consider an example from
 [a 2018 talk](https://kyren.github.io/2018/09/14/rustconf-talk.html)
-<a class="archive-link" href="/archive/My%20RustConf%202018%20Closing%20Keynote-2025-11-28T21_44_57Z.html"></a>
+<a class="archive-link" href="/public/archive/My%20RustConf%202018%20Closing%20Keynote-2025-11-28T21_44_57Z.html"></a>
 about
 writing games in Rust versus C++. This is one iteration the speaker suggests for representing
 the state of the game:
@@ -47,10 +47,10 @@ logic. This means we're still left with custom memory management.
 I am not arguing that the entity system proposed in the talk is poorly designed. I've seen something
 like it in Robert Nystrom's
 [Game Programming Patterns](https://gameprogrammingpatterns.com/data-locality.html)
-<a class="archive-link" href="/archive/Data%20Locality%20%C2%B7%20Optimization%20Patterns%20%C2%B7%20Game%20Programming%20Patterns-2025-11-28T21_45_15Z.html"></a>,
+<a class="archive-link" href="/public/archive/Data%20Locality%20%C2%B7%20Optimization%20Patterns%20%C2%B7%20Game%20Programming%20Patterns-2025-11-28T21_45_15Z.html"></a>,
 and in
 [Handles are the better pointers](https://floooh.github.io/2018/06/17/handles-vs-pointers.html)
-<a class="archive-link" href="/archive/Handles%20are%20the%20better%20pointers-2025-11-28T21_45_25Z.html"></a>,
+<a class="archive-link" href="/public/archive/Handles%20are%20the%20better%20pointers-2025-11-28T21_45_25Z.html"></a>,
 Andre Weissflog recommends similar designs. So it's clearly working for some people.
 
 My point is that low-level control and automatic memory management are incompatible, at least to some
@@ -71,7 +71,7 @@ counts towards its safety.
 The Zig language seems to follow an approach that's in line with what I'm suggesting here, but
 I have not looked into it further. Regardless, in
 [How (memory) safe is zig?](https://www.scattered-thoughts.net/writing/how-safe-is-zig/)
-<a class="archive-link" href="/archive/How%20%28memory%29%20safe%20is%20zig-2025-11-28T21_45_43Z.html"></a>
+<a class="archive-link" href="/public/archive/How%20%28memory%29%20safe%20is%20zig-2025-11-28T21_45_43Z.html"></a>
 Jamie Brandon writes, "Zig removes some of the most egregious footguns from c, has better defaults,
 makes some good practices more ergonomic, and benefits from a fresh start in the standard library
 (eg using slices everywhere)." This is what I'm thinking of.
@@ -84,7 +84,7 @@ in Zig applications to see if I'm right.
 I like the reasoning above because it avoids what Andrew Lilley Brinker termed the "get good"
 fallacy. In
 [Memory Safety for Skeptics](https://queue.acm.org/detail.cfm?id=3773095)
-<a class="archive-link" href="/archive/Memory%20Safety%20for%20Skeptics%20-%20ACM%20Queue.html"></a>
+<a class="archive-link" href="/public/archive/Memory%20Safety%20for%20Skeptics%20-%20ACM%20Queue.html"></a>
 he writes:
 
 > There is a common reply in conversations about memory safety, coming from the most hardcore
