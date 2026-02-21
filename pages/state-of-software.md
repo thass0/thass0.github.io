@@ -16,7 +16,7 @@ Computers are beautiful and empowering devices, they are the highest
 technical achievement of humanity. Just look at this die shot to
 convince yourself:
 
-![Colorful photo showing the intricate complexities of a computer chip](/public/figures/Motorola_68040_die.jpg)
+![Colorful photo showing the intricate complexities of a computer chip](/static/figures/Motorola_68040_die.jpg)
 <small>[Die shot by Pauli Rautakorpi](https://commons.wikimedia.org/wiki/File:Motorola_68040_die.JPG), licensed under the [Creative Commons Attribution 3.0 Unported license](https://creativecommons.org/licenses/by/3.0/deed.en)</small>
 
 This beauty and power is hidden from most people. The average person
@@ -39,9 +39,9 @@ this way with most if not all systems we use daily.
 
 Vendors employ numerous strategies to limit how we use our computers.
 Consider how
-[Apple uses iMessage to bully teens into buying iPhones](https://archive.fo/RJ7bl)<a class="archive-link" href="/public/archive/Why%20Apple’s%20iMessage%20Is%20Winning%20-%20%20Teens%20Dread%20the%20Green%20Text%20Bubble%20-%20WSJ-2025-05-12T15_44_11Z.html"></a>
+[Apple uses iMessage to bully teens into buying iPhones](https://archive.fo/RJ7bl)<a class="archive-link" href="/static/archive/Why%20Apple’s%20iMessage%20Is%20Winning%20-%20%20Teens%20Dread%20the%20Green%20Text%20Bubble%20-%20WSJ-2025-05-12T15_44_11Z.html"></a>
 or how Apple has adopted HEIC as their default image format,
-[making it harder to share photos](https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format#History)<a class="archive-link" href="/public/archive/High%20Efficiency%20Image%20File%20Format%20-%20Wikipedia-2025-05-12T15_44_12Z.html"></a>.
+[making it harder to share photos](https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format#History)<a class="archive-link" href="/static/archive/High%20Efficiency%20Image%20File%20Format%20-%20Wikipedia-2025-05-12T15_44_12Z.html"></a>.
 
 Or consider how vendors try to
 [lock down the devices they sell](https://www.theverge.com/2012/11/20/3666668/access-denied-android-unlocked-bootloaders)<a class="archive-link" href="https://archive.ph/kICZ4"></a>,
@@ -73,7 +73,7 @@ I also think the attenting thing is a big deal and tons of people are
 being manipulated into being willing, brain-off consumers.
 
 Ads seem to be on the rise beyond free-to-download software.
-[Even iOS comes with ads now](https://support.apple.com/guide/iphone/control-how-apple-delivers-advertising-to-you-iphf60a6a256/ios)<a class="archive-link" href="/public/archive/Control%20how%20Apple%20delivers%20advertising%20to%20you%20on%20iPhone%20-%20Apple%20Support-2025-05-12T15_45_03Z.html"></a>,
+[Even iOS comes with ads now](https://support.apple.com/guide/iphone/control-how-apple-delivers-advertising-to-you-iphf60a6a256/ios)<a class="archive-link" href="/static/archive/Control%20how%20Apple%20delivers%20advertising%20to%20you%20on%20iPhone%20-%20Apple%20Support-2025-05-12T15_45_03Z.html"></a>,
 despite users paying $1500 for their iPhones.
 Similarly, you can
 [pay a subscription](https://help.x.com/en/using-x/x-premium) for an
@@ -90,7 +90,7 @@ everything seems to be going fine.
 The surprising thing about slow software is that people don't seem to
 care or even notice. Whoever I describe the issue to, whether technical
 or not, shrugs at me.
-[But it's everywhere](https://tonsky.me/blog/disenchantment/)<a class="archive-link" href="/public/archive/Software%20disenchantment%20%40%20tonsky.me-2025-05-12T15_45_05Z.html"></a>!
+[But it's everywhere](https://tonsky.me/blog/disenchantment/)<a class="archive-link" href="/static/archive/Software%20disenchantment%20%40%20tonsky.me-2025-05-12T15_45_05Z.html"></a>!
 A lot of the slowness can be found in stuff that runs in the browser, or
 is highly networked. Many local apps are also affected.
 
@@ -138,9 +138,9 @@ to lies and manipulative practices of tech companies, accepting artificial
 limitations and poor performance as inevitable.
 
 I grew up in Germany, a relatively wealthy country, but many
-[high schools here don't offer in-depth education](https://gi.de/meldung/informatikmonitor2324)<a class="archive-link" href="/public/archive/In%20Deutschland%20erhalten%20zu%20wenige%20Schülerinnen%20und%20Schüler%20Informatikunterricht%20%C2%A0-%20Gesellschaft%20für%20Informatik%20e.V.-2025-05-12T15_45_07Z.html"></a>
+[high schools here don't offer in-depth education](https://gi.de/meldung/informatikmonitor2324)<a class="archive-link" href="/static/archive/In%20Deutschland%20erhalten%20zu%20wenige%20Schülerinnen%20und%20Schüler%20Informatikunterricht%20%C2%A0-%20Gesellschaft%20für%20Informatik%20e.V.-2025-05-12T15_45_07Z.html"></a>
 on the basic use of computers or on advanced use and programming.
-[The issue has been known for years](https://www.sueddeutsche.de/bildung/informatikunterricht-an-der-schule-geht-nicht-per-mausklick-1.2008760)<a class="archive-link" href="/public/archive/Informatik%20in%20der%20Schule%20-%20%20Geht%20nicht%20per%20Mausklick%20-%20Bildung%20-%20SZ.de-2025-05-12T15_45_10Z.html"></a>,
+[The issue has been known for years](https://www.sueddeutsche.de/bildung/informatikunterricht-an-der-schule-geht-nicht-per-mausklick-1.2008760)<a class="archive-link" href="/static/archive/Informatik%20in%20der%20Schule%20-%20%20Geht%20nicht%20per%20Mausklick%20-%20Bildung%20-%20SZ.de-2025-05-12T15_45_10Z.html"></a>,
 but not much is changing. I'm not sure iPads in classrooms are an improvement.
 
 I'm at ETH now, a university famous for its computer science department. But
@@ -211,10 +211,10 @@ performance as competition increases.
 When it comes to action that can be taken now, I am still learning how to
 avoid the pitfalls that make even well-intentioned developers write slow
 software. I like the commentary of George Hotz, Casey Muratori,
-[Rob Pike](https://commandcenter.blogspot.com/2025/02/on-bloat-these-are-slides-from-talk-i.html)<a class="archive-link" href="/public/archive/command%20center-2025-05-12T15_45_19Z.html"></a>
+[Rob Pike](https://commandcenter.blogspot.com/2025/02/on-bloat-these-are-slides-from-talk-i.html)<a class="archive-link" href="/static/archive/command%20center-2025-05-12T15_45_19Z.html"></a>
 , and others on this issue. Some principles I find promising:
 
-- [Avoid dependencies.](https://lucumr.pocoo.org/2025/1/24/build-it-yourself/)<a class="archive-link" href="/public/archive/Build%20It%20Yourself%20-%20Armin%20Ronacher%27s%20Thoughts%20and%20Writings-2025-05-12T15_45_20Z.html"></a>
+- [Avoid dependencies.](https://lucumr.pocoo.org/2025/1/24/build-it-yourself/)<a class="archive-link" href="/static/archive/Build%20It%20Yourself%20-%20Armin%20Ronacher%27s%20Thoughts%20and%20Writings-2025-05-12T15_45_20Z.html"></a>
   See if you can implement a feature yourself or import a small set of code
   into your project to do something. Depending on the domain, this is more or
   less doable. Even if you do need to use big libraries, be selective about
@@ -237,7 +237,7 @@ keeping me from sticking to a small set of high-quality dependencies.
 
 ## Education
 
-[Attempts have been made](https://huntnewsnu.com/82511/editorial/op-eds/op-ed-northeasterns-redesign-of-the-khoury-curriculum-abandons-the-fundamentals-of-computer-science/)<a class="archive-link" href="/public/archive/Op-ed%20-%20%20Northeastern’s%20redesign%20of%20the%20Khoury%20curriculum%20abandons%20the%20fundamentals%20of%20computer%20science%20-%20The%20Huntington%20News-2025-05-12T15_45_41Z.html"></a>
+[Attempts have been made](https://huntnewsnu.com/82511/editorial/op-eds/op-ed-northeasterns-redesign-of-the-khoury-curriculum-abandons-the-fundamentals-of-computer-science/)<a class="archive-link" href="/static/archive/Op-ed%20-%20%20Northeastern’s%20redesign%20of%20the%20Khoury%20curriculum%20abandons%20the%20fundamentals%20of%20computer%20science%20-%20The%20Huntington%20News-2025-05-12T15_45_41Z.html"></a>
 to teach programming differently than by brute force. An approach used by
 Northeastern University was centered around slowly building intuition and
 the skills required to work on real-world code by using specially-designed

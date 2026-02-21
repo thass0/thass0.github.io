@@ -7,19 +7,19 @@ path: /can-you-use-a-class-in-c.html
 redirect_from: /2023/08/11/can-you-use-a-class-in-c/
 ---
 
-Discussion: [Hacker News](https://news.ycombinator.com/item?id=37097775)<a class="archive-link" href="/public/archive/Can%20you%20use%20a%20class%20in%20C%20-%20Hacker%20News-2025-05-12T14_19_04Z.html"></a> \| [Lobsters](https://lobste.rs/s/tjkdv7/can_you_use_c_class_c)<a class="archive-link" href="/public/archive/Can%20you%20use%20a%20C%2B%2B%20class%20in%20C%20-%20Lobsters-2025-05-12T14_19_07Z.html"></a>
+Discussion: [Hacker News](https://news.ycombinator.com/item?id=37097775)<a class="archive-link" href="/static/archive/Can%20you%20use%20a%20class%20in%20C%20-%20Hacker%20News-2025-05-12T14_19_04Z.html"></a> \| [Lobsters](https://lobste.rs/s/tjkdv7/can_you_use_c_class_c)<a class="archive-link" href="/static/archive/Can%20you%20use%20a%20C%2B%2B%20class%20in%20C%20-%20Lobsters-2025-05-12T14_19_07Z.html"></a>
 
 ---
 
-Recently, I've been [working on a C debugger](https://github.com/thass0/spray)<a class="archive-link" href="/public/archive/GitHub%20-%20thass0_spray%20-%20%20A%20x86_64%20Linux%20debugger%20🐛🐛🐛-2025-05-12T14_19_08Z.html"></a>. This requires reading and processing the DWARF debugging information that's part of the binary. Since this is a rather complex task, I figured I  might use a library that exports a nice interface to the debugging information.
+Recently, I've been [working on a C debugger](https://github.com/thass0/spray)<a class="archive-link" href="/static/archive/GitHub%20-%20thass0_spray%20-%20%20A%20x86_64%20Linux%20debugger%20🐛🐛🐛-2025-05-12T14_19_08Z.html"></a>. This requires reading and processing the DWARF debugging information that's part of the binary. Since this is a rather complex task, I figured I  might use a library that exports a nice interface to the debugging information.
 
-One such library that I found early on was [libelfin](https://github.com/aclements/libelfin)<a class="archive-link" href="/public/archive/GitHub%20-%20aclements_libelfin%20-%20%20C%2B%2B11%20ELF_DWARF%20parser-2025-05-12T14_19_10Z.html"></a>. It wasn't perfect from that start because it is a bit dated now, only supporting DWARF 4 and missing features from the newer DWARF 5 standard, but I thought that I could work around this. The bigger problem was that libelfin is written in C++ while most the debugger is written in C.
+One such library that I found early on was [libelfin](https://github.com/aclements/libelfin)<a class="archive-link" href="/static/archive/GitHub%20-%20aclements_libelfin%20-%20%20C%2B%2B11%20ELF_DWARF%20parser-2025-05-12T14_19_10Z.html"></a>. It wasn't perfect from that start because it is a bit dated now, only supporting DWARF 4 and missing features from the newer DWARF 5 standard, but I thought that I could work around this. The bigger problem was that libelfin is written in C++ while most the debugger is written in C.
 
 It is pretty easy to call code written in C from C++ since a lot of C is still part of the subset of C that C++ supports. The problem with calling C++ code from C is that there are many features in C++ that C is missing. This means that the C++ interface must be simplified for C to be able to understand it.
 
 # Handling objects
 
-The most important concept in C++ that C is missing is true object orientation. That is, in C [you don't get a this pointer for free](https://eev.ee/blog/2013/03/03/the-controller-pattern-is-awful-and-other-oo-heresy/)<a class="archive-link" href="/public/archive/The%20controller%20pattern%20is%20awful%20%28and%20other%20OO%C2%A0heresy%29%20_%20fuzzy%20notepad-2025-05-12T14_19_15Z.html"></a>; you need to handle it manually.
+The most important concept in C++ that C is missing is true object orientation. That is, in C [you don't get a this pointer for free](https://eev.ee/blog/2013/03/03/the-controller-pattern-is-awful-and-other-oo-heresy/)<a class="archive-link" href="/static/archive/The%20controller%20pattern%20is%20awful%20%28and%20other%20OO%C2%A0heresy%29%20_%20fuzzy%20notepad-2025-05-12T14_19_15Z.html"></a>; you need to handle it manually.
 
 Let's start with a simple example. Say we have a class that represents a [rational number](https://en.wikipedia.org/wiki/Rational_number) $r = p / q$ where $q \neq 0$. The declaration without any of the operations we need might look something like this, which will print `5 / 3` when we run it.
 ```c++
@@ -48,7 +48,7 @@ auto main() -> int {
 }
 ```
 
-How do you write this as a C program using the `Rational` class? After all, there is no such thing as a class in C. To solve this issue we can rely on one of the primitives that most systems languages have in common by virtue of running to the same type of computer: the pointer. We will allocate an instance of our class on the heap and then give the C program a pointer to that instance. This way we can keep track of the object to manipulate it. It's also possible to use handles for this, but they are just [pointers with extra steps](https://floooh.github.io/2018/06/17/handles-vs-pointers.html)<a class="archive-link" href="/public/archive/Handles%20are%20the%20better%20pointers-2025-05-12T14_19_19Z.html"></a> and a bit overkill for us at this point.
+How do you write this as a C program using the `Rational` class? After all, there is no such thing as a class in C. To solve this issue we can rely on one of the primitives that most systems languages have in common by virtue of running to the same type of computer: the pointer. We will allocate an instance of our class on the heap and then give the C program a pointer to that instance. This way we can keep track of the object to manipulate it. It's also possible to use handles for this, but they are just [pointers with extra steps](https://floooh.github.io/2018/06/17/handles-vs-pointers.html)<a class="archive-link" href="/static/archive/Handles%20are%20the%20better%20pointers-2025-05-12T14_19_19Z.html"></a> and a bit overkill for us at this point.
 
 The following is what we might want.
 ```c
@@ -107,7 +107,7 @@ void del_rational(void **rp) {
 }
 
 ```
-The trick is to **allocate instances on heap and then pass them around as `void` pointers**. We use C's `malloc` instead of the `new` operator because the `new` operator is a C++ only feature which raises a linker error. A good way to improve type safety is to `typedef` an opaque type to represent the class on the C side, as suggested in [this reply](https://github.com/thass0/blog-code/issues/1#issue-1848643298)<a class="archive-link" href="/public/archive/re.%20Can%20you%20use%20a%20C%2B%2B%20class%20in%20C%20·%20Issue%20%231%20·%20thass0_blog-code%20·%20GitHub-2025-05-12T14_19_20Z.html"></a>. This is the approach that we'll be using later on, so keep on reading. Alternatively, if you have control over all of the C++ code (i.e. you don't just wrap a library) you could follow [this Stack Overflow answer](https://stackoverflow.com/a/7281477) too.
+The trick is to **allocate instances on heap and then pass them around as `void` pointers**. We use C's `malloc` instead of the `new` operator because the `new` operator is a C++ only feature which raises a linker error. A good way to improve type safety is to `typedef` an opaque type to represent the class on the C side, as suggested in [this reply](https://github.com/thass0/blog-code/issues/1#issue-1848643298)<a class="archive-link" href="/static/archive/re.%20Can%20you%20use%20a%20C%2B%2B%20class%20in%20C%20·%20Issue%20%231%20·%20thass0_blog-code%20·%20GitHub-2025-05-12T14_19_20Z.html"></a>. This is the approach that we'll be using later on, so keep on reading. Alternatively, if you have control over all of the C++ code (i.e. you don't just wrap a library) you could follow [this Stack Overflow answer](https://stackoverflow.com/a/7281477) too.
 
 Now, ignoring how incredibly unsafe all of this is, there is a bigger problem we must face: this is not even close to compiling!
 The reason for this is that when we `#include "rational.h"` into `main.c`, we essentially copy all the contents of `rational.h` into the C source file. This means that we suddenly present the C compiler with a class declaration and other things that it doesn't understand because they are part of a totally different language.
@@ -260,5 +260,5 @@ extern "C" Rational *make_rational(int numer, int denom) {
 
 In such a simple case it's also feasible to check if the denominator is 0 in `make_rational` but that doesn't apply to more realistic examples.
 
-You can download the code from this post [here](/public/code/2025-05-13-can-you-use-a-class-in-c.tar.gz).
+You can download the code from this post [here](/static/code/2025-05-13-can-you-use-a-class-in-c.tar.gz).
 

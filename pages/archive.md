@@ -7,16 +7,16 @@ title: Archive
   <a href="/archive.html">Link Archive</a>
 </h1>
 
-I maintain an archive of pages that I link to in my posts in the `/public/archive` directory of
+I maintain an archive of pages that I link to in my posts in the `/static/archive` directory of
 this website. The web changes all the time and there is no way to be sure that content I once
 linked to will remain accessible in the future. To protect against this, I download copies of
-most pages that I link to and save them in `/public/archive`. This way, I can be confident
+most pages that I link to and save them in `/static/archive`. This way, I can be confident
 that future readers of my blog will have access to all relevant information. The archive will
 only disappear when the rest of my blog does.
 
 The command I use to archive web pages is:
 ```shell
-monolith --isolate --no-js --output public/archive/%title%-%timestamp%.html <URL>
+monolith --isolate --no-js --output static/archive/%title%-%timestamp%.html <URL>
 ```
 The Monolith software can be downloaded on [its GitHub page](https://github.com/Y2Z/monolith).
 

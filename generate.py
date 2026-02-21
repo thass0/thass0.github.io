@@ -225,7 +225,7 @@ if __name__ == "__main__":
             redirect_to = "/" + str(output_path.relative_to(out_dir))
             generate_redirect(redirect_from, redirect_to, out_dir)
 
-    run(["cp", "-r", "public/", "build/"], check=True)
+    run(["cp", "-r", "static/", "build/"], check=True)
 
     end_time = perf_counter()
     elapsed = end_time - start_time

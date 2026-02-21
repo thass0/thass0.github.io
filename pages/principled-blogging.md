@@ -18,7 +18,7 @@ Fortunately for us, there is the "small web" --- the part of the internet made
 up of personal blogs and other kinds of privately run, small-scale websites
 that are primarily operated for a fun. There is nothing wrong with making a
 profit on the web, of course. There are great for-profit services, like
-[Migadu](https://migadu.com/)<a class="archive-link" href="/public/archive/Migadu%20Email-2025-05-12T15_57_08Z.html"></a>,
+[Migadu](https://migadu.com/)<a class="archive-link" href="/static/archive/Migadu%20Email-2025-05-12T15_57_08Z.html"></a>,
 that offer a high-quality product without any fuzz. But most web enterprises
 have converged to an enshittified state that makes them all indistinguishable
 and equally unusable.
@@ -60,7 +60,7 @@ to struggle with this.
 
 So, you should probably remove analytics from your blog. Or, if
 you insist on having analytics, please do something privacy-friendly,
-like [the way Bear does it](https://herman.bearblog.dev/how-bear-does-analytics-with-css/)<a class="archive-link" href="/public/archive/How%20Bear%20does%20analytics%20with%20CSS%20-%20Herman%27s%20blog-2025-05-12T15_57_09Z.html"></a>.
+like [the way Bear does it](https://herman.bearblog.dev/how-bear-does-analytics-with-css/)<a class="archive-link" href="/static/archive/How%20Bear%20does%20analytics%20with%20CSS%20-%20Herman%27s%20blog-2025-05-12T15_57_09Z.html"></a>.
 
 #  Accessibility
 
@@ -74,7 +74,7 @@ Not only are you allowing visually impaired people to have a good
 time on your website, you are also allowing people with a bad
 internet connection or slow device to enjoy your content.
 
-Some [experiments by Dan Luu](https://danluu.com/slow-device/)<a class="archive-link" href="/public/archive/How%20web%20bloat%20impacts%20users%20with%20slow%20devices-2025-05-12T15_57_09Z.html"></a> indicate
+Some [experiments by Dan Luu](https://danluu.com/slow-device/)<a class="archive-link" href="/static/archive/How%20web%20bloat%20impacts%20users%20with%20slow%20devices-2025-05-12T15_57_09Z.html"></a> indicate
 that people living outside the wealthy countries can barely use some
 of the most popular web services because they are engineered in a decadent
 way by people who unconsciously assume all of their users own an iPhone.
@@ -115,7 +115,7 @@ that's still nice to use.
 I have personally taken tooling to a form of extreme. My blog is quite
 minimal, and, except for the Markdown to HTML conversion, the
 entire site generation is covered by a
-[120-line Python script](/public/code/2025-05-13-generate.py).
+[120-line Python script](/static/code/2025-05-13-generate.py).
 The only dependency of my blog that doesn't come pre-installed
 with Ubuntu is Cmark, the reference implementation of the CommonMark
 Markdown specification. It's fast, well-tested, fuzzed, and actively
@@ -137,7 +137,7 @@ Software people seem to like using tools that are super complex
 because it's what the big dogs use. But these tools are often
 overblown, and you'd be better off if you'd just write the stuff
 yourself. At least think carefully before using someone else's
-code. This is what responsible engineers do, [right?](https://en.wikipedia.org/wiki/Npm_left-pad_incident)<a class="archive-link" href="/public/archive/npm%20left-pad%20incident%20-%20Wikipedia-2025-05-12T15_57_23Z.html"></a>
+code. This is what responsible engineers do, [right?](https://en.wikipedia.org/wiki/Npm_left-pad_incident)<a class="archive-link" href="/static/archive/npm%20left-pad%20incident%20-%20Wikipedia-2025-05-12T15_57_23Z.html"></a>
 
 # Now what?
 

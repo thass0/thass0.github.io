@@ -14,27 +14,27 @@ This means that we want to turn the above expressions into the following ASTs.[^
 
 `7 + 42 * 9` ⇒ `7 + (42 * 9)`. `*` has higher precedence than `+`, so although they both associate to the left, `*` binds tighter than `+`.
 
-<img src="/public/figures/ast-1.png" alt="AST of 7 + 42 * 9" class="small-figure"/>
+<img src="/static/figures/ast-1.png" alt="AST of 7 + 42 * 9" class="small-figure"/>
 
 `2 * 3 / 4 * 5` ⇒ `((2 * 3) / 4) * 5`. `*` and `/` have the same precedence and associate to the left.
 
-<img src="/public/figures/ast-2.png" alt="AST of 2 * 3 / 4 * 5" class="small-figure"/>
+<img src="/static/figures/ast-2.png" alt="AST of 2 * 3 / 4 * 5" class="small-figure"/>
 
 `8 * (10 - 6)`. Parentheses have the highest precedence.
 
-<img src="/public/figures/ast-3.png" alt="AST of 8 * (10 - 6)" class="small-figure"/>
+<img src="/static/figures/ast-3.png" alt="AST of 8 * (10 - 6)" class="small-figure"/>
 
 The following grammar encodes the precedence and associativity constraints above. It is also not left-recursive, and can be used in a recursive descent parser.[^2]
 
-<img src="/public/figures/grammar.png" alt="A grammar for parsing expressions" class="small-figure"/>
+<img src="/static/figures/grammar.png" alt="A grammar for parsing expressions" class="small-figure"/>
 
-Instead of using algorithms like Shunting Yard or precedence climbing, the precedence of the operators is encoded directly in the various production rules. This is the simplest approach to take, but it works well in the implementation. Nora Sandler presents this method, and explains how to get there [here on her blog](https://norasandler.com/2017/12/15/Write-a-Compiler-3.html)<a class="archive-link" href="/public/archive/Writing%20a%20C%20Compiler%2C%20Part%203-2025-05-12T14_46_30Z.html"></a>. I recommend reading [this article](https://www.engr.mun.ca/~theo/Misc/exp_parsing.htm)<a class="archive-link" href="/public/archive/Parsing%20Expressions%20by%20Recursive%20Descent-2025-05-12.html"></a> by Theodore Norvell if you want to learn more about paring expressions. It explains both the Shunting Yard algorithms and precedence climbing.
+Instead of using algorithms like Shunting Yard or precedence climbing, the precedence of the operators is encoded directly in the various production rules. This is the simplest approach to take, but it works well in the implementation. Nora Sandler presents this method, and explains how to get there [here on her blog](https://norasandler.com/2017/12/15/Write-a-Compiler-3.html)<a class="archive-link" href="/static/archive/Writing%20a%20C%20Compiler%2C%20Part%203-2025-05-12T14_46_30Z.html"></a>. I recommend reading [this article](https://www.engr.mun.ca/~theo/Misc/exp_parsing.htm)<a class="archive-link" href="/static/archive/Parsing%20Expressions%20by%20Recursive%20Descent-2025-05-12.html"></a> by Theodore Norvell if you want to learn more about paring expressions. It explains both the Shunting Yard algorithms and precedence climbing.
 
 How would this grammar parse an expression like `7 + 42 * 9`? It starts at `7`, goes down the leftmost derivation of both `expr` and `term`, and then chooses the `num` alternative in `factor`. Next, `+` is consumed by the optionally repeated part of `expr`, and we go down another `term`, with `42 * 9` as the rest of the input. The recursion mechanism at work here defers the partial tree consisting of `(+ 7 <term>)` that we have parsed so far. Starting at `42`, `term` now goes down the leftmost `factor` again. This `factor` becomes another `num`, consuming `42` from the input. Now `*` is consumed by the optionally repeated part of `term`, and then `factor` consumes the last numeric literal `9`. In total, the second `term` in the `expr` production rule produces the tree `(* 42 9)`. Now that the end of the input has been reached, this tree is used to complete the first partial tree. This way we get `(+ 7 (* 42 9))` as the result.
 
 # Implementation
 
-We'll use the [Megaparsec](https://hackage.haskell.org/package/megaparsec) library of parser combinators for our implementation. The [Megaparsec tutorial](https://markkarpov.com/tutorial/megaparsec.html)<a class="archive-link" href="/public/archive/Megaparsec%20tutorial-2025-05-12T14_46_36Z.html"></a> is quite thorough, and I recommend you give it a read if you want to use Megaparsec.
+We'll use the [Megaparsec](https://hackage.haskell.org/package/megaparsec) library of parser combinators for our implementation. The [Megaparsec tutorial](https://markkarpov.com/tutorial/megaparsec.html)<a class="archive-link" href="/static/archive/Megaparsec%20tutorial-2025-05-12T14_46_36Z.html"></a> is quite thorough, and I recommend you give it a read if you want to use Megaparsec.
 
 First off, let's define a representation of the ASTs we wish to create:
 
@@ -232,7 +232,7 @@ Mul
 
 `pTerm` and `pExpr` are very similar and can easily be abstracted into a function that parses any left-associative binary expression. Then, the production rule for any level of precedence can be implemented in a single line. Unary operators can also be added by extending `pFactor`.
 
-The code for this post can be found [here](/public/code/2025-05-13-Expr.hs). It includes such a generic function for parsing expressions.
+The code for this post can be found [here](/static/code/2025-05-13-Expr.hs). It includes such a generic function for parsing expressions.
 
 ---
 

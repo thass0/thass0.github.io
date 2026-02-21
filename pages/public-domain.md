@@ -3,7 +3,7 @@ layout: default
 title: Public Domain
 ---
 
-![Picture saying "All content on this blog, unless otherwise noted, is released into the public domain." written in the DOOM font](/public/figures/public-domain.png)
+![Picture saying "All content on this blog, unless otherwise noted, is released into the public domain." written in the DOOM font](/static/figures/public-domain.png)
 
 I do not want to participate in the practice of copyright for
 work I do not financially depend on. This blog is something I do

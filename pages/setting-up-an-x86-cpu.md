@@ -7,7 +7,7 @@ path: /setting-up-an-x86-cpu.html
 redirect_from: /2024/07/13/setting-up-an-x86-cpu.html
 ---
 
-Discussion: [Hacker News](https://news.ycombinator.com/item?id=40959742)<a class="archive-link" href="/public/archive/Writing%20a%20BIOS%20bootloader%20for%2064-bit%20mode%20from%20scratch%20-%20Hacker%20News-2025-05-12T15_17_26Z.html"></a> \| [r/programming](https://www.reddit.com/r/programming/comments/1ews2rz/setting_up_an_x86_cpu_in_64bit_mode/)<a class="archive-link" href="/public/archive/Setting%20up%20an%20x86%20CPU%20in%2064-bit%20mode%20%20-%20%20programming-2025-05-12T15_25_35Z.html"></a> \| [Lobsters](https://lobste.rs/s/etf2ct/setting_up_x86_cpu_64_bit_mode)<a class="archive-link" href="/public/archive/Setting%20up%20an%20x86%20CPU%20in%2064-bit%20mode%20-%20Lobsters-2025-05-12T15_17_29Z.html"></a> \| [Hackaday](https://hackaday.com/2024/07/14/a-64-bit-x86-bootloader-from-scratch/)<a class="archive-link" href="/public/archive/A%2064-bit%20X86%20Bootloader%20From%20Scratch%20-%20Hackaday-2025-05-12T15_17_32Z.html"></a>
+Discussion: [Hacker News](https://news.ycombinator.com/item?id=40959742)<a class="archive-link" href="/static/archive/Writing%20a%20BIOS%20bootloader%20for%2064-bit%20mode%20from%20scratch%20-%20Hacker%20News-2025-05-12T15_17_26Z.html"></a> \| [r/programming](https://www.reddit.com/r/programming/comments/1ews2rz/setting_up_an_x86_cpu_in_64bit_mode/)<a class="archive-link" href="/static/archive/Setting%20up%20an%20x86%20CPU%20in%2064-bit%20mode%20%20-%20%20programming-2025-05-12T15_25_35Z.html"></a> \| [Lobsters](https://lobste.rs/s/etf2ct/setting_up_x86_cpu_64_bit_mode)<a class="archive-link" href="/static/archive/Setting%20up%20an%20x86%20CPU%20in%2064-bit%20mode%20-%20Lobsters-2025-05-12T15_17_29Z.html"></a> \| [Hackaday](https://hackaday.com/2024/07/14/a-64-bit-x86-bootloader-from-scratch/)<a class="archive-link" href="/static/archive/A%2064-bit%20X86%20Bootloader%20From%20Scratch%20-%20Hackaday-2025-05-12T15_17_32Z.html"></a>
 
 ---
 
@@ -26,7 +26,7 @@ an assembler (I used [nasm](https://www.nasm.us/)), and
 [QEMU](https://www.qemu.org/). If you don't have an x86_64 CPU, you should
 still be able to run everything I describe by emulating an x86 CPU in QEMU.
 I assume you know x86 assembly and the syntax that nasm uses. I like
-the [nasm tutorial by Ray Toal](https://cs.lmu.edu/~ray/notes/nasmtutorial/)<a class="archive-link" href="/public/archive/nasmtutorial-2025-05-12T15_19_45Z.html"></a>
+the [nasm tutorial by Ray Toal](https://cs.lmu.edu/~ray/notes/nasmtutorial/)<a class="archive-link" href="/static/archive/nasmtutorial-2025-05-12T15_19_45Z.html"></a>
 for getting started.
 
 I was surprised by how readable some of the Intel manual is. The initial
@@ -36,11 +36,11 @@ volume 3: System Programming Guide is most relevant to this discussion. There
 is an overview of all the operating modes in volume 3, section 2.2 Modes
 of Operation. The path we're taking is highlighted in red.
 
-![Overview of x86 mode transitions](/public/figures/x86-mode-transitions.png)
+![Overview of x86 mode transitions](/static/figures/x86-mode-transitions.png)
 
 
 For everything up to 32-bit mode, take a look at
-["Writing a Simple Operating System --- from Scratch"](https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf)<a class="archive-link" href="/public/archive/writing-a-simple-os-from-scratch.pdf"></a>.
+["Writing a Simple Operating System --- from Scratch"](https://www.cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures/os-dev.pdf)<a class="archive-link" href="/static/archive/writing-a-simple-os-from-scratch.pdf"></a>.
 It's unfinished but still very good.
 
 # Starting Point: BIOS
@@ -57,7 +57,7 @@ that "boot sector" to memory at address `0x7c00`.
 
 So the BIOS gives us 512 bytes to work with. We need to use these bytes in
 order to bootstrap the rest of the bootloader. [One can fit a surprising
-amount of stuff in 512 bytes](https://github.com/jart/sectorlisp)<a class="archive-link" href="/public/archive/GitHub%20-%20jart_sectorlisp%20-%20%20Bootstrapping%20LISP%20in%20a%20Boot%20Sector-2025-05-12T15_22_34Z.html"></a>,
+amount of stuff in 512 bytes](https://github.com/jart/sectorlisp)<a class="archive-link" href="/static/archive/GitHub%20-%20jart_sectorlisp%20-%20%20Bootstrapping%20LISP%20in%20a%20Boot%20Sector-2025-05-12T15_22_34Z.html"></a>,
 but it's easiest to just load some more data from disk first.
 Fortunately, routines defined by the BIOS remain available to us as
 long as we're in real mode.
@@ -176,7 +176,7 @@ SECTIONS
 Running `make boot` should result in a QEMU window and
 the "Hello, World!" message should be displayed.
 
-![QEMU screenshot of the hello world message](/public/figures/qemu-hello-world-screenshot.png)
+![QEMU screenshot of the hello world message](/static/figures/qemu-hello-world-screenshot.png)
 
 # Stage 1 -- Loading Stage 2 From Disk
 
@@ -192,7 +192,7 @@ So we'll load a number of sectors from disk into memory and hope for the
 best. Of course, this is an unsafe technique, but it works for now.
 
 This is how one can access the disk using BIOS. There's an
-[osdev.org page](https://wiki.osdev.org/Disk_access_using_the_BIOS_(INT_13h))<a class="archive-link" href="/public/archive/Disk%20access%20using%20the%20BIOS%20%28INT%2013h%29%20-%20OSDev%20Wiki-2025-05-12T15_22_47Z.html"></a>
+[osdev.org page](https://wiki.osdev.org/Disk_access_using_the_BIOS_(INT_13h))<a class="archive-link" href="/static/archive/Disk%20access%20using%20the%20BIOS%20%28INT%2013h%29%20-%20OSDev%20Wiki-2025-05-12T15_22_47Z.html"></a>
 on this.
 
 ```nasm
@@ -300,7 +300,7 @@ SECTIONS
 }
 ```
 
-![QEMU screenshot of the stage 2 message](/public/figures/qemu-hello-stage2-screenshot.png)
+![QEMU screenshot of the stage 2 message](/static/figures/qemu-hello-stage2-screenshot.png)
 
 # 32-bit Protected Mode
 
@@ -326,7 +326,7 @@ Intel manual.
 
 From section "3.4.5 Segment Descriptors":
 
-![Screenshot of segment descriptor layout](/public/figures/segment-descriptor-layout.png)
+![Screenshot of segment descriptor layout](/static/figures/segment-descriptor-layout.png)
 
 The GDT is just an array of segment descriptors with a "null descriptor"
 at the start that's used to catch invalid translations. The fields in the
@@ -480,7 +480,7 @@ string with the message and a call to `print_string32` to the code.
 The `print_string32` function is super basic, so the message always shows
 up in the top left corner of the display.
 
-![QEMU screenshot of the protected mode message](/public/figures/qemu-prot-mode-screenshot.png)
+![QEMU screenshot of the protected mode message](/static/figures/qemu-prot-mode-screenshot.png)
 
 # 64-bit Long Mode
 
@@ -493,9 +493,9 @@ must be enabled. We have protected mode now, but we are missing paging.
 
 I love paging. It's just very cool. But I'd do a poor job at explaining the
 concept itself. Philipp Oppermann's
-[Introduction to Paging](https://os.phil-opp.com/paging-introduction/)<a class="archive-link" href="/public/archive/Introduction%20to%20Paging%20-%20Writing%20an%20OS%20in%20Rust-2025-05-12T15_22_49Z.html"></a> from
+[Introduction to Paging](https://os.phil-opp.com/paging-introduction/)<a class="archive-link" href="/static/archive/Introduction%20to%20Paging%20-%20Writing%20an%20OS%20in%20Rust-2025-05-12T15_22_49Z.html"></a> from
 the "Writing an OS in Rust" blog was really useful for me personally.
-[OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)<a class="archive-link" href="/public/archive/vm-paging.pdf"></a> also talks about paging
+[OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)<a class="archive-link" href="/static/archive/vm-paging.pdf"></a> also talks about paging
 starting chapter 18, although it doesn't go into the specifics of paging
 on x86 like Philipp Oppermann's post does.
 
@@ -662,7 +662,7 @@ comp_mode_msg: db "Entered 64-bit compatibility mode", 0
 Again, the "success message" should show up in the top left corner.
 Write a small VGA driver if this annoys you.
 
-![QEMU screenshot of the success message](/public/figures/qemu-comp-mode-screenshot.png)
+![QEMU screenshot of the success message](/static/figures/qemu-comp-mode-screenshot.png)
 
 # Using C
 
@@ -777,6 +777,6 @@ $(BUILD_DIR)/%.c.o: $(SRC_DIR)/%.c
 # ...
 ```
 
-![QEMU screenshot of the message printed by C code](/public/figures/qemu-c-screenshot.png)
+![QEMU screenshot of the message printed by C code](/static/figures/qemu-c-screenshot.png)
 
-Cool if you actually came along this far. You can download the code [here](/public/code/2025-05-13-setting-up-an-x86-cpu.tar.gz).
+Cool if you actually came along this far. You can download the code [here](/static/code/2025-05-13-setting-up-an-x86-cpu.tar.gz).
