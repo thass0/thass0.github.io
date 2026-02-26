@@ -5,15 +5,14 @@
 /**************/
 
 html {
-    --glow-color: rgba(255, 239, 0, 0.8);
     --text-color: #111;
     --small-color: #5a5a5a;
     --note-color: #048c00;
     --background-color: #ffffff;
     --link-color: #0000f0;
     --link-interact-color: #000080;
-    --code-background-color: #f3f3f3;
-    --code-border-color: #606060;
+    --box-background-color: #f3f3f3;
+    --box-border-color: #606060;
 
     font-size: 21px;
     font-family: serif;
@@ -103,8 +102,8 @@ small {
 }
 
 details {
-    background-color: var(--code-background-color); 
-    border-color: var(--code-border-color);
+    background-color: var(--box-background-color); 
+    border-color: var(--box-border-color);
     padding: 0.5em;
     border-style: solid;
     border-width: 0.1em 0em;
@@ -256,8 +255,8 @@ footer {
 
 /* Code blocks. */
 pre {
-    background-color: var(--code-background-color);
-    border-color: var(--code-border-color);
+    background-color: var(--box-background-color);
+    border-color: var(--box-border-color);
     overflow: scroll;
     padding: 0.5em;
     border-style: solid;
@@ -271,7 +270,7 @@ code {
 
 /* Inline code. */
 code:not(pre code) {
-    background-color: var(--code-background-color);
+    background-color: var(--box-background-color);
     border-radius: 3px;
     text-decoration: none;
     padding: 0.5px 3px;
