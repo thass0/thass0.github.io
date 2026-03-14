@@ -146,7 +146,7 @@ def load_layouts(layouts_dir: Path) -> Dict[str, Tuple[str, str]]:
     for name in topo_sort(deps):
         parent_name = deps[name]
         if parent_name:
-            layouts[name] = render_layout(layouts[parent_name], ignore_undefined=True, content=raw_layouts[name], **frontmatter)
+            layouts[name] = render_layout(layouts[parent_name], ignore_undefined=True, content=raw_layouts[name], **frontmatters[name])
         else:
             layouts[name] = raw_layouts[name]
 
