@@ -1,1 +1,7 @@
-[]
+[
+  {
+    "id": 1,
+    "date": "2026-03-14T17:51:19.186099",
+    "text": "This is the first time I'm posting in this microblog. I'm writing the words you're reading in Vim\nand, once I save the file, they will be pushed to my website, which runs on top of github pages.\n\nI set this up because I sometimes feel like posting things that are too short for a proper blog\npost, so I think this format makes sense. Let's see how it goes..."
+  }
+]
