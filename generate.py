@@ -9,8 +9,16 @@ from pathlib import Path
 from typing import Dict, Tuple, List
 from subprocess import run
 from time import perf_counter
+from datetime import datetime
 from paka.cmark import to_html
 import re
+import json
+import urllib.parse
+
+def write_file(path: Path, cont: str):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(cont, encoding="utf-8")
+
 
 def is_valid_name(name: str) -> bool:
     if not name:
@@ -155,13 +163,9 @@ def link_footnotes(md: str) -> str:
     return md
 
 
-def md_to_html(name: str, md: str) -> str:
-    start_time = perf_counter()
+def md_to_html(md: str) -> str:
     md = link_footnotes(md)
     html = to_html(md, safe=False, smart=True)
-    end_time = perf_counter()
-    elapsed = end_time - start_time
-    print(f"Converted {name} to HTML in {elapsed:.4f} second(s)")
     return html
 
 
@@ -200,6 +204,33 @@ def generate_redirect(redirect_from: str, redirect_to: str, out_dir: Path):
     path.write_text(redirect_html, encoding="utf-8")
 
 
+#############
+# Microblog #
+#############
+
+AUTHOR_EMAIL = "thassilo@thasso.xyz"
+MBLOG_URL = "https://thasso.xyz/mblog.html"
+MBLOG_FEED_URL = "https://thasso.xyz/mblog.atom"
+DOMAIN = "thasso.xyz"
+
+def generate_mblog(posts: list, layouts: Dict[str, str], out_dir: Path):
+    items = []
+    for post in reversed(posts):
+        dt = datetime.fromisoformat(post["date"])
+        rendered = md_to_html(post["text"])
+        subject = urllib.parse.quote(f"Re: microblog post from {dt.strftime("%d %b %Y, %H:%M")}")
+        mailto = f"mailto:{AUTHOR_EMAIL}?subject={subject}"
+        items.append(
+            f'<article class="mblog-post">\n'
+            f'<time datetime="{dt.isoformat()}">{dt.strftime("%d %b %Y, %H:%M")}</time>. <a href="{mailto}">Reply</a>\n'
+            f'{rendered}'
+            f'</article>'
+        )
+
+    cont = render_layout(layouts["mblog"], content="\n".join(items))
+    write_file(out_dir / "mblog.html", cont)
+
+
 ########
 # Main #
 ########
@@ -212,15 +243,17 @@ if __name__ == "__main__":
 
     run(["rm", "-rf", str(out_dir)], check=True)
 
+    posts = json.loads(Path("mblog.json").read_text(encoding="utf-8"))
+    generate_mblog(posts, layouts, out_dir)
+
     for name, (cont, frontmatter) in pages.items():
         output_path = out_dir / name
         if output_path.suffix == ".md":
-            cont = md_to_html(name, cont)
+            cont = md_to_html(cont)
             output_path = (out_dir / name).with_suffix(".html")
         if layout_name := frontmatter.pop("layout", None):
             cont = render_layout(layouts[layout_name], content=cont, **frontmatter)
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        output_path.write_text(cont, encoding="utf-8")
+        write_file(output_path, cont)
         if redirect_from := frontmatter.pop("redirect_from", None):
             redirect_to = "/" + str(output_path.relative_to(out_dir))
             generate_redirect(redirect_from, redirect_to, out_dir)

@@ -110,6 +110,12 @@ details {
     margin-top: 1em;
 }
 
+.mblog-post {
+    background-color: var(--box-background-color);
+    margin-top: 1em;
+    padding: 0.5em;
+}
+
 /* Footer stuff */
 
 footer {
