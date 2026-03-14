@@ -208,18 +208,13 @@ def generate_redirect(redirect_from: str, redirect_to: str, out_dir: Path):
 # Microblog #
 #############
 
-AUTHOR_EMAIL = "thassilo@thasso.xyz"
-MBLOG_URL = "https://thasso.xyz/mblog.html"
-MBLOG_FEED_URL = "https://thasso.xyz/mblog.atom"
-DOMAIN = "thasso.xyz"
-
 def generate_mblog(posts: list, layouts: Dict[str, str], out_dir: Path):
     items = []
     for post in reversed(posts):
         dt = datetime.fromisoformat(post["date"])
         rendered = md_to_html(post["text"])
         subject = urllib.parse.quote(f"Re: microblog post from {dt.strftime("%d %b %Y, %H:%M")}")
-        mailto = f"mailto:{AUTHOR_EMAIL}?subject={subject}"
+        mailto = f"mailto:thassilo@thasso.xyz?subject={subject}"
         items.append(
             f'<article class="mblog-post">\n'
             f'<time datetime="{dt.isoformat()}">{dt.strftime("%d %b %Y, %H:%M")}</time>. <a href="{mailto}">Reply</a>\n'
