@@ -4,16 +4,25 @@
 /* Base style */
 /**************/
 
-html {
-    --text-color: #111;
-    --small-color: #5a5a5a;
-    --note-color: #048c00;
-    --background-color: #ffffff;
-    --link-color: #0000f0;
-    --link-interact-color: #000080;
-    --box-background-color: #f3f3f3;
-    --box-border-color: #606060;
+:root {
+    --text-color: #6f5500;
+    --small-color: #817242; 
+    --background-color: #fbf7f0;
+    --link-color: #721045;
+    --box-background-color: #efe9dd;
+}
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #d3c39b;
+        --small-color: #d3c39b;
+        --background-color: #1a1510;
+        --link-color: #d3a9b3;
+        --box-background-color: #26201a;
+    }
+}
+
+html {
     font-size: 21px;
     font-family: serif;
     background-color: var(--background-color);
@@ -23,15 +32,11 @@ html {
 a:link,
 a:visited {
     color: var(--link-color);
-    text-decoration: underline;
+    text-decoration: underline dotted;
 }
 
 a:hover,
 a:active {
-    color: var(--link-interact-color);
-}
-
-a:hover {
     text-decoration: underline solid;
 }
 
@@ -103,7 +108,6 @@ small {
 
 details {
     background-color: var(--box-background-color); 
-    border-color: var(--box-border-color);
     padding: 0.5em;
     border-style: solid;
     border-width: 0.1em 0em;
@@ -227,15 +231,6 @@ footer {
     }
 }
 
-/************/
-/* Masthead */
-/************/
-
-.masthead {
-    margin-top: 30px;
-    max-width: 240px;
-}
-
 /*****************/
 /* About section */
 /*****************/
@@ -262,7 +257,6 @@ footer {
 /* Code blocks. */
 pre {
     background-color: var(--box-background-color);
-    border-color: var(--box-border-color);
     overflow: scroll;
     padding: 0.5em;
     border-style: solid;
