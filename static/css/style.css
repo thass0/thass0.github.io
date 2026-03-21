@@ -120,36 +120,6 @@ details {
     padding: 0.5em;
 }
 
-/* Footer stuff */
-
-footer {
-    --1: 1px;
-    --2: 1.3px;
-    --3: 1.8px;
-    --4: 2.5px;
-    --5: 3.3px;
-    --6: 4.5px;
-    --7: 6px;
-    --8: 8.2px;
-    --9: 11px;
-    --10: 14.9px;
-    --11: 20.1px;
-    --12: 27px;
-    --13: 40.4px;
-    --14: 54.6px;
-    --15: 150px;
-}
-
-.black-box {
-    width: 100%;
-    background-color: var(--text-color);
-}
-
-.white-box {
-    width: 100%;
-    background-color: var(--background-color);
-}
-
 @media (max-width: 600px) {
     img {
         max-width: 100%;
