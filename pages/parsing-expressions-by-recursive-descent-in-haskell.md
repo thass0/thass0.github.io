@@ -10,23 +10,17 @@ Parsing numerical expressions by recursive descent is a joy in Haskell! It is in
 
 What we want to parse are binary expressions like `7 + 42 * 9`, `2 * 3 / 4 * 5`, or `8 * (10 - 6)`. As always, when parsing such expressions, we have to be aware of the associativity of the operators involved and of their different levels of precedence. In this case it's simple: `+`, `-`, `*`, and `/` all associate to the left, and `*` and `/` have higher precedence than `+` and `-`.
 
-This means that we want to turn the above expressions into the following ASTs.[^1]
+This means that we want to turn the above expressions into the following ASTs.
+`7 + 42 * 9` must become `7 + (42 * 9)`. `*` has higher precedence than `+`, so although they both associate to the left, `*` binds tighter than `+`. `2 * 3 / 4 * 5` must become `((2 * 3) / 4) * 5`. `*` and `/` have the same precedence and associate to the left.
+`8 * (10 - 6)` stays as is; parentheses have the highest precedence.
 
-`7 + 42 * 9` ⇒ `7 + (42 * 9)`. `*` has higher precedence than `+`, so although they both associate to the left, `*` binds tighter than `+`.
+The following grammar encodes the precedence and associativity constraints above. It is also not left-recursive, and can be used in a recursive descent parser. The curly braces denote zero or more repititons of what's inside them. A character in quotes refers to that literal character. The `num` production rule/token is not included in the grammar. It refers to a numeric literal.
 
-<img src="/static/figures/ast-1.png" alt="AST of 7 + 42 * 9" class="small-figure"/>
-
-`2 * 3 / 4 * 5` ⇒ `((2 * 3) / 4) * 5`. `*` and `/` have the same precedence and associate to the left.
-
-<img src="/static/figures/ast-2.png" alt="AST of 2 * 3 / 4 * 5" class="small-figure"/>
-
-`8 * (10 - 6)`. Parentheses have the highest precedence.
-
-<img src="/static/figures/ast-3.png" alt="AST of 8 * (10 - 6)" class="small-figure"/>
-
-The following grammar encodes the precedence and associativity constraints above. It is also not left-recursive, and can be used in a recursive descent parser.[^2]
-
-<img src="/static/figures/grammar.png" alt="A grammar for parsing expressions" class="small-figure"/>
+```
+<expr> ::= <term> { ('+' | '-') <term> }
+<term> ::= <factor> { ('*' | '/') <factor> }
+<factor> ::= '(' <expr> ')' | <num>
+```
 
 Instead of using algorithms like Shunting Yard or precedence climbing, the precedence of the operators is encoded directly in the various production rules. This is the simplest approach to take, but it works well in the implementation. Nora Sandler presents this method, and explains how to get there [here on her blog](https://norasandler.com/2017/12/15/Write-a-Compiler-3.html)<a class="archive-link" href="/static/archive/Writing%20a%20C%20Compiler%2C%20Part%203-2025-05-12T14_46_30Z.html"></a>. I recommend reading [this article](https://www.engr.mun.ca/~theo/Misc/exp_parsing.htm)<a class="archive-link" href="/static/archive/Parsing%20Expressions%20by%20Recursive%20Descent-2025-05-12.html"></a> by Theodore Norvell if you want to learn more about paring expressions. It explains both the Shunting Yard algorithms and precedence climbing.
 
@@ -233,9 +227,3 @@ Mul
 `pTerm` and `pExpr` are very similar and can easily be abstracted into a function that parses any left-associative binary expression. Then, the production rule for any level of precedence can be implemented in a single line. Unary operators can also be added by extending `pFactor`.
 
 The code for this post can be found [here](/static/code/2025-05-13-Expr.hs). It includes such a generic function for parsing expressions.
-
----
-
-[^1]: I used [Quiver](https://q.uiver.app/) to create the diagrams. It has an option to embed diagrams as Iframes, but I decided not to, because I like how reliable and simple plain images are.
-
-[^2]: The curly braces denote zero or more repititons of what's inside them. A character in quotes refers to that literal character. The `num` production rule/token is not included in the grammar. It refers to a numeric literal.
