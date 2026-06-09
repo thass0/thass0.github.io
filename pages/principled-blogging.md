@@ -6,6 +6,15 @@ datetime: 2025-04-12
 path: /principled-blogging.html
 ---
 
+<details>
+    <summary>I have added a tracking tool to my site again</summary>
+    I argued in this post that there is no fair reason to have analytics on a personal blog.
+    Since writing this, I became interested in the traffic on my site again, so I chose to
+    add a tracking tool. The marginal impact of my choice to use or not use such a tool is
+    zero, so the decision was not hard. I don't think it's bad per se to collect some statistics.
+    The real issue is a system of how these statistics are used.
+</details>
+
 Before building your blog, first note that the web is kind of crappy today.
 I'm not claiming it's ever been better. It may well be that it has always been
 this crappy or worse, even. The web is full of SEO-optimized spam, ads, and
