@@ -9,11 +9,12 @@ from pathlib import Path
 from typing import Dict, Tuple, List
 from subprocess import run
 from time import perf_counter
-from datetime import datetime
+from datetime import datetime, timezone
 from paka.cmark import to_html
 import re
 import json
 import urllib.parse
+from html import escape as html_escape
 
 def write_file(path: Path, cont: str):
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -226,6 +227,51 @@ def generate_mblog(posts: list, layouts: Dict[str, str], out_dir: Path):
     write_file(out_dir / "mblog.html", cont)
 
 
+#############
+# Atom feed #
+#############
+
+def generate_feed(pages: Dict[str, Tuple[str, Dict[str, str]]], out_dir: Path):
+    SITE_URL = "https://thasso.xyz"
+
+    posts = [fm for _, (_, fm) in pages.items() if fm["layout"] == "post"]
+    posts.sort(key=lambda fm: datetime.fromisoformat(fm["datetime"]), reverse=True)
+
+    updated = datetime.fromisoformat(posts[0]["datetime"]).replace(tzinfo=timezone.utc).isoformat()
+
+    entries = []
+    for fm in posts:
+        url = SITE_URL + fm["path"]
+        title = fm["title"]
+        dt = datetime.fromisoformat(fm["datetime"]).replace(tzinfo=timezone.utc).isoformat()
+        cont = html_escape(f'<p>You are invited to read <a href="{url}">this post</a> directly on thasso.xyz</p>')
+        entries.append(
+            f'  <entry>\n'
+            f'    <id>{url}</id>\n'
+            f'    <title>{html_escape(title)}</title>\n'
+            f'    <updated>{dt}</updated>\n'
+            f'    <link href="{html_escape(url)}"/>\n'
+            f'    <content type="html">{cont}</content>\n'
+            f'  </entry>'
+        )
+
+    feed = '\n'.join([
+        '<?xml version="1.0" encoding="utf-8"?>',
+        '<feed xmlns="http://www.w3.org/2005/Atom">',
+        f'  <id>{SITE_URL}/</id>',
+        f'  <title>Thassilo\'s Blog</title>',
+        f'  <updated>{updated}</updated>',
+        f'  <author><name>Thassilo</name></author>',
+        f'  <link href="{SITE_URL}/feed.xml" rel="self"/>',
+        f'  <link href="{SITE_URL}/"/>',
+        '',
+        '\n'.join(entries),
+        '</feed>',
+    ])
+
+    write_file(out_dir / "feed.xml", feed)
+
+
 ########
 # Main #
 ########
@@ -240,6 +286,8 @@ if __name__ == "__main__":
 
     posts = json.loads(Path("mblog.json").read_text(encoding="utf-8"))
     generate_mblog(posts, layouts, out_dir)
+
+    generate_feed(pages, out_dir)
 
     for name, (cont, frontmatter) in pages.items():
         output_path = out_dir / name
